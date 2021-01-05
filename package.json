@@ -9,6 +9,7 @@
     "build": "parcel build index.html",
     "dev": "parcel index.html --open",
     "start": "npm run build && npm run dev",
+    "deploy": "rm -rf dist/ && npm run build && gh-pages -d dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
@@ -21,6 +22,7 @@
     "axios": "^0.21.1",
     "bootstrap": "^4.5.3",
     "dotenv": "^8.2.0",
+    "gh-pages": "^3.1.0",
     "jquery": "^3.5.1",
     "mqtt": "^4.2.6",
     "node-sass": "^4.7.2",
