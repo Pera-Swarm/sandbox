@@ -14,6 +14,8 @@
   "devDependencies": {
     "parcel-bundler": "^1.12.4"
   },
+  "homepage": "https://nuwanj.github.io/pera-swarm-sandbox",
+
   "dependencies": {
     "@types/node": "^14.14.20",
     "autoprefixer": "^8.1.0",
