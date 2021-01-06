@@ -19,8 +19,7 @@
     "demo": "echo $TEST"
   },
   "devDependencies": {
-    "parcel-bundler": "^1.12.4",
-    "webpack-cli": "^4.3.1"
+    "parcel-bundler": "^1.12.4"
   },
   "homepage": "https://nuwanj.github.io/pera-swarm-sandbox",
   "dependencies": {
