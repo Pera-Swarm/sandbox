@@ -1,19 +1,26 @@
 {
-  "name": " ",
-  "version": "0.0.1",
-  "description": "",
-  "keywords": "",
+  "name": "PeraSwarmSandbox",
+  "version": "1.0.0",
+  "description": "This is a web sandbox for Pera-Swarm testings",
+  "keywords": [
+    "gui",
+    "mqtt",
+    "sandboc"
+  ],
   "license": "",
-  "author": "",
+  "author": "Pera-Swarm",
   "scripts": {
-    "build": "parcel build index.html",
-    "dev": "parcel index.html --open",
+    "build": "parcel build src/index.html",
+    "dev": "parcel src/index.html --open",
     "start": "npm run build && npm run dev",
-    "deploy": "rm -rf dist/ && npm run build && gh-pages -d dist",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "predeploy": "rm -rf dist && parcel build src/index.html",
+    "deploy": "gh-pages -d dist",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "demo": "echo $TEST"
   },
   "devDependencies": {
-    "parcel-bundler": "^1.12.4"
+    "parcel-bundler": "^1.12.4",
+    "webpack-cli": "^4.3.1"
   },
   "homepage": "https://nuwanj.github.io/pera-swarm-sandbox",
   "dependencies": {
