@@ -19,9 +19,8 @@ jobs:
               run: npm install
 
             - name: Build the repository
-              run: npm run predeploy -- --public-url=${{github.repository}}
+              run: npm run predeploy -- --public-url=${{ secrets.repository }}
               env:
-                  REPOSITORY_NAME: ${{github.repository}}
                   MQTT_HOST: ${{ secrets.MQTT_HOST }}
                   MQTT_PATH: ${{ secrets.MQTT_PATH }}
                   MQTT_USER: ${{ secrets.MQTT_USER }}
