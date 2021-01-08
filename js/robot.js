@@ -11,7 +11,12 @@ $(document).ready(function () {
 
     // Event listener for RobotId on msg
     $('#robot-msg-id').change(function (){
-      $('#robot-msg-id-lbl').text(this.value);
+        const oldId = $('#robot-msg-id-lbl').text();
+        const newId = this.value;
+        console.log(`robot-msg changed frpm ${oldId} to ${newId}`);
+
+        // TODO: unsubscribe from previous topic if subscribed
+      $('#robot-msg-id-lbl').text(newId);
     }).change();
 
     // Event listeners for Range Sliders
