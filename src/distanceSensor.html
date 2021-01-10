@@ -58,35 +58,8 @@
 
           <div class="form-group card p-2">
             <label class="pb-3">
-              <b><span class="channel">{channal}</span>/sensor/distance
-                <span>: by Server</span></b><br>
-            </label>
-
-            <div class="input-group mb-1">
-              <label for="dist-out-id" class="m-2">Robot Id</label>
-              <div class="input-group-append">
-                <input type="number" min="0" class="form-control mx-1" placeholder="" id="dist-out-id" value="0">
-              </div>
-            </div>
-
-            <div class="input-group mb-1">
-              <label for="dist-in-dist" class="m-2">Distance</label>
-              <div class="input-group-append">
-                <input type="number" min="-254" max="255" class="form-control mx-1" placeholder="" id="dist-out-dist" value="0">
-              </div>
-            </div>
-
-            <div class="input-group mb-1">
-              <div class="input-group-append">
-                <button class="btn btn-primary mx-1" type="submit" id="send-dist">Send</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="form-group card p-2">
-            <label class="pb-3">
               <b><span class="channel">{channal}</span>/sensor/distance/{robotID}
-                <span>: by Robot</span></b><br>
+                <span>: by Server</span></b><br>
             </label>
 
             <div class="input-group mb-1">
@@ -99,13 +72,42 @@
             <div class="input-group mb-1">
               <label for="dist-in-update" class="m-2">Distance</label>
               <div class="input-group-append">
-                <input type="number" min="-255" max="255" class="form-control mx-1" placeholder="" id="dist-in-update" value="0">
+                <input type="number" min="-255" max="255" class="form-control mx-1" placeholder="" id="dist-in-update"
+                  value="0">
               </div>
             </div>
 
             <div class="input-group mb-1">
               <div class="input-group-append">
                 <button class="btn btn-primary mx-1" type="submit" id="update-dist">Update</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group card p-2">
+            <label class="pb-3">
+              <b><span class="channel">{channal}</span>/sensor/distance
+                <span>: by Robot</span></b><br>
+            </label>
+
+            <div class="input-group mb-1">
+              <label for="dist-out-id" class="m-2">Robot Id</label>
+              <div class="input-group-append">
+                <input type="number" min="0" class="form-control mx-1" placeholder="" id="dist-out-id" value="0">
+              </div>
+            </div>
+
+            <div class="input-group mb-1">
+              <label for="dist-in-dist" class="m-2">Distance</label>
+              <div class="input-group-append">
+                <input type="number" min="-254" max="255" class="form-control mx-1" placeholder="" id="dist-out-dist"
+                  value="0">
+              </div>
+            </div>
+
+            <div class="input-group mb-1">
+              <div class="input-group-append">
+                <button class="btn btn-primary mx-1" type="submit" id="send-dist">Send</button>
               </div>
             </div>
           </div>
