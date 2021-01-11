@@ -62,6 +62,12 @@ export default class MqttClient {
 
     }
 
+    unsubscribe(topic){
+        this.client.unsubscribe(topic);
+        const t = this.channel + '/' + topic;
+        console.log('unsubscribed from', t);
+    }
+
     onMessageArrived(packet) {
         const msg = packet.payloadString.trim();
         const topic = packet.destinationName;
