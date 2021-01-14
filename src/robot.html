@@ -38,30 +38,44 @@
                     <!-- Robot Message -->
                     <div class="card mb-2">
                         <div class="card-body">
-                            <label for="robot-msg-id"> Robot Messages (<b><span class="channel">{channal}</span>/robot/msg/<span id="robot-msg-id-lbl">{robotId}</span></b>)
-                            </label>
-                            <div class="input-group">
-                                <div class="col pb-2">
-                                    <div class="input-group-append">
-                                        <label for="robot-msg-id" class="col-form-label" style="min-width: 100px;">Robot Id</label>
-                                        <input type="number" min="0" class="form-control" placeholder="Robot Id" id="robot-msg-id" value="0">
+                            <label for="robot-msg-id"> Robot Messages</label>
+
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="input-group">
+                                        <div class="col pb-2">
+                                            <div class="input-group-append">
+                                                <label for="robot-msg-id" class="col-form-label" style="min-width: 100px;">Robot Id</label>
+                                                <input type="number" min="0" class="form-control" placeholder="Robot Id" id="robot-msg-id" value="0">
+                                            </div>
+                                        </div>
                                     </div>
+                                    <div class="input-group">
+                                        <div class="col pb-2">
+                                            <div class="input-group-append">
+                                                <label for="robot-msg-value" class="col-form-label" style="min-width: 100px;">Message</label>
+                                                <select name="robot-msg-value" id="robot-msg-value" class="form-control">
+                                                    <option value="ID? -1">ID?</option>
+                                                    <option value="MODE 1">MODE 1</option>
+                                                    <option value="START -1">START</option>
+                                                    <option value="STOP -1">STOP</option>
+                                                    <option value="RESET -1">RESET</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
-                            </div>
-                            <div class="input-group">
-                                <div class="col pb-2">
-                                    <div class="input-group-append">
-                                        <label for="robot-msg-value" class="col-form-label" style="min-width: 100px;">Message</label>
-                                        <select name="robot-msg-value" id="robot-msg-value" class="form-control mr-1">
-                                            <option value="ID? -1">ID?</option>
-                                            <option value="MODE 1">MODE 1</option>
-                                            <option value="START -1">START</option>
-                                            <option value="STOP -1">STOP</option>
-                                            <option value="RESET -1">RESET</option>
-                                        </select>
-                                        <button class="btn btn-primary mx-1" id="robot-msg-send-btn">Send</button>
-                                        <button class="btn btn-success mx-1" id="robot-msg-broadcast-btn">Broadcast</button>
+                                <div class="col-md-4">
+                                    <div>
+                                        <b><span class="channel">{channal}</span>/robot/msg/<span id="robot-msg-id-lbl">{robotId}</span></b>
                                     </div>
+                                    <button class="btn btn-primary m-1 mb-3" id="robot-msg-send-btn">Send</button>
+
+                                    <div>
+                                        <b><span class="channel">{channal}</span>/robot/msg/broadcast</b>
+                                    </div>
+                                    <button class="btn btn-success m-1 mb-3" id="robot-msg-broadcast-btn">Broadcast</button>
                                 </div>
                             </div>
                         </div>
@@ -71,16 +85,15 @@
                     <div class="card mb-2">
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="robot-create-id"><b><span class="channel">{channal}</span>/robot/create</b> and
-                                    <b><span class="channel">{channal}</span>/robot/delete</b>
-                                </label>
+                                <label for="robot-create-id">Robot Localization</label>
 
-                                <div class="input-group p-2">
-                                    <label for="robot-create-id" class="col-form-label" style="min-width: 75px;">Robot Id</label>
-                                    <input type="number" min="0" class="form-control w-25" value="0" id="robot-create-id">
-                                </div>
                                 <div class="row">
-                                    <div class="col-md-10">
+                                    <div class="col-md-8">
+                                        <div class="input-group p-2">
+                                            <label for="robot-create-id" class="col-form-label" style="min-width: 75px;">Robot Id</label>
+                                            <input type="number" min="0" class="form-control w-25" value="0" id="robot-create-id">
+                                        </div>
+
                                         <div class="p-2 d-flex flex-row align-content-center">
                                             <label for="robot-create-x-range" style="width: 100px;">X</label>
                                             <input type="range" class="py-3 px-3 custom-range" id="robot-create-x-range" min="-150" max="150"
@@ -106,13 +119,22 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-2">
+                                    <div class="col-md-4">
                                         <div class="p-2">
-                                            <button class="btn btn-primary w-100 m-1" id="robot-btn-create">Create</button>
+                                            <div>
+                                                <b><span class="channel">{channal}</span>/robot/create</b>
+                                            </div>
+                                            <button class="btn btn-primary m-1 mb-3" id="robot-btn-create">Create</button>
                                             <br>
-                                            <button class="btn btn-success w-100 m-1" id="robot-btn-update">Update</button>
+                                            <div>
+                                                <b><span class="channel">{channal}</span>/localization/info</b>
+                                            </div>
+                                            <button class="btn btn-success m-1 mb-3" id="robot-btn-update">Update</button>
                                             <br>
-                                            <button class="btn btn-warning w-100 m-1" id="robot-btn-delete">Delete</button>
+                                            <div>
+                                                <b><span class="channel">{channal}</span>/robot/delete</b>
+                                            </div>
+                                            <button class="btn btn-warning m-1 mb-3" id="robot-btn-delete">Delete</button>
                                             <br>
                                         </div>
                                     </div>
