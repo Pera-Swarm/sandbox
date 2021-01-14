@@ -19,7 +19,7 @@ html {
 
 
 .btn{
-  min-width: 100px!important;
+  min-width: 150px!important;
 }
 
 /*
@@ -265,4 +265,3 @@ textarea {
     page-break-after: avoid;
   }
 }
-
