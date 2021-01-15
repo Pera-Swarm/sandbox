@@ -35,48 +35,58 @@
             <div class="container pb-3">
                 <h3>Color Sensor</h3>
                 <div class="p-3">
-                    <div class="input-group p-2">
-                        <label for="robot-color-id" class="col-form-label" style="min-width: 75px;">Robot Id</label>
-                        <input type="number" min="0" class="form-control w-25" value="0" id="robot-color-id">
-                    </div>
-                    <div class="row">
-                        <div class="col-md-10">
-                            <div class="p-2 d-flex flex-row align-content-center">
-                                <label for="red-bar" style="width: 100px;">R</label>
-                                <input type="range" class="py-3 px-3 custom-range" id="red-bar" min="0"
-                                    max="255" value="0" step="1">
-                                <input type="number" min="0" max="255" class="form-control w-25" value="0"
-                                    id="red-val">
+                    <div class="form-group card p-2">
+                        <div class="input-group p-2">
+
+                            <div class="input-group mb-1">
+                                <label for="robot-color-id" class="m-2">Robot Id</label>
+                                <div class="input-group-append">
+                                    <input type="number" min="0" class="form-control mx-1" placeholder=""
+                                        id="robot-color-id" value="0">
+                                </div>
                             </div>
 
-                            <div class=" p-2 d-flex flex-row align-content-center">
-                                <label for="green-bar" style="width: 100px;">G</label>
-                                <input type="range" class="py-3 px-3 custom-range" id="green-bar" min="0"
-                                    max="255" value="0" step="1">
-                                <input type="number" min="0" max="255" class="form-control w-25" value="0"
-                                    id="green-val">
-                            </div>
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <div class="p-2 d-flex flex-row align-content-center">
+                                        <label for="red-bar" style="width: 100px;">R</label>
+                                        <input type="range" class="py-3 px-3 custom-range" id="red-bar" min="0"
+                                            max="255" value="0" step="1">
+                                        <input type="number" min="0" max="255" class="form-control w-25" value="0"
+                                            id="red-val">
+                                    </div>
 
-                            <div class=" p-2 d-flex flex-row align-content-center">
-                                <label for="blue-bar" style="width: 100px;">B</label>
-                                <input type="range" class="py-3 px-3 custom-range" id="blue-bar"
-                                    min="0" max="255" value="0" step="1">
-                                <input type="number" min="0" max="255" class="form-control w-25" value="0"
-                                    id="blue-val">
-                            </div>
-                        </div>
+                                    <div class=" p-2 d-flex flex-row align-content-center">
+                                        <label for="green-bar" style="width: 100px;">G</label>
+                                        <input type="range" class="py-3 px-3 custom-range" id="green-bar" min="0"
+                                            max="255" value="0" step="1">
+                                        <input type="number" min="0" max="255" class="form-control w-25" value="0"
+                                            id="green-val">
+                                    </div>
 
-                        <div class="col-md-2">
-                            <div class="p-2">
-                                <button class="btn btn-primary w-100 m-1" id="robot-btn-create">Send to Robot</button>
-                                <br>
-                                <button class="btn btn-success w-100 m-1" id="robot-btn-update">Send to Server</button>
-                                <br>
+                                    <div class=" p-2 d-flex flex-row align-content-center">
+                                        <label for="blue-bar" style="width: 100px;">B</label>
+                                        <input type="range" class="py-3 px-3 custom-range" id="blue-bar" min="0"
+                                            max="255" value="0" step="1">
+                                        <input type="number" min="0" max="255" class="form-control w-25" value="0"
+                                            id="blue-val">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <div class="p-2">
+                                        <button class="btn btn-primary w-100 m-1" id="robot-btn-create">Send to
+                                            Robot</button>
+                                        <br>
+                                        <button class="btn btn-success w-100 m-1" id="robot-btn-update">Send to
+                                            Server</button>
+                                        <br>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
 
         </div>
