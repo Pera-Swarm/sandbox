@@ -14,14 +14,17 @@ $(document).ready(function () {
         $('#red-bar').change(function (){
             $('#red-val').val(this.value);
             $('.red-val').text(this.value);
+            updateColorBox();
         }).change();
         $('#green-bar').change(function (){
             $('#green-val').val(this.value);
             $('.green-val').text(this.value);
+            updateColorBox();
         }).change();
         $('#blue-bar').change(function (){
             $('#blue-val').val(this.value);
             $('.blue-val').text(this.value);
+            updateColorBox();
         }).change();
         $('#amb-bar').change(function (){
             $('#amb-val').val(this.value);
@@ -58,9 +61,15 @@ $(document).ready(function () {
 
         // Publish: sensor/color/{robotId}/?
         $('#color-btn-req').click(function(){
-            const robotId = $('#dist-req-id').val()
+            const robotId = $('#robot-id').val()
             mqtt.publish(`sensor/color/${robotId}/?`, '?');
         });
 
+        function updateColorBox(){
+            const r = $('#red-bar').val();
+            const g = $('#green-bar').val();
+            const b = $('#blue-bar').val();
+            $("#color-box").css("background-color",`rgb(${r},${g},${b})`);
+        }
     });
 });
