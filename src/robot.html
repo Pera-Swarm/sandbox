@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Sandbox - Robots</title>
+    <title>Robots | Sandbox</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -85,37 +85,34 @@
                     <div class="card mb-2">
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="robot-create-id">Robot Localization</label>
+                                <label for="robot-localization-id">Robot Localization</label>
 
                                 <div class="row">
                                     <div class="col-md-8">
                                         <div class="input-group p-2">
-                                            <label for="robot-create-id" class="col-form-label" style="min-width: 75px;">Robot Id</label>
-                                            <input type="number" min="0" class="form-control w-25" value="0" id="robot-create-id">
+                                            <label for="robot-localization-id" class="col-form-label" style="min-width: 75px;">Robot Id</label>
+                                            <input id="robot-localization-id" type="number" min="0" class="form-control w-25" value="0">
                                         </div>
 
                                         <div class="p-2 d-flex flex-row align-content-center">
                                             <label for="robot-create-x-range" style="width: 100px;">X</label>
                                             <input type="range" class="py-3 px-3 custom-range" id="robot-create-x-range" min="-150" max="150"
                                             value="0" step="1">
-                                            <input type="number" min="-150" max="150" class="form-control w-25" value="0"
-                                            id="robot-create-x-val">
+                                            <input id="robot-create-x-val" type="number" min="-150" max="150" class="form-control w-25" value="0">
                                         </div>
 
                                         <div class=" p-2 d-flex flex-row align-content-center">
                                             <label for="robot-create-y-range" style="width: 100px;">Y</label>
                                             <input type="range" class="py-3 px-3 custom-range" id="robot-create-y-range" min="-150" max="150"
                                             value="0" step="1">
-                                            <input type="number" min="-150" max="150" class="form-control w-25" value="0"
-                                            id="robot-create-y-val">
+                                            <input id="robot-create-y-val" type="number" min="-150" max="150" class="form-control w-25" value="0">
                                         </div>
 
                                         <div class=" p-2 d-flex flex-row align-content-center">
                                             <label for="robot-create-heading-range" style="width: 100px;">heading</label>
                                             <input type="range" class="py-3 px-3 custom-range" id="robot-create-heading-range" min="-180"
                                             max="180" value="90" step="1">
-                                            <input type="number" min="-180" max="180" class="form-control w-25" value="90"
-                                            id="robot-create-heading-val">
+                                            <input id="robot-create-heading-val" type="number" min="-180" max="180" class="form-control w-25" value="90">
                                         </div>
                                     </div>
 
@@ -124,17 +121,17 @@
                                             <div>
                                                 <b><span class="channel">{channal}</span>/robot/create</b>
                                             </div>
-                                            <button class="btn btn-primary m-1 mb-3" id="robot-btn-create">Create</button>
+                                            <button id="robot-btn-create" class="btn btn-primary m-1 mb-3">Create</button>
                                             <br>
                                             <div>
                                                 <b><span class="channel">{channal}</span>/localization/info</b>
                                             </div>
-                                            <button class="btn btn-success m-1 mb-3" id="robot-btn-update">Update</button>
+                                            <button id="robot-btn-update" class="btn btn-success m-1 mb-3">Update</button>
                                             <br>
                                             <div>
                                                 <b><span class="channel">{channal}</span>/robot/delete</b>
                                             </div>
-                                            <button class="btn btn-warning m-1 mb-3" id="robot-btn-delete">Delete</button>
+                                            <button id="robot-btn-delete" class="btn btn-warning m-1 mb-3">Delete</button>
                                             <br>
                                         </div>
                                     </div>
