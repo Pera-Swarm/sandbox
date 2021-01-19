@@ -46,6 +46,13 @@ $(document).ready(function () {
         // Broadcast Message
         $('#robot-msg-broadcast-btn').click(function () {
             const msgString = $('#robot-msg-value').val();
+
+            if(msgString=='RESET -1'){
+                // TODO: finalize this 
+                console.log('send refresh request');
+                mqtt.publish('management/visualizer/refresh', '?');
+            }
+
             mqtt.publish('robot/msg/broadcast', msgString);
         });
 
