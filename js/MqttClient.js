@@ -1,19 +1,16 @@
-
 import MQTT from 'paho-mqtt';
-import $ from "jquery";
+import $ from 'jquery';
 
 export default class MqttClient {
-
     constructor(callback) {
-
-        const mqtt_server =  process.env.MQTT_HOST;
+        const mqtt_server = process.env.MQTT_HOST;
         const mqtt_port = 8883;
-        const mqtt_path =process.env.MQTT_PATH;
+        const mqtt_path = process.env.MQTT_PATH;
         const client_id = 'client_' + Math.random().toString(36).substring(2, 15);
         this.client = new MQTT.Client(mqtt_server, mqtt_port, mqtt_path, client_id);
         this.channel = 'v1';
 
-        $('#status').text("Trying to connect...");
+        $('#status').text('Trying to connect...');
         window.mqtt = this.client;
         window.subList = {};
 
@@ -31,12 +28,11 @@ export default class MqttClient {
                 this.client.onMessageArrived = this.onMessageArrived;
                 this.client.onConnectionLost = this.onConnectionLost;
 
-                $('#status').text("Connected");
+                $('#status').text('Connected');
 
                 if (callback !== undefined) {
                     callback();
                 }
-
             },
             onFailure: () => {
                 console.log('MQTT: connection failed');
@@ -59,10 +55,9 @@ export default class MqttClient {
             console.log('subscribed to ', t);
             this.client.subscribe(t);
         }
-
     }
 
-    unsubscribe(topic){
+    unsubscribe(topic) {
         this.client.unsubscribe(topic);
         const t = this.channel + '/' + topic;
         console.log('unsubscribed from', t);
@@ -81,8 +76,23 @@ export default class MqttClient {
     publish(topic, message, callback) {
         //console.log(topic, message);
 
-        if(topic !== '' && message !== '') {
+        if (topic !== '' && message !== '') {
             const pubTopic = this.channel + '/' + topic;
+            var payload = new MQTT.Message(message);
+
+            payload.destinationName = pubTopic;
+            this.client.send(payload);
+            console.log('MQTT: published', pubTopic, message);
+
+            if (callback != null) callback();
+        }
+    }
+
+    publish_channel(channel, topic, message, callback) {
+        //console.log(topic, message);
+
+        if (topic !== '' && message !== '') {
+            const pubTopic = channel + '/' + topic;
             var payload = new MQTT.Message(message);
 
             payload.destinationName = pubTopic;

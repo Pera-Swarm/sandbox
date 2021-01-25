@@ -16,6 +16,7 @@
     "predeploy": "rm -rf dist && parcel build src/index.html",
     "deploy": "gh-pages -d dist",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write \"**/*.+(ts|js|jsx|json|yml|yaml|css|md)\"",
     "demo": "echo $TEST"
   },
   "devDependencies": {
@@ -33,6 +34,9 @@
     "mqtt": "^4.2.6",
     "node-sass": "^4.7.2",
     "paho-mqtt": "^1.1.0",
-    "popper.js": "^1.12.9"
+    "popper.js": "^1.12.9",
+    "prettier": "^2.2.1",
+    "uuid": "^8.3.2",
+    "uuidv4": "^6.2.6"
   }
 }
