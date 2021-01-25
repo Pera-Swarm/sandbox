@@ -19,6 +19,7 @@ $(document).ready(function () {
                 updateColorBox();
             })
             .change();
+
         $('#green-bar')
             .change(function () {
                 $('#green-val').val(this.value);

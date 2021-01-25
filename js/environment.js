@@ -7,7 +7,7 @@ let env = {};
 
 $(document).ready(function () {
     mqtt = new MQTTClient(() => {
-        var robot_id = 0;
+        let robot_id = 0;
 
         // Active the buttons
         $('.btn').prop('disabled', false);

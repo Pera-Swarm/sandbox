@@ -74,11 +74,11 @@ export default class MqttClient {
     }
 
     publish(topic, message, callback) {
-        //console.log(topic, message);
+        // TODO: call this.publish_channel(...)
 
         if (topic !== '' && message !== '') {
             const pubTopic = this.channel + '/' + topic;
-            var payload = new MQTT.Message(message);
+            let payload = new MQTT.Message(message);
 
             payload.destinationName = pubTopic;
             this.client.send(payload);
@@ -93,7 +93,7 @@ export default class MqttClient {
 
         if (topic !== '' && message !== '') {
             const pubTopic = channel + '/' + topic;
-            var payload = new MQTT.Message(message);
+            let payload = new MQTT.Message(message);
 
             payload.destinationName = pubTopic;
             this.client.send(payload);

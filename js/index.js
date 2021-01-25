@@ -1,7 +1,7 @@
 import $ from 'jquery';
 
 // Common to all pages
-var channel = 'v1';
+let channel = 'v1';
 
 $(document).ready(function () {
     includeHTML();
