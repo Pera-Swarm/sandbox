@@ -42,7 +42,7 @@
                         <div class=" p-2 d-flex flex-row align-content-center">
                             <label for="dist-bar" style="width: 100px;">Distance</label>
                             <input id="dist-bar" type="range" class="py-3 px-3 custom-range" min="0" max="3000" value="0" step="1">
-                            <input id="dist-val"type="number" min="0" max="3000" class="form-control" style="width: 150px;" value="0">
+                            <input id="dist-val" type="number" min="0" max="3000" class="form-control" style="width: 150px;" value="0">
                         </div>
                     </div>
 
@@ -81,11 +81,23 @@
             <div class="form-group card p-3">
                 <div class="pb-4">
                     <label for="dist-sub-text">
-                        Responses received from physical robots to the server (<b><span class="channel">{channel}</span>/distance/color</b>)<br>
+                        Responses received from physical robots to the server (<b><span class="channel">{channel}</span>/sensor/distance</b>)<br>
                     </label>
 
                     <div class="input-group align-self-start">
                         <textarea id="dist-sub-text" type="text" class="form-control mr-2" placeholder="" ></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group card p-3">
+                <div class="pb-4">
+                    <label for="dist-sub-text">
+                        Responses received to <b><span class="channel">{channel}</span>/sensor/distance/<span class="robot-id">{robotId}</span></b><br>
+                    </label>
+
+                    <div class="input-group align-self-start">
+                        <textarea id="dist-robot-text" type="text" class="form-control mr-2" placeholder="" ></textarea>
                     </div>
                 </div>
             </div>

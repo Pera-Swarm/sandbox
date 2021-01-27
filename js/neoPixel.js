@@ -2,8 +2,8 @@ import MQTTClient from './MqttClient';
 import $ from 'jquery';
 
 $(document).ready(function () {
-    mqtt = new MQTTClient(() => {
-        var robot_id = 0;
+    const mqtt = new MQTTClient(() => {
+        let robot_id = 0;
 
         // Active the buttons
         $('.btn').prop('disabled', false);
@@ -13,7 +13,7 @@ $(document).ready(function () {
                 const robotId = this.value;
                 const topic = `output/neopixel/${robotId}`;
 
-                if (robot_id != robotId && robot_id !== null) {
+                if (robot_id !== robotId && robot_id !== null) {
                     // unsubscribe from previous topic
                     mqtt.unsubscribe(`output/neopixel/${robot_id}`);
                 }

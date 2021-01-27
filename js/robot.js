@@ -2,7 +2,7 @@ import MQTTClient from './MqttClient';
 import $ from 'jquery';
 
 $(document).ready(function () {
-    mqtt = new MQTTClient(() => {
+    const mqtt = new MQTTClient(() => {
         // Active the buttons
         $('.btn').prop('disabled', false);
 
@@ -67,7 +67,7 @@ $(document).ready(function () {
             mqtt.publish('robot/msg/broadcast', msgString);
         });
 
-        var current_loc_id = undefined;
+        let current_loc_id = undefined;
         $('#robot-localization-id')
             .change(function () {
                 const id = this.value;

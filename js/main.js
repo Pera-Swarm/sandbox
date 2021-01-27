@@ -1,7 +1,7 @@
 import MQTTClient from './MqttClient';
 import $ from 'jquery';
 
-var channel = 'v1';
+let channel = 'v1';
 
 $(document).ready(function () {
     $('.channel').text(channel);

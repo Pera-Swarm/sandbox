@@ -3,12 +3,27 @@ import $ from 'jquery';
 
 $(document).ready(function () {
     mqtt = new MQTTClient(() => {
+        var dist_robot_id = null;
+
         // Active the buttons
         $('.btn').prop('disabled', false);
 
         $('#robot-id')
             .change(function () {
-                $('.robot-id').text(this.value);
+                const robotId = this.value;
+                const topic = `sensor/distance/${robotId}`;
+
+                if (dist_robot_id != robotId && dist_robot_id !== null) {
+                    // unsubscribe from previous topic
+                    mqtt.unsubscribe(`sensor/distance/${dist_robot_id}`);
+                }
+                mqtt.subscribeToTopic(topic, (topic, msg) => {
+                    $('#dist-robot-text').text(msg);
+                    console.log(topic, ':', msg);
+                });
+
+                dist_robot_id = robotId;
+                $('.robot-id').text(robotId);
             })
             .change();
 

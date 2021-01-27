@@ -20,7 +20,7 @@ $(document).ready(function () {
         // Event listeners for select box updates
         $('#comm-out-protocol')
             .change(function () {
-                $('.com-out-protocol-lable').text(this.value);
+                $('.com-out-protocol-label').text(this.value);
             })
             .change();
 
