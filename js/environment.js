@@ -3,11 +3,11 @@ import $ from 'jquery';
 import { v4 as uuidv4 } from 'uuid';
 
 let obstacles = [];
+let obstaclesRender = [];
 let env = {};
 
 $(document).ready(function () {
     mqtt = new MQTTClient(() => {
-
         let robot_id = 0;
 
         // Active the buttons
@@ -60,11 +60,11 @@ $(document).ready(function () {
                     mqtt.publish_channel(
                         'obstacles',
                         'obstacles',
-                        JSON.stringify(obstacles)
+                        JSON.stringify(obstaclesRender)
                     );
                 }
                 // update the list in GUI
-                updateObstacleList(obstacles);
+                updateObstacleList(obstaclesRender);
             })
             .click();
 
@@ -78,7 +78,6 @@ $(document).ready(function () {
             const x = $('#obstacle-x-val').val();
             const y = $('#obstacle-y-val').val();
             const orientation = $('#obstacle-orientation-val').val();
-
             const color = '#505050';
 
             const geometry = {
@@ -87,13 +86,36 @@ $(document).ready(function () {
                 height: height,
                 depth: depth
             };
-            const position = { x: x, y: y };
-            const rotation = { x: 0, y: orientation, z: 0 };
+            const centerX =
+                parseInt(x) + (width / 2) * Math.cos((orientation / 180) * Math.PI);
+            const centerY =
+                parseInt(y) + (width / 2) * Math.sin((orientation / 180) * Math.PI);
 
-            obstacles.push(
+            const position = {
+                x: centerX,
+                y: centerY
+            };
+            const rotation = { x: 0, y: orientation, z: 0 };
+            obstaclesRender.push(
                 generateObstacle(id, 'wall', geometry, color, position, rotation)
             );
+
+            const obstacle = {
+                type: 'wall',
+                description: '',
+                parameters: {
+                    x: x,
+                    y: y,
+                    orientation: orientation,
+                    width: width,
+                    height: height,
+                    color: color
+                },
+                reality: 'V'
+            };
+            obstacles.push(obstacle);
             console.log(obstacles);
+
             $('#btnEnvUpdate').click();
         });
         $('#btnCreateBox').click(function () {
@@ -105,7 +127,6 @@ $(document).ready(function () {
             const x = $('#obstacle-x-val').val();
             const y = $('#obstacle-y-val').val();
             const orientation = $('#obstacle-orientation-val').val();
-
             const color = '#505050';
 
             const geometry = {
@@ -117,10 +138,27 @@ $(document).ready(function () {
             const position = { x: x, y: y };
             const rotation = { x: 0, y: orientation, z: 0 };
 
-            obstacles.push(
+            obstaclesRender.push(
                 generateObstacle(id, 'box', geometry, color, position, rotation)
             );
+
+            const obstacle = {
+                type: 'box',
+                description: '',
+                parameters: {
+                    x: x,
+                    y: y,
+                    orientation: orientation,
+                    width: width,
+                    height: height,
+                    depth: depth,
+                    color: color
+                },
+                reality: 'V'
+            };
+            obstacles.push(obstacle);
             console.log(obstacles);
+
             $('#btnEnvUpdate').click();
         });
         $('#btnCreateCylinder').click(function () {
@@ -134,6 +172,20 @@ $(document).ready(function () {
 
             const color = '#505050';
 
+            const obstacle = {
+                type: 'cylinder',
+                description: '',
+                parameters: {
+                    x: x,
+                    y: y,
+                    orientation: orientation,
+                    height: height,
+                    radius: radius,
+                    color: color
+                },
+                reality: 'V'
+            };
+
             const geometry = {
                 type: 'CylinderGeometry',
                 radiusTop: radius,
@@ -143,7 +195,8 @@ $(document).ready(function () {
             const position = { x: x, y: y };
             const rotation = { x: 0, y: orientation, z: 0 };
 
-            obstacles.push(
+            obstacles.push(obstacle);
+            obstaclesRender.push(
                 generateObstacle(id, 'cylinder', geometry, color, position, rotation)
             );
             console.log(obstacles);
@@ -153,10 +206,12 @@ $(document).ready(function () {
         // Obstacle Remove Event
         $('#obstacle-list').on('click', 'span', function () {
             const index = $(this).data('index');
-            if (obstacles.length > 0) {
-                obstacles.forEach(function (item, key) {
+            if (obstaclesRender.length > 0) {
+                obstaclesRender.forEach(function (item, key) {
                     if (item.id === index) {
+                        obstaclesRender.splice(key, 1);
                         obstacles.splice(key, 1);
+
                         const removeMsg = JSON.stringify({ id: index });
                         // Remove from both 'preview' and 'active' environments
                         mqtt.publish_channel('obstacles', 'obstacles/delete', removeMsg);
@@ -171,7 +226,7 @@ $(document).ready(function () {
 
         // Send Button Click Event
         $('#btn-obstacle-refresh').click(function () {
-            mqtt.publish('obstacles', JSON.stringify(obstacles));
+            mqtt.publish('obstacles', JSON.stringify(obstaclesRender));
         });
 
         // Delete Button Click Event
