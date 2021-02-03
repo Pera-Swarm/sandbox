@@ -18,7 +18,7 @@ $(document).ready(function () {
                     mqtt.unsubscribe(`sensor/color/${color_robot_id}`);
                 }
                 mqtt.subscribeToTopic(topic, (topic, msg) => {
-                    $('#dist-robot-text').text(msg);
+                    $('#color-robot-text').text(msg);
                     console.log(topic, ':', msg);
                 });
 
