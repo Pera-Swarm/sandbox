@@ -112,17 +112,15 @@ $(document).ready(function () {
 
         // Update Button
         $('#robot-btn-update').click(function () {
-            const msg = {
-                reality: $('#robot-reality').val(),
-                data: [
-                    {
-                        id: $('#robot-localization-id').val(),
-                        x: $('#robot-create-x-val').val(),
-                        y: $('#robot-create-y-val').val(),
-                        heading: $('#robot-create-heading-val').val()
-                    }
-                ]
-            };
+            const msg = [
+                {
+                    id: $('#robot-localization-id').val(),
+                    x: $('#robot-create-x-val').val(),
+                    y: $('#robot-create-y-val').val(),
+                    heading: $('#robot-create-heading-val').val(),
+                    reality: $('#robot-reality').val()
+                }
+            ];
             mqtt.publish('localization/update', JSON.stringify(msg));
         });
 

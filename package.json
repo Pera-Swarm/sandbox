@@ -1,11 +1,12 @@
 {
-  "name": "PeraSwarmSandbox",
+  "name": "pera-swarm-sandbox",
   "version": "1.0.0",
   "description": "This is a web sandbox for Pera-Swarm testings",
   "keywords": [
-    "gui",
+    "GUI",
     "mqtt",
-    "sandboc"
+    "sandbox",
+    "testing"
   ],
   "license": "",
   "author": "Pera-Swarm",
