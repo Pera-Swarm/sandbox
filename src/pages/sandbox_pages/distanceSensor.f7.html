@@ -1,0 +1,118 @@
+<template>
+    <div class='page' data-name='distanceSensor'>
+        <div class='navbar'>
+            <div class='navbar-bg'></div>
+            <div class='navbar-inner sliding'>
+                <div class='left'>
+                    <a href='#' class='link back'>
+                        <i class='icon icon-back'></i>
+                        <span class='if-not-md'>Back</span>
+                    </a>
+                </div>
+                <div class='title'>Distance Sensor</div>
+            </div>
+        </div>
+        <div class='page-content'>
+            <div class='container pt-2'>
+                MQTT Status: <span id='status'>Not connected</span>
+                <div class='row p-2'>
+                    <h3>Distance Sensor</h3>
+                    <div class='form-group card p-2'>
+                        <div class='row'>
+                            <div class='col-md-8'>
+                                <div class='input-group d-inline-flex align-items-center'>
+                                    <label for='robot-id' class='m-2'>Robot Id</label>
+                                    <input id='robot-id' type='number' min='0' class='form-control m-2'
+                                           style='width: 100px;' placeholder='' value='0'/>
+                                </div>
+                                <div class=' p-2 d-flex flex-row align-content-center'>
+                                    <label for='dist-bar' style='width: 100px;'>Distance</label>
+                                    <input id='dist-bar' type='range' class='py-3 px-3 custom-range' min='0' max='3000'
+                                           value='0' step='1'/>
+                                    <input id='dist-val' type='number' min='0' max='3000' class='form-control'
+                                           style='width: 150px;' value='0'/>
+                                </div>
+                            </div>
+
+                            <div class='col-md-4'>
+                                <div>
+                                    <b><span class='channel'>{channel}</span>/sensor/distance/<span class='robot-id'>{robotId}</span>/?</b>
+                                    <span class='float-right'>
+                                        <a target='_blank' href='https://pera-swarm.ce.pdn.ac.lk/docs/communication/mqtt/sensor#sensordistancerobotid'>[?]</a>
+                                    </span>
+                                </div>
+                                <button class='btn btn-primary m-1 mb-3' id='dist-btn-req'>Req from Robot</button>
+
+                                <div>
+                                    <b><span class='channel'>{channel}</span>/sensor/distance/<span class='robot-id'>{robotId}</span></b>
+                                    <span class='float-right'>
+                                        <a target='_blank' href='https://pera-swarm.ce.pdn.ac.lk/docs/communication/mqtt/sensor#sensordistancerobotid-1'>[?]</a>
+                                    </span>
+                                </div>
+                                <div>
+                                    <span class='dist-val'>0</span>
+                                </div>
+                                <button class='btn btn-primary m-1 mb-3' id='dist-btn-send-robot'>Send to Robot</button>
+
+                                <div>
+                                    <b><span class='channel'>{channel}</span>/sensor/distance/</b>
+                                    <span class='float-right'><a target='_blank'
+                                                                 href='https://pera-swarm.ce.pdn.ac.lk/docs/communication/mqtt/sensor#sensordistance'>[?]</a></span>
+                                </div>
+                                <div>
+                                    {
+                                    "id":"<span class='robot-id'>{robotId}</span>",
+                                    "dist":"<span class='dist-val'>0</span>"
+                                    }
+                                </div>
+                                <button class='btn btn-success m-1 mb-3' id='dist-btn-send-server'>Send to Server
+                                </button>
+                                <br/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class='form-group card p-3'>
+                        <div class='pb-4'>
+                            <label for='dist-sub-text'>
+                                Responses received from physical robots to the server (<b><span class='channel'>{channel}</span>/sensor/distance</b>)<br/>
+                            </label>
+
+                            <div class='input-group align-self-start'>
+                                <textarea id='dist-sub-text' type='text' class='form-control mr-2'
+                                          placeholder=''></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class='form-group card p-3'>
+                        <div class='pb-4'>
+                            <label for='dist-sub-text'>
+                                Responses received to <b><span class='channel'>{channel}</span>/sensor/distance/<span
+                                class='robot-id'>{robotId}</span></b><br/>
+                            </label>
+
+                            <div class='input-group align-self-start'>
+                                <textarea id='dist-robot-text' type='text' class='form-control mr-2'
+                                          placeholder=''></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</template>
+<script>
+    import '../../js/sandbox_scripts/distanceSensor.js';
+
+    export default (props, { $f7, $on }) => {
+
+        $on('pageMounted', () => {
+            $$('.btn').prop('disabled', false);
+
+        });
+        return $render;
+    };
+</script>
