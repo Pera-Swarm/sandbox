@@ -1,3 +1,6 @@
+
+![Framework7 Version](https://github.com/NuwanJ/pera-swarm-sandbox/workflows/DeployCI/badge.svg?branch=framework7)
+
 # PeraSwarm Sandbox
 
 ## Framework7 CLI Options
