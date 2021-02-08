@@ -1,0 +1,30 @@
+<template>
+    <div class='page' data-name='colorSensor'>
+        <div class='navbar'>
+            <div class='navbar-bg'></div>
+            <div class='navbar-inner sliding'>
+                <div class='title'>Color Sensor</div>
+            </div>
+        </div>
+        <div class='page-content'>
+            <div class='container pt-2'>
+                <div class='row p-2'>
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</template>
+<script>
+    import {setup} from '../../js/sandbox_scripts/template';
+
+    export default (props, { $f7, $on }) => {
+
+        $on('pageInit', (e, page) => {
+            setup();
+        });
+        return $render;
+    };
+</script>
