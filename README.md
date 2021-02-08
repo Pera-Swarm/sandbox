@@ -6,7 +6,7 @@ Framework7 app created with following options:
 
 ```
 {
-  "cwd": "E:\\University\\Semester 7\\CO421 - Final Year Project I\\FYP_GitRepos\\test-sandbox",
+  "cwd": "",
   "type": [
     "pwa"
   ],
