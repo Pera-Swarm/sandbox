@@ -1,44 +1,16 @@
 <template>
     <div class='page' data-name='home'>
-        <div class='views tabs safe-areas'>
-            <!-- Tabbar for switching views-tabs -->
-            <div class='toolbar toolbar-bottom tabbar-labels'>
-                <div class='toolbar-inner'>
-                    <a href='#view-home' class='tab-link'>
-                        <i class='icon f7-icons if-not-md'>house_fill</i>
-                        <i class='icon material-icons if-md'>home</i>
-                        <span class='tabbar-label'>Home</span>
-                    </a>
-                    <a href='#view-robot' class='tab-link tab-link-active'>
-                        <i class='icon f7-icons if-not-md'>square_list_fill</i>
-                        <i class='icon material-icons if-md'>view_list</i>
-                        <span class='tabbar-label'>Robot</span>
-                    </a>
-                    <a href='#view-distance' class='tab-link'>
-                        <i class='icon f7-icons if-not-md'>square_list_fill</i>
-                        <i class='icon material-icons if-md'>view_list</i>
-                        <span class='tabbar-label'>Distance</span>
-                    </a>
-                    <a href='#view-communication' class='tab-link'>
-                        <i class='icon f7-icons if-not-md'>gear</i>
-                        <i class='icon material-icons if-md'>settings</i>
-                        <span class='tabbar-label'>Communication</span>
-                    </a>
+        <div class='navbar'>
+            <div class='navbar-bg'></div>
+            <div class='navbar-inner sliding'>
+                <div class='title'>Home</div>
+            </div>
+        </div>
+        <div class='page-content'>
+            <div class='container pt-2'>
+                <div class="p-5 text-center">
+                    <h5>Welcome to the Sandbox App for testing the functionality of the Pera-Swarm Robots.</h5>
                 </div>
-            </div>
-
-
-            <div id='view-home' class='view view-main view-init tab' data-url='/'>
-            </div>
-
-            <div id='view-robot' class='view view-init tab tab-active' data-name='robot' data-url='/robot/'>
-            </div>
-
-            <div id='view-distance' class='view view-init tab' data-name='distanceSensor' data-url='/sensors/distance/'>
-            </div>
-
-            <div id='view-communication' class='view view-init tab' data-name='communication'
-                 data-url='/communication/'>
             </div>
 
         </div>
