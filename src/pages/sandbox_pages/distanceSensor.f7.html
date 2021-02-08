@@ -8,7 +8,6 @@
         </div>
         <div class='page-content'>
             <div class='container pt-2'>
-                MQTT Status: <span id='status'>Not connected</span>
                 <div class='row p-2'>
                     <h3>Distance Sensor</h3>
                     <div class='form-group card p-2'>
@@ -99,13 +98,13 @@
     </div>
 </template>
 <script>
-    import '../../js/sandbox_scripts/distanceSensor.js';
+    import {setup} from '../../js/sandbox_scripts/distanceSensor.js';
 
     export default (props, { $f7, $on }) => {
 
         $on('pageMounted', () => {
-            $$('.btn').prop('disabled', false);
-
+            // $('.btn').prop('disabled', false);
+            setup();
         });
         return $render;
     };

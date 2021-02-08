@@ -8,7 +8,6 @@
         </div>
         <div class='page-content'>
             <div class='container pt-2'>
-                MQTT Status: <span id='status'>Not connected</span>
                 <div class='row p-2'>
                     <div class='container pb-3'>
                         <h3>Communication</h3>
@@ -118,13 +117,12 @@
     </div>
 </template>
 <script>
-    import '../../js/sandbox_scripts/communication.js';
+    import {setup} from '../../js/sandbox_scripts/communication.js';
 
     export default (props, { $f7, $on }) => {
 
         $on('pageMounted', () => {
-            //$$('.btn').prop('disabled', false);
-
+            setup();
         });
         return $render;
     };
