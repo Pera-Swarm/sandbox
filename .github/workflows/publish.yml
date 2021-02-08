@@ -1,8 +1,7 @@
 name: DeployCI
 on:
   push:
-    branches:
-      - framework7
+    branches: [framework7, main]
 jobs:
   build:
     runs-on: ubuntu-latest
