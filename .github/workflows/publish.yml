@@ -27,5 +27,7 @@ jobs:
             - name: Deploy to gh-pages
               uses: peaceiris/actions-gh-pages@v3
               with:
-                  github_token: ${{ secrets.GITHUB_TOKEN }}
-                  publish_dir: ./dist
+                  deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+                  external_repository: Pera-Swarm/sandbox-v2
+                  # publish_branch: your-branch  # default: gh-pages
+                  publish_dir: ./www
