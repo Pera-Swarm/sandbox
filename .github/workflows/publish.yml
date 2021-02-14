@@ -3,29 +3,29 @@ on:
   push:
     branches: [framework7]
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-      - name: Install Packages
-        run: npm install
+    build:
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                node-version: [12.x]
+        steps:
+            - uses: actions/checkout@v1
+            - name: Use Node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@v1
+              with:
+                  node-version: ${{ matrix.node-version }}
+            - name: Install Packages
+              run: npm install
 
-      - name: Build the repository
-        run: npm run build
-        env:
-          MQTT_HOST: ${{ secrets.MQTT_HOST }}
-          MQTT_PATH: ${{ secrets.MQTT_PATH }}
-          MQTT_USER: ${{ secrets.MQTT_USER }}
-          MQTT_PASS: ${{ secrets.MQTT_PASS }}
-
-      - name: Deploy to gh-pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./www
-          external_repository: Pera-Swarm/sandbox-v2
-          #publish_branch: your-branch  # default: gh-pages 
+            - name: Build the repository
+              run: npm run predeploy -- --public-url=./
+              env:
+                  MQTT_HOST: ${{ secrets.MQTT_HOST }}
+                  MQTT_PATH: ${{ secrets.MQTT_PATH }}
+                  MQTT_USER: ${{ secrets.MQTT_USER }}
+                  MQTT_PASS: ${{ secrets.MQTT_PASS }}
+            - name: Deploy to gh-pages
+              uses: peaceiris/actions-gh-pages@v3
+              with:
+                  github_token: ${{ secrets.GITHUB_TOKEN }}
+                  publish_dir: ./dist
