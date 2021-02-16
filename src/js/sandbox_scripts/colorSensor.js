@@ -1,10 +1,10 @@
 import $ from "jquery";
 
-export function updateColorBox(boxId) {
+function updateColorBox() {
   const r = $("#color-sensor-red-bar").val();
   const g = $("#color-sensor-green-bar").val();
   const b = $("#color-sensor-blue-bar").val();
-  $(boxId).css("background-color", `rgb(${r},${g},${b})`);
+  $("#color-box-color").css("background-color", `rgb(${r},${g},${b})`);
 }
 
 export function setup() {
@@ -37,24 +37,24 @@ export function setup() {
 
   $("#color-sensor-red-bar")
     .change(function () {
-      $("#red-val").val(this.value);
-      $(".red-val").text(this.value);
-      updateColorBox("#color-box-neo");
+      $("#color-sensor-red-val").val(this.value);
+      $(".color-sensor-red-val").text(this.value);
+      updateColorBox();
     })
     .change();
 
   $("#color-sensor-green-bar")
     .change(function () {
-      $("#green-val").val(this.value);
-      $(".green-val").text(this.value);
-      updateColorBox("#color-box-neo");
+      $("#color-sensor-green-val").val(this.value);
+      $(".color-sensor-green-val").text(this.value);
+      updateColorBox();
     })
     .change();
   $("#color-sensor-blue-bar")
     .change(function () {
-      $("#blue-val").val(this.value);
-      $(".blue-val").text(this.value);
-      updateColorBox("#color-box-neo");
+      $("#color-sensor-blue-val").val(this.value);
+      $(".color-sensor-blue-val").text(this.value);
+      updateColorBox();
     })
     .change();
   $("#amb-bar")

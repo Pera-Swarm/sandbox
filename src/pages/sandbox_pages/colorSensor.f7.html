@@ -24,7 +24,7 @@
                     value="0"
                   />
                   <div
-                    id="color-box"
+                    id="color-box-color"
                     class="p-2 m-3 border"
                     style="
                       width: 40px;
@@ -46,7 +46,7 @@
                     step="1"
                   />
                   <input
-                    id="red-val"
+                    id="color-sensor-red-val"
                     type="number"
                     min="0"
                     max="255"
@@ -67,7 +67,7 @@
                     step="1"
                   />
                   <input
-                    id="green-val"
+                    id="color-sensor-green-val"
                     type="number"
                     min="0"
                     max="255"
@@ -88,7 +88,7 @@
                     step="1"
                   />
                   <input
-                    id="blue-val"
+                    id="color-sensor-blue-val"
                     type="number"
                     min="0"
                     max="255"
@@ -155,9 +155,9 @@
                   >
                 </div>
                 <div>
-                  <span class="red-val">0</span>
-                  <span class="green-val">0</span>
-                  <span class="blue-val">0</span> <span class="amb-val">0</span>
+                  <span class="color-sensor-red-val">0</span>
+                  <span class="color-sensor-green-val">0</span>
+                  <span class="color-sensor-blue-val">0</span> <span class="amb-val">0</span>
                 </div>
                 <button
                   class="btn btn-primary m-1 mb-3"
@@ -178,10 +178,10 @@
                 </div>
                 <div>
                   { "id":"<span class="color-sensor-robot-id">{robotId}</span>", "R":"<span
-                    class="red-val"
+                    class="color-sensor-red-val"
                     >0</span
-                  >", "G":"<span class="green-val">0</span>", "B":"<span
-                    class="blue-val"
+                  >", "G":"<span class="color-sensor-green-val">0</span>", "B":"<span
+                    class="color-sensor-blue-val"
                     >0</span
                   >", "ambient":"<span class="amb-val">0</span>" }
                 </div>
