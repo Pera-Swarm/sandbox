@@ -1,12 +1,5 @@
 import $ from 'jquery';
 
-function updateColorBox() {
-    const r = $('#color-sensor-red-bar').val();
-    const g = $('#color-sensor-green-bar').val();
-    const b = $('#color-sensor-blue-bar').val();
-    $('#color-box-color').css('background-color', `rgb(${r},${g},${b})`);
-}
-
 export function setup() {
     console.log('Setup: Color');
 
@@ -16,7 +9,7 @@ export function setup() {
     $('.btn').prop('disabled', false);
     $('.channel').text(window.mqtt.channel);
 
-    $('#color-sensor-robot-id')
+    $('#robot-id')
         .change(function () {
             const robotId = this.value;
             const topic = `sensor/color/${robotId}`;
@@ -31,29 +24,29 @@ export function setup() {
             });
 
             color_robot_id = robotId;
-            $('.color-sensor-robot-id').text(robotId);
+            $('.robot-id').text(robotId);
         })
         .change();
 
-    $('#color-sensor-red-bar')
+    $('#red-bar')
         .change(function () {
-            $('#color-sensor-red-val').val(this.value);
-            $('.color-sensor-red-val').text(this.value);
+            $('#red-val').val(this.value);
+            $('.red-val').text(this.value);
             updateColorBox();
         })
         .change();
 
-    $('#color-sensor-green-bar')
+    $('#green-bar')
         .change(function () {
-            $('#color-sensor-green-val').val(this.value);
-            $('.color-sensor-green-val').text(this.value);
+            $('#green-val').val(this.value);
+            $('.green-val').text(this.value);
             updateColorBox();
         })
         .change();
-    $('#color-sensor-blue-bar')
+    $('#blue-bar')
         .change(function () {
-            $('#color-sensor-blue-val').val(this.value);
-            $('.color-sensor-blue-val').text(this.value);
+            $('#blue-val').val(this.value);
+            $('.blue-val').text(this.value);
             updateColorBox();
         })
         .change();
@@ -71,10 +64,10 @@ export function setup() {
 
     // Publish: sensor/color/{robotId}
     $('#color-btn-send-robot').click(function () {
-        const robotId = $('#color-sensor-robot-id').val();
-        const r = $('#color-sensor-red-bar').val();
-        const g = $('#color-sensor-green-bar').val();
-        const b = $('#color-sensor-blue-bar').val();
+        const robotId = $('#robot-id').val();
+        const r = $('#red-bar').val();
+        const g = $('#green-bar').val();
+        const b = $('#blue-bar').val();
         const amb = $('#amb-bar').val();
 
         mqtt.publish(`sensor/color/${robotId}`, `${r} ${g} ${b} ${amb}`);
@@ -82,10 +75,10 @@ export function setup() {
 
     // Publish: sensor/color
     $('#color-btn-send-server').click(function () {
-        const robotId = $('#color-sensor-robot-id').val();
-        const r = $('#color-sensor-red-bar').val();
-        const g = $('#color-sensor-green-bar').val();
-        const b = $('#color-sensor-blue-bar').val();
+        const robotId = $('#robot-id').val();
+        const r = $('#red-bar').val();
+        const g = $('#green-bar').val();
+        const b = $('#blue-bar').val();
         const amb = $('#amb-bar').val();
         const msgString = { id: robotId, R: r, G: g, B: b, ambient: amb };
         mqtt.publish(`sensor/color`, JSON.stringify(msgString));
@@ -93,7 +86,14 @@ export function setup() {
 
     // Publish: sensor/color/{robotId}/?
     $('#color-btn-req').click(function () {
-        const robotId = $('#color-sensor-robot-id').val();
+        const robotId = $('#robot-id').val();
         mqtt.publish(`sensor/color/${robotId}/?`, '?');
     });
+
+    function updateColorBox() {
+        const r = $('#red-bar').val();
+        const g = $('#green-bar').val();
+        const b = $('#blue-bar').val();
+        $('#color-box').css('background-color', `rgb(${r},${g},${b})`);
+    }
 }

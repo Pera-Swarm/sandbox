@@ -1,91 +1,90 @@
-import $ from "jquery";
+import $ from 'jquery';
 
 function updateColorBox() {
-  const r = $("#neo-red-bar").val();
-  const g = $("#neo-green-bar").val();
-  const b = $("#neo-blue-bar").val();
-  $("#color-box-neo").css("background-color", `rgb(${r},${g},${b})`);
+    const r = $('#neo-red-bar').val();
+    const g = $('#neo-green-bar').val();
+    const b = $('#neo-blue-bar').val();
+    $('#color-box-neo').css('background-color', `rgb(${r},${g},${b})`);
 }
 
 export function setup() {
-  console.log("Setup: NeoPixel");
+    console.log('Setup: NeoPixel');
 
-  var color_robot_id = null;
+    var color_robot_id = null;
 
-  // Active the buttons
-  $(".btn").prop("disabled", false);
-  $(".channel").text(window.mqtt.channel);
+    // Active the buttons
+    $('.btn').prop('disabled', false);
+    $('.channel').text(window.mqtt.channel);
 
-  $("#neo-robot-id")
-    .change(function () {
-      const robotId = this.value;
-      const topic = `output/neopixel/${robotId}`;
+    $('#neo-robot-id')
+        .change(function () {
+            const robotId = this.value;
+            const topic = `output/neopixel/${robotId}`;
 
-      if (color_robot_id !== robotId && color_robot_id !== null) {
-        // unsubscribe from previous topic
-        mqtt.unsubscribe(`output/neopixel/${color_robot_id}`);
-      }
-      mqtt.subscribeToTopic(topic, (topic, msg) => {
-        $("#neopixel-sub-robot-text").text(msg);
-        console.log(topic, ":", msg);
-      });
+            if (color_robot_id !== robotId && color_robot_id !== null) {
+                // unsubscribe from previous topic
+                mqtt.unsubscribe(`output/neopixel/${color_robot_id}`);
+            }
+            mqtt.subscribeToTopic(topic, (topic, msg) => {
+                $('#neopixel-sub-robot-text').text(msg);
+                console.log(topic, ':', msg);
+            });
 
-      color_robot_id = robotId;
-      $(".neo-robot-id").text(robotId);
-    })
-    .change();
+            color_robot_id = robotId;
+            $('.neo-robot-id').text(robotId);
+        })
+        .change();
 
-  $("#neo-red-bar")
-    .change(function () {
-      $("#neo-red-val").val(this.value);
-      $(".neo-red-val").text(this.value);
-      updateColorBox();
-    })
-    .change();
-  $("#neo-green-bar")
-    .change(function () {
-      $("#neo-green-val").val(this.value);
-      $(".neo-green-val").text(this.value);
-      updateColorBox();
-    })
-    .change();
-  $("#neo-blue-bar")
-    .change(function () {
-      $("#neo-blue-val").val(this.value);
-      $(".neo-blue-val").text(this.value);
-      updateColorBox();
-    })
-    .change();
+    $('#neo-red-bar')
+        .change(function () {
+            $('#neo-red-val').val(this.value);
+            $('.neo-red-val').text(this.value);
+            updateColorBox();
+        })
+        .change();
+    $('#neo-green-bar')
+        .change(function () {
+            $('#neo-green-val').val(this.value);
+            $('.neo-green-val').text(this.value);
+            updateColorBox();
+        })
+        .change();
+    $('#neo-blue-bar')
+        .change(function () {
+            $('#neo-blue-val').val(this.value);
+            $('.neo-blue-val').text(this.value);
+            updateColorBox();
+        })
+        .change();
 
-  // Subscribe: output/neopixel
-  mqtt.subscribeToTopic("output/neopixel", (topic, msg) => {
-    $("#neopixel-sub-text").text(msg);
-  });
+    // Subscribe: output/neopixel
+    mqtt.subscribeToTopic('output/neopixel', (topic, msg) => {
+        $('#neopixel-sub-text').text(msg);
+    });
 
-  // Publish: output/neopixel/{robotId}
-  $("#neopixel-btn-send-robot").click(function () {
-    const robotId = $("#neo-robot-id").val();
-    const r = $("#neo-red-bar").val();
-    const g = $("#neo-green-bar").val();
-    const b = $("#neo-blue-bar").val();
+    // Publish: output/neopixel/{robotId}
+    $('#neopixel-btn-send-robot').click(function () {
+        const robotId = $('#neo-robot-id').val();
+        const r = $('#neo-red-bar').val();
+        const g = $('#neo-green-bar').val();
+        const b = $('#neo-blue-bar').val();
 
-    mqtt.publish(`output/neopixel/${robotId}`, `${r} ${g} ${b}`);
-  });
+        mqtt.publish(`output/neopixel/${robotId}`, `${r} ${g} ${b}`);
+    });
 
-  // Publish: output/neopixel
-  $("#neopixel-btn-send-server").click(function () {
-    const robotId = $("#neo-robot-id").val();
-    const r = $("#neo-red-bar").val();
-    const g = $("#neo-green-bar").val();
-    const b = $("#neo-blue-bar").val();
-    const msgString = { id: robotId, R: r, G: g, B: b };
-    mqtt.publish(`output/neopixel`, JSON.stringify(msgString));
-  });
+    // Publish: output/neopixel
+    $('#neopixel-btn-send-server').click(function () {
+        const robotId = $('#neo-robot-id').val();
+        const r = $('#neo-red-bar').val();
+        const g = $('#neo-green-bar').val();
+        const b = $('#neo-blue-bar').val();
+        const msgString = { id: robotId, R: r, G: g, B: b };
+        mqtt.publish(`output/neopixel`, JSON.stringify(msgString));
+    });
 
-  // Publish: output/neopixel/{robotId}/?
-  $("#neopixel-btn-req").click(function () {
-    const robotId = $("#neo-robot-id").val();
-    mqtt.publish(`output/neopixel/${robotId}/?`, "?");
-  });
-
+    // Publish: output/neopixel/{robotId}/?
+    $('#neopixel-btn-req').click(function () {
+        const robotId = $('#neo-robot-id').val();
+        mqtt.publish(`output/neopixel/${robotId}/?`, '?');
+    });
 }

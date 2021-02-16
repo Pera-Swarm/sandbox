@@ -1,37 +1,37 @@
-import $ from "dom7";
-import Framework7 from "framework7/bundle";
+import $ from 'dom7';
+import Framework7 from 'framework7/bundle';
 
-import App from "../app.f7.html";
+import App from '../app.f7.html';
 
 // Import F7 Styles
-import "framework7/framework7-bundle.css";
+import 'framework7/framework7-bundle.css';
 // import 'bootstrap';
 
-import routes from "./routes.js";
-import index from "./index.js";
-import MQTTClient from "./mqttClient.js";
+import routes from './routes.js';
+import index from './index.js';
+import MQTTClient from './mqttClient.js';
 
 // Import Icons and App Custom Styles
-import "../css/icons.css";
-import "../css/app.css";
-import { init } from "../css/index.css";
+import '../css/icons.css';
+import '../css/app.css';
+import { init } from '../css/index.css';
 
 // import Routes
 window.mqtt = new MQTTClient(() => {
-  // $("#status").text("Trying to connect...");
+    // $("#status").text("Trying to connect...");
 
-  // import main app component
-  var app = new Framework7({
-    name: "PeraSwarm Sandbox", // App name
-    theme: "auto", // Automatic theme detection
-    el: "#app", // App root element
-    component: App, // App main component
+    // import main app component
+    var app = new Framework7({
+        name: 'PeraSwarm Sandbox', // App name
+        theme: 'auto', // Automatic theme detection
+        el: '#app', // App root element
+        component: App, // App main component
 
-    // App routes
-    routes: routes,
-    // Register service worker
-    serviceWorker: {
-      path: "/service-worker.js",
-    },
-  });
+        // App routes
+        routes: routes,
+        // Register service worker
+        serviceWorker: {
+            path: '/service-worker.js'
+        }
+    });
 });
