@@ -8,15 +8,14 @@
     </div>
     <div class="page-content">
       <div class="container pt-2">
-        <div class="row p-2">
           <h3>Color Sensor</h3>
           <div class="form-group card p-2">
             <div class="row">
               <div class="col-md-8">
                 <div class="input-group d-inline-flex align-items-center">
-                  <label for="robot-id" class="m-2">Robot Id</label>
+                  <label for="color-sensor-robot-id" class="m-2">Robot Id</label>
                   <input
-                    id="robot-id"
+                    id="color-sensor-robot-id"
                     type="number"
                     min="0"
                     class="form-control m-2"
@@ -36,9 +35,9 @@
                 </div>
 
                 <div class="p-2 d-flex flex-row align-content-center">
-                  <label for="red-bar" style="width: 100px;">R</label>
+                  <label for="color-sensor-red-bar" style="width: 100px;">R</label>
                   <input
-                    id="red-bar"
+                    id="color-sensor-red-bar"
                     type="range"
                     class="py-3 px-3 custom-range"
                     min="0"
@@ -57,9 +56,9 @@
                 </div>
 
                 <div class="p-2 d-flex flex-row align-content-center">
-                  <label for="green-bar" style="width: 100px;">G</label>
+                  <label for="color-sensor-green-bar" style="width: 100px;">G</label>
                   <input
-                    id="green-bar"
+                    id="color-sensor-green-bar"
                     type="range"
                     class="py-3 px-3 custom-range"
                     min="0"
@@ -78,9 +77,9 @@
                 </div>
 
                 <div class="p-2 d-flex flex-row align-content-center">
-                  <label for="blue-bar" style="width: 100px;">B</label>
+                  <label for="color-sensor-blue-bar" style="width: 100px;">B</label>
                   <input
-                    id="blue-bar"
+                    id="color-sensor-blue-bar"
                     type="range"
                     class="py-3 px-3 custom-range"
                     min="0"
@@ -124,7 +123,7 @@
                 <div>
                   <b
                     ><span class="channel">{channel}</span>/sensor/color/<span
-                      class="robot-id"
+                      class="color-sensor-robot-id"
                       >{robotId}</span
                     >/?</b
                   >
@@ -143,7 +142,7 @@
                 <div>
                   <b
                     ><span class="channel">{channel}</span>/sensor/color/<span
-                      class="robot-id"
+                      class="color-sensor-robot-id"
                       >{robotId}</span
                     ></b
                   >
@@ -178,7 +177,7 @@
                   >
                 </div>
                 <div>
-                  { "id":"<span class="robot-id">{robotId}</span>", "R":"<span
+                  { "id":"<span class="color-sensor-robot-id">{robotId}</span>", "R":"<span
                     class="red-val"
                     >0</span
                   >", "G":"<span class="green-val">0</span>", "B":"<span
@@ -222,7 +221,7 @@
                 Responses received to
                 <b
                   ><span class="channel">{channel}</span>/sensor/color/<span
-                    class="robot-id"
+                    class="color-sensor-robot-id"
                     >{robotId}</span
                   ></b
                 ><br />
@@ -238,13 +237,13 @@
               </div>
             </div>
           </div>
-        </div>
+
       </div>
     </div>
   </div>
 </template>
 <script>
-  import { setup } from "../../js/sandbox_scripts/colorSensor.js";
+  import { setup } from "../../js/sandbox_scripts/colorSensor";
 
   export default (props, { $f7, $on }) => {
     $on("pageInit", (e, page) => {
