@@ -1,7 +1,8 @@
 
 ![Framework7 Version](https://github.com/NuwanJ/pera-swarm-sandbox/workflows/DeployCI/badge.svg?branch=framework7)
 
-# PeraSwarm Sandbox
+# PeraSwarm Sandbox V2.0
+A TestBench used in Pera-Swarm Mixed Reality Simulator Experiment testing.
 
 ## Framework7 CLI Options
 
