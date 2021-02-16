@@ -1,7 +1,5 @@
-
 <template>
     <div id="app">
-
         <!-- Left panel with cover effect-->
         <div class="panel panel-left panel-cover theme-dark panel-init">
             <div class="view">
@@ -79,29 +77,54 @@
                 </div>
             </div>
 
-            <div id="view-home" class="view view-main view-init tab-active tab" data-url="/">
-            </div>
+            <div
+                id="view-home"
+                class="view view-main view-init tab-active tab"
+                data-url="/"
+            ></div>
 
-            <div id="view-robot" class="view view-init tab" data-name="robot" data-url="/robot/">
-            </div>
+            <div
+                id="view-robot"
+                class="view view-init tab"
+                data-name="robot"
+                data-url="/robot/"
+            ></div>
 
-            <div id="view-communication" class="view view-init tab" data-name="communication" data-url="/communication/">
-            </div>
+            <div
+                id="view-communication"
+                class="view view-init tab"
+                data-name="communication"
+                data-url="/communication/"
+            ></div>
 
-            <div id="view-distanceSensor" class="view view-init tab" data-name="distance" data-url="/sensors/distance/">
-            </div>
+            <div
+                id="view-distanceSensor"
+                class="view view-init tab"
+                data-name="distance"
+                data-url="/sensors/distance/"
+            ></div>
 
-            <div id="view-neoPixel" class="view view-init tab" data-name="distance" data-url="/neoPixel/">
-            </div>
+            <div
+                id="view-neoPixel"
+                class="view view-init tab"
+                data-name="distance"
+                data-url="/neoPixel/"
+            ></div>
 
-            <div id="view-colorSensor" class="view view-init tab" data-name="distance" data-url="/sensors/color/">
-            </div>
+            <div
+                id="view-colorSensor"
+                class="view view-init tab"
+                data-name="distance"
+                data-url="/sensors/color/"
+            ></div>
 
-            <div id="view-environment" class="view view-init tab" data-name="distance" data-url="/environment/">
-            </div>
-
+            <div
+                id="view-environment"
+                class="view view-init tab"
+                data-name="distance"
+                data-url="/environment/"
+            ></div>
         </div>
-
     </div>
 </template>
 
@@ -114,17 +137,20 @@
         const updateUsername = (e) => {
             username = e.target.value;
             $update();
-        }
+        };
         const updatePassword = (e) => {
             password = e.target.value;
             $update();
-        }
+        };
         const alertLoginData = () => {
-            $f7.dialog.alert('Username: ' + username + '<br/>Password: ' + password, () => {
-                $f7.loginScreen.close();
-            });
-        }
+            $f7.dialog.alert(
+                'Username: ' + username + '<br/>Password: ' + password,
+                () => {
+                    $f7.loginScreen.close();
+                }
+            );
+        };
 
         return $render;
-    }
+    };
 </script>
