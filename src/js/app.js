@@ -16,12 +16,11 @@ import "../css/icons.css";
 import "../css/app.css";
 import { init } from "../css/index.css";
 
-// Import Routes
-
+// import Routes
 window.mqtt = new MQTTClient(() => {
   // $("#status").text("Trying to connect...");
 
-  // Import main app component
+  // import main app component
   var app = new Framework7({
     name: "PeraSwarm Sandbox", // App name
     theme: "auto", // Automatic theme detection

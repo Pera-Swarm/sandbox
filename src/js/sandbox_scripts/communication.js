@@ -21,23 +21,32 @@ export function setup() {
 
   // Event listeners for select box updates
   $("#comm-out-protocol")
-    .change(function () {
+    .change(function() {
       $(".com-out-protocol-label").text(this.value);
     })
     .change();
 
   $("#robot-id")
-    .change(function () {
+    .change(function() {
       const robotId = this.value;
-      const topic = `comm/in/${robotId}`;
+      const topicSimple = `comm/in/simple/${robotId}`;
+      const topicDirect = `comm/in/direct/${robotId}`;
 
       if (comm_in_id != robotId && comm_in_id !== null) {
         // unsubscribe from previous topic
-        mqtt.unsubscribe(`comm/in/${comm_in_id}`);
+        mqtt.unsubscribe(`comm/in/simple/${comm_in_id}`);
       }
-      mqtt.subscribeToTopic(topic, (topic, msg) => {
-        $("#com-in-msg").text(msg);
-        console.log(topic, ":", msg);
+
+      // Simple communication
+      mqtt.subscribeToTopic(topicSimple, (topicSimple, msg) => {
+        $("#com-in-msg").text(`simple: ${msg}`);
+        console.log(topicSimple, ":", msg);
+      });
+
+      // Directed communication
+      mqtt.subscribeToTopic(topicDirect, (topicDirect, msg) => {
+        $("#com-in-msg").text(`simple: ${msg}`);
+        console.log(topicDirect, ":", msg);
       });
 
       comm_in_id = robotId;
@@ -46,20 +55,21 @@ export function setup() {
     .change();
 
   $("#comm-out-msg")
-    .change(function () {
+    .change(function() {
       $(".comm-msg").text(this.value);
     })
     .change();
 
   // Publish Button
-  $("#comm-out-publish").click(function () {
+  $("#comm-out-publish").click(function() {
     const robotId = $("#robot-id").val();
     const msg = $("#comm-out-msg").val();
-    mqtt.publish(`comm/in/${robotId}`, msg);
+    const msgProtocol = $("#comm-out-protocol").val();
+    mqtt.publish(`comm/in/${msgProtocol}/${robotId}`, msg);
   });
 
   // broadcast Button
-  $("#comm-out-broadcast").click(function () {
+  $("#comm-out-broadcast").click(function() {
     const robotId = $("#robot-id").val();
     const msg = $("#comm-out-msg").val();
     const msgProtocol = $("#comm-out-protocol").val();
