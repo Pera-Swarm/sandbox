@@ -23,10 +23,15 @@ window.mqtt = new MQTTClient(() => {
     // import main app component
     var app = new Framework7({
         name: 'PeraSwarm Sandbox', // App name
-        theme: 'auto', // Automatic theme detection
+        theme: 'md', // Automatic theme detection
         el: '#app', // App root element
         component: App, // App main component
-
+        // App id
+        id: 'pera.swarm.sandbox.test',
+        // Enable swipe panel
+        panel: {
+            swipe: true
+        },
         // App routes
         routes: routes,
         // Register service worker
@@ -34,4 +39,5 @@ window.mqtt = new MQTTClient(() => {
             path: '/service-worker.js'
         }
     });
+    // var mainView = app.views.create('.view-main');
 });
