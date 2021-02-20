@@ -14,9 +14,9 @@ export function setup() {
   mqtt.subscribeToTopic("comm/out/simple", (topic, msg) => {
     $("#com-out-simple").text(msg);
   });
-  // Subscribe: v1/comm/out/directional
-  mqtt.subscribeToTopic("comm/out/directional", (topic, msg) => {
-    $("#com-out-directional").text(msg);
+  // Subscribe: v1/comm/out/direct
+  mqtt.subscribeToTopic("comm/out/direct", (topic, msg) => {
+    $("#com-out-direct").text(msg);
   });
 
   // Event listeners for select box updates
