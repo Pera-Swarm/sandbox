@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <!-- Left panel with cover effect-->
-        <div class="panel panel-left panel-cover theme-dark panel-init">
+        <!-- <div class="panel panel-left panel-cover theme-dark panel-init">
             <div class="view">
                 <div class="page">
                     <div class="navbar">
@@ -15,10 +15,10 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <!-- Right panel with reveal effect-->
-        <div class="panel panel-right panel-reveal theme-dark">
+        <!-- <div class="panel panel-right panel-reveal theme-dark">
             <div class="view">
                 <div class="page">
                     <div class="navbar">
@@ -32,12 +32,12 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <!-- Views/Tabs container -->
-        <div class="views tabs safe-areas">
-            <!-- Tabbar for switching views-tabs -->
-            <div class="toolbar toolbar-bottom tabbar-labels">
+        <!-- <div class="views tabs safe-areas"> -->
+        <!-- Tabbar for switching views-tabs -->
+        <!-- <div class="toolbar toolbar-bottom tabbar-labels">
                 <div class="toolbar-inner">
                     <a href="#view-home" class="tab-link tab-link-active">
                         <i class="icon f7-icons if-not-md">house_fill</i>
@@ -123,7 +123,319 @@
                 class="view view-init tab"
                 data-name="distance"
                 data-url="/environment/"
-            ></div>
+            ></div> -->
+        <!-- </div> -->
+
+        <div
+            class="panel panel-left panel-reveal panel-init theme-dark"
+            data-visible-breakpoint="1024"
+            data-collapsed-breakpoint="1"
+        >
+            <div class="view">
+                <div class="page">
+                    <div class="list">
+                        <ul>
+                            <li>
+                                <a href="/" class="item-content active-link">
+                                    <div class="item-media">
+                                        <i class="icon f7-icons">square_grid_2x2_fill</i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title">Dashboard</div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="list">
+                        <ul>
+                            <li>
+                                <a href="/login" class="item-content">
+                                    <div class="item-media">
+                                        <i class="icon f7-icons">person_circle_fill</i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title">Login</div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="list">
+                        <ul>
+                            <li>
+                                <a href="#" class="item-content">
+                                    <div class="item-media">
+                                        <i class="icon f7-icons">folder_fill</i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title">Categories</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="item-content">
+                                    <div class="item-media">
+                                        <i class="icon f7-icons">cart_fill</i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title">Products</div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="list">
+                        <ul>
+                            <li>
+                                <a href="#" class="item-content">
+                                    <div class="item-media">
+                                        <i class="icon f7-icons">bag_fill</i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title">Sales</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="item-content">
+                                    <div class="item-media">
+                                        <i class="icon f7-icons">graph_circle_fill</i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title">Analytics</div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div
+                        class="block block-strong no-padding-horizontal padding-vertical-half"
+                    >
+                        <div class="treeview">
+                            <div class="treeview-item">
+                                <div class="treeview-item-root treeview-item-toggle">
+                                    <div class="treeview-toggle"></div>
+                                    <div class="treeview-item-content">
+                                        <div class="treeview-item-label">Departments</div>
+                                    </div>
+                                </div>
+                                <div class="treeview-item-children">
+                                    <div class="treeview-item">
+                                        <a href="#" class="treeview-item-root">
+                                            <div class="treeview-item-content">
+                                                <div class="treeview-item-label">
+                                                    New York
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="treeview-item">
+                                        <a href="#" class="treeview-item-root">
+                                            <div class="treeview-item-content">
+                                                <div class="treeview-item-label">
+                                                    London
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="treeview-item">
+                                        <a href="#" class="treeview-item-root">
+                                            <div class="treeview-item-content">
+                                                <div class="treeview-item-label">
+                                                    Beijing
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="treeview-item">
+                                        <a href="#" class="treeview-item-root">
+                                            <div class="treeview-item-content">
+                                                <div class="treeview-item-label">
+                                                    Tokyo
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="view view-main view-init">
+            <div class="page">
+                <div class="navbar">
+                    <div class="navbar-bg"></div>
+                    <div class="navbar-inner">
+                        <div class="left">
+                            <a class="link panel-open icon-only" data-panel="left">
+                                <i class="icon f7-icons">bars</i>
+                            </a>
+                        </div>
+                        <div class="title">Dashboard</div>
+                        <div class="right">
+                            <a class="link popover-open" data-popover=".profile-popover">
+                                <!-- <span class="margin-right-half">Hi, <b>John</b></span> -->
+                                <!-- <img src="https://i.pravatar.cc/56?u=9" class="avatar" /> -->
+                                <img src="static/icons/logo.png" class="avatar" />
+                            </a>
+                        </div>
+                        <div class="title-large">
+                            <div class="title-large-text display-flex align-items-center">
+                                <i
+                                    class="icon f7-icons margin-right-half"
+                                    style="font-size: 24px"
+                                    >square_grid_2x2_fill</i
+                                >
+                                <span>Dashboard</span>
+                                <!-- <a href="/login" class="button button-fill"
+                                    >Open As Page</a
+                                > -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="popover profile-popover">
+                    <div class="popover-inner">
+                        <h5 class="text-align-center margin-top">
+                            Pera-Swarm SandBox v2.0
+                        </h5>
+                        <div
+                            class="list no-hairlines no-hairlines-between padding-top padding-bottom"
+                        >
+                            <ul>
+                                <li>
+                                    <a href="#" class="item-content">
+                                        <div class="item-media">
+                                            <i class="icon f7-icons">xmark_circle_fill</i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <div class="item-title">Clear Cache</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="item-content">
+                                        <div class="item-media">
+                                            <i class="icon f7-icons">wifi_slash</i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <div class="item-title">Disconnect</div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="page-content">
+                    <div class="dashboard-cards">
+                        <div class="row margin-horizontal">
+                            <div class="col-100 medium-100 margin-top events-col">
+                                <div class="card">
+                                    <div class="card-header">Latest Events</div>
+                                    <div class="card-content card-content-padding">
+                                        <div class="timeline no-margin no-padding">
+                                            <div class="timeline-item">
+                                                <div class="timeline-item-date">
+                                                    10:00
+                                                </div>
+                                                <div class="timeline-item-divider"></div>
+                                                <div class="timeline-item-content">
+                                                    Lorem ipsum dolor sit amet,
+                                                    consectetur adipisicing elit. Dolor
+                                                    fugiat ipsam hic
+                                                </div>
+                                            </div>
+                                            <div class="timeline-item">
+                                                <div class="timeline-item-date">
+                                                    11:00
+                                                </div>
+                                                <div class="timeline-item-divider"></div>
+                                                <div class="timeline-item-content">
+                                                    Another text goes here
+                                                </div>
+                                            </div>
+                                            <div class="timeline-item">
+                                                <div class="timeline-item-date">
+                                                    14:45
+                                                </div>
+                                                <div class="timeline-item-divider"></div>
+                                                <div class="timeline-item-content">
+                                                    Lorem ipsum dolor sit amet,
+                                                    consectetur adipisicing elit. Dolor
+                                                    fugiat ipsam hic porro enim, accusamus
+                                                    perferendis, quas commodi alias
+                                                    quaerat eius nemo deleniti. Odio quasi
+                                                    quos quis iure, aperiam pariatur?
+                                                </div>
+                                            </div>
+                                            <div class="timeline-item">
+                                                <div class="timeline-item-date">
+                                                    16:24
+                                                </div>
+                                                <div class="timeline-item-divider"></div>
+                                                <div class="timeline-item-content">
+                                                    One more text here
+                                                </div>
+                                            </div>
+                                            <div class="timeline-item">
+                                                <div class="timeline-item-date">
+                                                    17:11
+                                                </div>
+                                                <div class="timeline-item-divider"></div>
+                                                <div class="timeline-item-content">
+                                                    Lorem ipsum dolor sit amet,
+                                                    consectetur adipisicing elit. Dolor
+                                                    fugiat ipsam hic
+                                                </div>
+                                            </div>
+                                            <div class="timeline-item">
+                                                <div class="timeline-item-date">
+                                                    17:28
+                                                </div>
+                                                <div class="timeline-item-divider"></div>
+                                                <div class="timeline-item-content">
+                                                    Another text goes here
+                                                </div>
+                                            </div>
+                                            <div class="timeline-item">
+                                                <div class="timeline-item-date">
+                                                    18:00
+                                                </div>
+                                                <div class="timeline-item-divider"></div>
+                                                <div class="timeline-item-content">
+                                                    Lorem ipsum dolor sit amet,
+                                                    consectetur adipisicing elit. Dolor
+                                                    fugiat ipsam hic porro enim, accusamus
+                                                    perferendis, quas commodi alias
+                                                    quaerat eius nemo deleniti. Odio quasi
+                                                    quos quis iure, aperiam pariatur?
+                                                </div>
+                                            </div>
+                                            <div class="timeline-item">
+                                                <div class="timeline-item-date">
+                                                    19:19
+                                                </div>
+                                                <div class="timeline-item-divider"></div>
+                                                <div class="timeline-item-content">
+                                                    One more text here
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
