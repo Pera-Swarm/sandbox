@@ -24,6 +24,7 @@ window.mqtt = new MQTTClient(() => {
     var app = new Framework7({
         name: 'PeraSwarm Sandbox', // App name
         theme: 'md', // Automatic theme detection
+        autoDarkTheme: false, // Automatic dark theme detection
         el: '#app', // App root element
         component: App, // App main component
         // App id
@@ -39,5 +40,29 @@ window.mqtt = new MQTTClient(() => {
             path: '/service-worker.js'
         }
     });
-    // var mainView = app.views.create('.view-main');
 });
+
+export function setup() {
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    let savedValue = JSON.parse(localStorage.getItem('isDarkTheme'));
+    let value = prefersDarkScheme.matches;
+    if (savedValue !== null) {
+        value = savedValue;
+    }
+    toggleColorTheme(value);
+    $('#theme-toggler').click(function () {
+        value = !value;
+        toggleColorTheme(value);
+        localStorage.setItem('isDarkTheme', JSON.stringify(value));
+    });
+}
+
+function toggleColorTheme(value) {
+    if (value) {
+        $('#app').addClass('theme-dark');
+        $('#theme-toggler').html(`<i class="icon f7-icons">moon_fill</i>`);
+    } else {
+        $('#app').removeClass('theme-dark');
+        $('#theme-toggler').html(`<i class="icon f7-icons">moon</i>`);
+    }
+}
