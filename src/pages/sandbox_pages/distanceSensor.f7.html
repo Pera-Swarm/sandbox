@@ -64,7 +64,7 @@
                         </div>
 
                         <div class="col-md-4">
-                            <div>
+                            <div class="p-2">
                                 <b
                                     ><span class="channel">{channel}</span
                                     >/sensor/distance/<span
@@ -79,15 +79,15 @@
                                         >[?]</a
                                     >
                                 </span>
+                                <button
+                                    class="col button button-raised button-fill color-grey"
+                                    id="dist-btn-req"
+                                >
+                                    Req from Robot
+                                </button>
                             </div>
-                            <button
-                                class="col button button-raised button-fill color-grey"
-                                id="dist-btn-req"
-                            >
-                                Req from Robot
-                            </button>
 
-                            <div>
+                            <div class="p-2">
                                 <b
                                     ><span class="channel">{channel}</span
                                     >/sensor/distance/<span
@@ -102,18 +102,18 @@
                                         >[?]</a
                                     >
                                 </span>
+                                <div>
+                                    <span class="dist-val">0</span>
+                                </div>
+                                <button
+                                    class="col button button-raised button-fill color-blue"
+                                    id="dist-btn-send-robot"
+                                >
+                                    Send to Robot
+                                </button>
                             </div>
-                            <div>
-                                <span class="dist-val">0</span>
-                            </div>
-                            <button
-                                class="col button button-raised button-fill color-blue"
-                                id="dist-btn-send-robot"
-                            >
-                                Send to Robot
-                            </button>
 
-                            <div>
+                            <div class="p-2">
                                 <b
                                     ><span class="channel">{channel}</span
                                     >/sensor/distance/</b
@@ -125,19 +125,19 @@
                                         >[?]</a
                                     ></span
                                 >
+                                <div>
+                                    { "id":"<span class="distance-sensor-robot-id"
+                                        >{robotId}</span
+                                    >", "dist":"<span class="dist-val">0</span>" }
+                                </div>
+                                <button
+                                    class="col button button-raised button-fill color-green"
+                                    id="dist-btn-send-server"
+                                >
+                                    Send to Server
+                                </button>
+                                <br />
                             </div>
-                            <div>
-                                { "id":"<span class="distance-sensor-robot-id"
-                                    >{robotId}</span
-                                >", "dist":"<span class="dist-val">0</span>" }
-                            </div>
-                            <button
-                                class="col button button-raised button-fill color-green"
-                                id="dist-btn-send-server"
-                            >
-                                Send to Server
-                            </button>
-                            <br />
                         </div>
                     </div>
                 </div>
@@ -166,14 +166,13 @@
                         <li class="item-content item-input">
                             <div class="item-inner">
                                 <div class="item-title item-label">
-                                    Responses received to
-                                    <b
+                                    Responses received to (<b
                                         ><span class="channel">{channel}</span
                                         >/sensor/distance/<span
                                             class="distance-sensor-robot-id"
                                             >{robotId}</span
                                         ></b
-                                    ><br />
+                                    >)<br />
                                 </div>
                                 <div class="item-input-wrap">
                                     <textarea
