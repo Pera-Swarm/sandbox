@@ -7,26 +7,45 @@
             </div>
         </div>
 
-        <div class='page-content'>
-            <div class='container pt-2'>
-                <div class='row p-2'>
-                    <div class='container pb-3'>
+        <div class="page-content">
+            <div class="container pt-2">
+                <div class="row p-2">
+                    <div class="container pb-3">
                         <h3>Communication</h3>
-                        <div class='form-group card p-2'>
-                            <div class='row'>
-                                <div class='col-md-8'>
-                                    <div class='input-group p-2'>
-                                        <label for='robot-id' class='m-2' style='min-width: 75px;'>Robot Id</label>
-                                        <input id='robot-id' type='number' min='0' class='form-control' placeholder=''
-                                               value='0' />
+                        <div class="form-group card p-2">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="input-group p-2">
+                                        <label
+                                            for="robot-id"
+                                            class="m-2"
+                                            style="min-width: 75px"
+                                            >Robot Id</label
+                                        >
+                                        <input
+                                            id="robot-id"
+                                            type="number"
+                                            min="0"
+                                            class="form-control"
+                                            placeholder=""
+                                            value="0"
+                                        />
                                     </div>
 
-                                    <div class='input-group p-2'>
-                                        <label for='comm-out-protocol' class='m-2'
-                                               style='min-width: 75px;'>Protocol</label>
-                                        <select name='comm-out-protocol' id='comm-out-protocol' class='form-control'>
-                                            <option value='simple'>Simple</option>
-                                            <option value='direct'>Direct</option>
+                                    <div class="input-group p-2">
+                                        <label
+                                            for="comm-out-protocol"
+                                            class="m-2"
+                                            style="min-width: 75px"
+                                            >Protocol</label
+                                        >
+                                        <select
+                                            name="comm-out-protocol"
+                                            id="comm-out-protocol"
+                                            class="form-control"
+                                        >
+                                            <option value="simple">Simple</option>
+                                            <option value="direct">Direct</option>
                                         </select>
                                     </div>
 
@@ -135,20 +154,6 @@
                                     >)<br />
                                 </label>
 
-                                <div class='input-group align-self-start'>
-                                 <textarea id='com-out-simple' type='text' class='form-control mr-2'
-                                           placeholder=''></textarea>
-                                </div>
-                            </div>
-
-                            <div class='pb-4'>
-                                <label for='com-out-directional'>
-                                    Responses received to (<b><span class='channel'>{channel}</span>/comm/out/direct</b>)<br />
-                                </label>
-
-                                <div class='input-group align-self-start'>
-                                 <textarea id='com-out-directional' type='text' class='form-control mr-2'
-                                           placeholder=''></textarea>
                                 <div class="input-group align-self-start">
                                     <textarea
                                         id="com-out-simple"
@@ -160,16 +165,16 @@
                             </div>
 
                             <div class="pb-4">
-                                <label for="com-out-directional">
+                                <label for="com-out-direct">
                                     Responses received to (<b
                                         ><span class="channel">{channel}</span
-                                        >/comm/out/directional</b
+                                        >/comm/out/direct</b
                                     >)<br />
                                 </label>
 
                                 <div class="input-group align-self-start">
                                     <textarea
-                                        id="com-out-directional"
+                                        id="com-out-direct"
                                         type="text"
                                         class="form-control mr-2"
                                         placeholder=""
