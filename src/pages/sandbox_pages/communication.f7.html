@@ -66,7 +66,7 @@
                         </div>
 
                         <div class="col-md-4">
-                            <div>
+                            <div class="p-2">
                                 <b
                                     ><span class="channel">{channel}</span>/comm/in/<span
                                         class="robot-id"
@@ -81,18 +81,18 @@
                                         >[?]</a
                                     >
                                 </span>
+                                <div>
+                                    <span class="comm-msg">......</span>
+                                </div>
+                                <button
+                                    class="col button button-raised button-fill color-blue"
+                                    id="comm-out-publish"
+                                >
+                                    Publish
+                                </button>
                             </div>
-                            <div>
-                                <span class="comm-msg">......</span>
-                            </div>
-                            <button
-                                class="col button button-raised button-fill color-blue"
-                                id="comm-out-publish"
-                            >
-                                Publish
-                            </button>
 
-                            <div>
+                            <div class="p-2">
                                 <b
                                     ><span class="channel">{channel}</span>/comm/out/<span
                                         class="com-out-protocol-label"
@@ -107,17 +107,17 @@
                                         >[?]</a
                                     >
                                 </span>
+                                <div>
+                                    { "id":"<span class="robot-id">{robotId}</span>",
+                                    “msg”: "<span class="comm-msg">{msg}</span>" }
+                                </div>
+                                <button
+                                    class="col button button-raised button-fill color-green"
+                                    id="comm-out-broadcast"
+                                >
+                                    Broadcast
+                                </button>
                             </div>
-                            <div>
-                                { "id":"<span class="robot-id">{robotId}</span>", “msg”:
-                                "<span class="comm-msg">{msg}</span>" }
-                            </div>
-                            <button
-                                class="col button button-raised button-fill color-green"
-                                id="comm-out-broadcast"
-                            >
-                                Broadcast
-                            </button>
                         </div>
                     </div>
                 </div>
