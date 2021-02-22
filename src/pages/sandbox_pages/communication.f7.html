@@ -1,179 +1,92 @@
 <template>
-    <div class="page" data-name="robot">
-        <div class="navbar">
-            <div class="navbar-bg"></div>
-            <div class="navbar-inner sliding">
-                <div class="title">Communication</div>
+    <div class='page' data-name='robot'>
+        <div class='navbar'>
+            <div class='navbar-bg'></div>
+            <div class='navbar-inner sliding'>
+                <div class='title'>Communication</div>
             </div>
         </div>
-
         <div class='page-content'>
             <div class='container pt-2'>
                 <div class='row p-2'>
-                    <div class='container pb-3'>
-                        <h3>Communication</h3>
+                    <div class='container pb-3'><h3>Communication</h3>
                         <div class='form-group card p-2'>
                             <div class='row'>
                                 <div class='col-md-8'>
                                     <div class='input-group p-2'>
-                                        <label for='robot-id' class='m-2' style='min-width: 75px;'>Robot Id</label>
-                                        <input id='robot-id' type='number' min='0' class='form-control' placeholder=''
-                                               value='0' />
-                                    </div>
-
+                                        <label for='robot-id' class='m-2' style='min-width: 75px'>Robot Id</label>
+                                        <input
+                                            id='robot-id' type='number' min='0' class='form-control' placeholder=''
+                                            value='0' /></div>
                                     <div class='input-group p-2'>
                                         <label for='comm-out-protocol' class='m-2'
-                                               style='min-width: 75px;'>Protocol</label>
-                                        <select name='comm-out-protocol' id='comm-out-protocol' class='form-control'>
+                                               style='min-width: 75px'>Protocol</label>
+                                        <select
+                                            name='comm-out-protocol' id='comm-out-protocol' class='form-control'>
                                             <option value='simple'>Simple</option>
                                             <option value='direct'>Direct</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="input-group p-2">
-                                        <label
-                                            for="comm-out-protocol"
-                                            class="m-2"
-                                            style="min-width: 75px"
-                                            >Message</label
-                                        >
-                                        <input
-                                            type="text"
-                                            class="form-control"
-                                            value="Test"
-                                            id="comm-out-msg"
-                                        />
+                                        </select></div>
+                                    <div class='input-group p-2'>
+                                        <label for='comm-out-protocol' class='m-2'
+                                               style='min-width: 75px'>Message
+                                        </label>
+                                        <input type='text' class='form-control' value='Test' id='comm-out-msg' />
                                     </div>
                                 </div>
-
-                                <div class="col-md-4">
-                                    <div>
-                                        <b
-                                            ><span class="channel">{channel}</span
-                                            >/comm/in/<span class="robot-id"
-                                                >{robotId}</span
-                                            ></b
-                                        >
-                                        <br />(Receive a message)
-                                        <span class="float-right">
-                                            <a
-                                                target="_blank"
-                                                href="https://pera-swarm.ce.pdn.ac.lk/docs/communication/mqtt/comm#comminrobotid"
-                                                >[?]</a
-                                            >
-                                        </span>
+                                <div class='col-md-4'>
+                                    <div><b><span class='channel'>{channel}</span>/comm/in/<span class='robot-id'>{robotId}</span></b>
+                                        <br />(Receive a message) <span class='float-right'>
+                                            <a target='_blank'
+                                               href='https://pera-swarm.ce.pdn.ac.lk/docs/communication/mqtt/comm#comminrobotid'>[?]</a> </span>
                                     </div>
-                                    <div>
-                                        <span class="comm-msg">......</span>
-                                    </div>
-                                    <button
-                                        class="btn btn-primary m-1 mb-3"
-                                        type="submit"
-                                        id="comm-out-publish"
-                                    >
+                                    <div><span class='comm-msg'>......</span></div>
+                                    <button class='btn btn-primary m-1 mb-3' type='submit' id='comm-out-publish'>
                                         Publish
                                     </button>
-
-                                    <div>
-                                        <b
-                                            ><span class="channel">{channel}</span
-                                            >/comm/out/<span
-                                                class="com-out-protocol-label"
-                                                >simple</span
-                                            ></b
-                                        >
-                                        <br />(Broadcast a message by robot)
-                                        <span class="float-right">
-                                            <a
-                                                target="_blank"
-                                                href="https://pera-swarm.ce.pdn.ac.lk/docs/communication/mqtt/comm#commoutprotocol"
-                                                >[?]</a
-                                            >
-                                        </span>
+                                    <div><b><span class='channel'>{channel}</span>/comm/out/<span
+                                        class='com-out-protocol-label'>simple</span></b>
+                                        <br />(Broadcast a message by
+                                        robot) <span class='float-right'>
+                                            <a target='_blank'
+                                               href='https://pera-swarm.ce.pdn.ac.lk/docs/communication/mqtt/comm#commoutprotocol'>[?]</a> </span>
                                     </div>
-                                    <div>
-                                        { "id":"<span class="robot-id">{robotId}</span>",
-                                        “msg”: "<span class="comm-msg">{msg}</span>" }
+                                    <div>{"id":"<span class='robot-id'>{robotId}</span>", “msg”: "<span
+                                        class='comm-msg'>{msg}</span>"}
                                     </div>
-                                    <button
-                                        class="btn btn-success m-1 mb-3"
-                                        type="submit"
-                                        id="comm-out-broadcast"
-                                    >
+                                    <button class='btn btn-success m-1 mb-3' type='submit' id='comm-out-broadcast'>
                                         Broadcast
                                     </button>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="form-group card p-3">
-                            <div class="pb-4">
-                                <label for="com-out-simple">
-                                    Responses received to (<b
-                                        ><span class="channel">{channel}</span
-                                        >/comm/in/<span class="robot-id"
-                                            >{robotId}</span
-                                        ></b
-                                    >)<br />
-                                </label>
-
-                                <div class="input-group align-self-start">
-                                    <textarea
-                                        id="com-in-msg"
-                                        type="text"
-                                        class="form-control mr-2"
-                                        placeholder=""
-                                    ></textarea>
-                                </div>
-                            </div>
-
-                            <div class="pb-4">
-                                <label for="com-out-simple">
-                                    Responses received to (<b
-                                        ><span class="channel">{channel}</span
-                                        >/comm/out/simple</b
-                                    >)<br />
-                                </label>
-
+                        <div class='form-group card p-3'>
+                            <div class='pb-4'><label for='com-out-simple'>Responses received to <b><span
+                                class='channel'>{channel}</span>/comm/in/simple/<span class='robot-id'>{robotId}</span></b>
+                                <span class='px-2'>or</span> <b><span
+                                    class='channel'>{channel}</span>/comm/in/direct/<span
+                                    class='robot-id'>{robotId}</span></b><br /> </label>
                                 <div class='input-group align-self-start'>
-                                 <textarea id='com-out-simple' type='text' class='form-control mr-2'
-                                           placeholder=''></textarea>
+                                    <textarea id='com-in-msg' type='text'
+                                              class='form-control mr-2'
+                                              placeholder=''></textarea>
                                 </div>
                             </div>
-
+                            <div class='pb-4'><label for='com-out-simple'> Responses received to (<b><span
+                                class='channel'>{channel}</span>/comm/out/simple</b>)<br /> </label>
+                                <div class='input-group align-self-start'>
+                                    <textarea id='com-out-simple' type='text'
+                                              class='form-control mr-2'
+                                              placeholder=''></textarea>
+                                </div>
+                            </div>
                             <div class='pb-4'>
-                                <label for='com-out-directional'>
-                                    Responses received to (<b><span class='channel'>{channel}</span>/comm/out/direct</b>)<br />
+                                <label for='com-out-directional'> Responses received to (<b><span
+                                    class='channel'>{channel}</span>/comm/out/direct</b>)<br />
                                 </label>
-
                                 <div class='input-group align-self-start'>
-                                 <textarea id='com-out-directional' type='text' class='form-control mr-2'
-                                           placeholder=''></textarea>
-                                <div class="input-group align-self-start">
-                                    <textarea
-                                        id="com-out-simple"
-                                        type="text"
-                                        class="form-control mr-2"
-                                        placeholder=""
-                                    ></textarea>
-                                </div>
-                            </div>
-
-                            <div class="pb-4">
-                                <label for="com-out-directional">
-                                    Responses received to (<b
-                                        ><span class="channel">{channel}</span
-                                        >/comm/out/directional</b
-                                    >)<br />
-                                </label>
-
-                                <div class="input-group align-self-start">
-                                    <textarea
-                                        id="com-out-directional"
-                                        type="text"
-                                        class="form-control mr-2"
-                                        placeholder=""
-                                    ></textarea>
+                                    <textarea id='com-out-directional' type='text'
+                                              class='form-control mr-2'
+                                              placeholder=''></textarea>
                                 </div>
                             </div>
                         </div>
@@ -183,6 +96,7 @@
         </div>
     </div>
 </template>
+
 <script>
     import { setup } from '../../js/sandbox_scripts/communication.js';
 
