@@ -61,7 +61,7 @@
                                             <div class="item-media">
                                                 <i
                                                     class="icon demo-list-icon"
-                                                    id="demo-color-picker-rgba-value"
+                                                    id="color-sensor-color-picker-rgba-value"
                                                 ></i>
                                             </div>
                                             <div class="item-inner">
@@ -70,7 +70,7 @@
                                                         type="text"
                                                         placeholder="Color"
                                                         readonly="readonly"
-                                                        id="demo-color-picker-rgba"
+                                                        id="color-sensor-color-picker-rgba"
                                                     />
                                                 </div>
                                             </div>
@@ -98,15 +98,15 @@
                                         >[?]</a
                                     ></span
                                 >
+                                <button
+                                    class="col button button-raised button-fill color-grey"
+                                    id="color-btn-req"
+                                >
+                                    Req from Robot
+                                </button>
                             </div>
-                            <button
-                                class="col button button-raised button-fill color-grey"
-                                id="color-btn-req"
-                            >
-                                Req from Robot
-                            </button>
 
-                            <div>
+                            <div class="p-2">
                                 <b
                                     ><span class="channel">{channel}</span
                                     >/sensor/color/<span class="color-sensor-robot-id"
@@ -120,21 +120,21 @@
                                         >[?]</a
                                     ></span
                                 >
+                                <div>
+                                    <span class="color-sensor-red-val">0</span>,
+                                    <span class="color-sensor-green-val">0</span>,
+                                    <span class="color-sensor-blue-val">0</span>,
+                                    <span class="amb-val">0</span>
+                                </div>
+                                <button
+                                    class="col button button-raised button-fill color-blue"
+                                    id="color-btn-send-robot"
+                                >
+                                    Send to Robot
+                                </button>
                             </div>
-                            <div>
-                                <span class="color-sensor-red-val">0</span>,
-                                <span class="color-sensor-green-val">0</span>,
-                                <span class="color-sensor-blue-val">0</span>,
-                                <span class="amb-val">0</span>
-                            </div>
-                            <button
-                                class="col button button-raised button-fill color-blue"
-                                id="color-btn-send-robot"
-                            >
-                                Send to Robot
-                            </button>
 
-                            <div>
+                            <div class="p-2">
                                 <b
                                     ><span class="channel">{channel}</span
                                     >/sensor/color/</b
@@ -146,22 +146,22 @@
                                         >[?]</a
                                     ></span
                                 >
+                                <div>
+                                    { "id":"<span class="color-sensor-robot-id"
+                                        >{robotId}</span
+                                    >", "R":"<span class="color-sensor-red-val">0</span>",
+                                    "G":"<span class="color-sensor-green-val">0</span>",
+                                    "B":"<span class="color-sensor-blue-val">0</span>",
+                                    "ambient":"<span class="amb-val">0</span>" }
+                                </div>
+                                <button
+                                    class="col button button-raised button-fill color-green"
+                                    id="color-btn-send-server"
+                                >
+                                    Send to Server
+                                </button>
+                                <br />
                             </div>
-                            <div>
-                                { "id":"<span class="color-sensor-robot-id"
-                                    >{robotId}</span
-                                >", "R":"<span class="color-sensor-red-val">0</span>",
-                                "G":"<span class="color-sensor-green-val">0</span>",
-                                "B":"<span class="color-sensor-blue-val">0</span>",
-                                "ambient":"<span class="amb-val">0</span>" }
-                            </div>
-                            <button
-                                class="col button button-raised button-fill color-green"
-                                id="color-btn-send-server"
-                            >
-                                Send to Server
-                            </button>
-                            <br />
                         </div>
                     </div>
                 </div>
@@ -190,13 +190,12 @@
                         <li class="item-content item-input">
                             <div class="item-inner">
                                 <div class="item-title item-label">
-                                    Responses received to
-                                    <b
+                                    Responses received to (<b
                                         ><span class="channel">{channel}</span
                                         >/sensor/color/<span class="color-sensor-robot-id"
                                             >{robotId}</span
                                         ></b
-                                    ><br />
+                                    >)<br />
                                 </div>
                                 <div class="item-input-wrap">
                                     <textarea
@@ -221,8 +220,8 @@
         let R, G, B, A;
         $on('pageInit', (e, page) => {
             colorPickerRgba = $f7.colorPicker.create({
-                inputEl: '#demo-color-picker-rgba',
-                targetEl: '#demo-color-picker-rgba-value',
+                inputEl: '#color-sensor-color-picker-rgba',
+                targetEl: '#color-sensor-color-picker-rgba-value',
                 targetElSetBackgroundColor: true,
                 modules: ['rgb-sliders', 'alpha-slider'],
                 openIn: 'popover',
@@ -245,7 +244,7 @@
                     $('#color-sensor-green-bar').val(G);
                     $('#color-sensor-blue-bar').val(B);
                     $('#amb-bar').val(A);
-                    return 'rgba(' + value.rgba.join(', ') + ')';
+                    return 'rgba(' + RGBA.join(', ') + ')';
                 }
             });
             setup();
