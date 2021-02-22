@@ -68,3 +68,24 @@
     height: 260px;
   }
 }
+
+.demo-list-icon,
+  .icon-f7 {
+    background: #ccc;
+    display: block;
+    position: relative;
+  }
+
+  .ios .demo-list-icon {
+    width: 29px;
+    height: 29px;
+    border-radius: 6px;
+    box-sizing: border-box;
+  }
+
+  .md .demo-list-icon,
+  .aurora .demo-list-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+  }
