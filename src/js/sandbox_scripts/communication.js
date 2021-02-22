@@ -1,14 +1,14 @@
-import $ from "jquery";
+import $ from 'jquery';
 
 export function setup() {
-  console.log("Setup: Communication");
+    console.log('Setup: Communication');
 
-  //mqtt = new MQTTClient(() => {
-  var comm_in_id = null;
+    //mqtt = new MQTTClient(() => {
+    var comm_in_id = null;
 
-  // Active the buttons
-  $(".btn").prop("disabled", false);
-  $(".channel").text(window.mqtt.channel);
+    // Active the buttons
+    $('.btn').prop('disabled', false);
+    $('.channel').text(window.mqtt.channel);
 
   // Subscribe: v1/comm/out/simple
   mqtt.subscribeToTopic("comm/out/simple", (topic, msg) => {
@@ -49,10 +49,10 @@ export function setup() {
         console.log(topicDirect, ":", msg);
       });
 
-      comm_in_id = robotId;
-      $(".robot-id").text(robotId);
-    })
-    .change();
+            comm_in_id = robotId;
+            $('.robot-id').text(robotId);
+        })
+        .change();
 
   $("#comm-out-msg")
     .change(function() {
@@ -76,4 +76,5 @@ export function setup() {
     const msgString = { id: robotId, msg: msg };
     mqtt.publish(`comm/out/${msgProtocol}`, JSON.stringify(msgString));
   });
+
 }

@@ -1,27 +1,261 @@
 <template>
-    <div class='page' data-name='colorSensor'>
-        <div class='navbar'>
-            <div class='navbar-bg'></div>
-            <div class='navbar-inner sliding'>
-                <div class='title'>Color Sensor</div>
+    <div class="page" data-name="colorSensor">
+        <div class="navbar">
+            <div class="navbar-bg"></div>
+            <div class="navbar-inner sliding">
+                <div class="title">Color Sensor</div>
             </div>
         </div>
-        <div class='page-content'>
-            <div class='container pt-2'>
-                <div class='row p-2'>
+        <div class="page-content">
+            <div class="container pt-2">
+                <!-- <h3>Color Sensor</h3> -->
+                <div class="form-group card p-2">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="input-group d-inline-flex align-items-center">
+                                <label for="color-sensor-robot-id" class="m-2"
+                                    >Robot Id</label
+                                >
+                                <input
+                                    id="color-sensor-robot-id"
+                                    type="number"
+                                    min="0"
+                                    class="form-control m-2"
+                                    style="width: 100px"
+                                    placeholder=""
+                                    value="0"
+                                />
+                                <div
+                                    id="color-box-color"
+                                    class="p-2 m-3 border"
+                                    style="
+                                        width: 40px;
+                                        height: 40px;
+                                        background-color: rgb(0, 0, 0);
+                                    "
+                                ></div>
+                            </div>
 
+                            <div class="p-2 d-flex flex-row align-content-center">
+                                <label for="color-sensor-red-bar" style="width: 100px"
+                                    >R</label
+                                >
+                                <input
+                                    id="color-sensor-red-bar"
+                                    type="range"
+                                    class="py-3 px-3 custom-range"
+                                    min="0"
+                                    max="255"
+                                    value="0"
+                                    step="1"
+                                />
+                                <input
+                                    id="color-sensor-red-val"
+                                    type="number"
+                                    min="0"
+                                    max="255"
+                                    class="form-control w-25"
+                                    value="0"
+                                />
+                            </div>
 
+                            <div class="p-2 d-flex flex-row align-content-center">
+                                <label for="color-sensor-green-bar" style="width: 100px"
+                                    >G</label
+                                >
+                                <input
+                                    id="color-sensor-green-bar"
+                                    type="range"
+                                    class="py-3 px-3 custom-range"
+                                    min="0"
+                                    max="255"
+                                    value="0"
+                                    step="1"
+                                />
+                                <input
+                                    id="color-sensor-green-val"
+                                    type="number"
+                                    min="0"
+                                    max="255"
+                                    class="form-control w-25"
+                                    value="0"
+                                />
+                            </div>
+
+                            <div class="p-2 d-flex flex-row align-content-center">
+                                <label for="color-sensor-blue-bar" style="width: 100px"
+                                    >B</label
+                                >
+                                <input
+                                    id="color-sensor-blue-bar"
+                                    type="range"
+                                    class="py-3 px-3 custom-range"
+                                    min="0"
+                                    max="255"
+                                    value="0"
+                                    step="1"
+                                />
+                                <input
+                                    id="color-sensor-blue-val"
+                                    type="number"
+                                    min="0"
+                                    max="255"
+                                    class="form-control w-25"
+                                    value="0"
+                                />
+                            </div>
+
+                            <div class="p-2 d-flex flex-row align-content-center">
+                                <label for="amb-bar" style="width: 100px">Ambient</label>
+                                <input
+                                    id="amb-bar"
+                                    type="range"
+                                    class="py-3 px-3 custom-range"
+                                    min="0"
+                                    max="255"
+                                    value="0"
+                                    step="1"
+                                />
+                                <input
+                                    id="amb-val"
+                                    type="number"
+                                    min="0"
+                                    max="255"
+                                    class="form-control w-25"
+                                    value="0"
+                                />
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div>
+                                <b
+                                    ><span class="channel">{channel}</span
+                                    >/sensor/color/<span class="color-sensor-robot-id"
+                                        >{robotId}</span
+                                    >/?</b
+                                >
+                                <span class="float-right"
+                                    ><a
+                                        target="_blank"
+                                        href="https://pera-swarm.ce.pdn.ac.lk/docs/communication/mqtt/sensor#sensorcolorrobotid"
+                                        >[?]</a
+                                    ></span
+                                >
+                            </div>
+                            <button class="btn btn-primary m-1 mb-3" id="color-btn-req">
+                                Req from Robot
+                            </button>
+
+                            <div>
+                                <b
+                                    ><span class="channel">{channel}</span
+                                    >/sensor/color/<span class="color-sensor-robot-id"
+                                        >{robotId}</span
+                                    ></b
+                                >
+                                <span class="float-right"
+                                    ><a
+                                        target="_blank"
+                                        href="https://pera-swarm.ce.pdn.ac.lk/docs/communication/mqtt/sensor#sensorcolorrobotid-1"
+                                        >[?]</a
+                                    ></span
+                                >
+                            </div>
+                            <div>
+                                <span class="color-sensor-red-val">0</span>
+                                <span class="color-sensor-green-val">0</span>
+                                <span class="color-sensor-blue-val">0</span>
+                                <span class="amb-val">0</span>
+                            </div>
+                            <button
+                                class="btn btn-primary m-1 mb-3"
+                                id="color-btn-send-robot"
+                            >
+                                Send to Robot
+                            </button>
+
+                            <div>
+                                <b
+                                    ><span class="channel">{channel}</span
+                                    >/sensor/color/</b
+                                >
+                                <span class="float-right"
+                                    ><a
+                                        target="_blank"
+                                        href="https://pera-swarm.ce.pdn.ac.lk/docs/communication/mqtt/sensor#sensorcolor"
+                                        >[?]</a
+                                    ></span
+                                >
+                            </div>
+                            <div>
+                                { "id":"<span class="color-sensor-robot-id"
+                                    >{robotId}</span
+                                >", "R":"<span class="color-sensor-red-val">0</span>",
+                                "G":"<span class="color-sensor-green-val">0</span>",
+                                "B":"<span class="color-sensor-blue-val">0</span>",
+                                "ambient":"<span class="amb-val">0</span>" }
+                            </div>
+                            <button
+                                class="btn btn-success m-1 mb-3"
+                                id="color-btn-send-server"
+                            >
+                                Send to Server
+                            </button>
+                            <br />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group card p-3">
+                    <div class="pb-4">
+                        <label for="color-sub-text">
+                            Responses received from physical robots to the server (<b
+                                ><span class="channel">{channel}</span>/sensor/color</b
+                            >)<br />
+                        </label>
+
+                        <div class="input-group align-self-start">
+                            <textarea
+                                id="color-sub-text"
+                                type="text"
+                                class="form-control mr-2"
+                                placeholder=""
+                            ></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group card p-3">
+                    <div class="pb-4">
+                        <label for="dist-sub-text">
+                            Responses received to
+                            <b
+                                ><span class="channel">{channel}</span>/sensor/color/<span
+                                    class="color-sensor-robot-id"
+                                    >{robotId}</span
+                                ></b
+                            ><br />
+                        </label>
+
+                        <div class="input-group align-self-start">
+                            <textarea
+                                id="color-robot-text"
+                                type="text"
+                                class="form-control mr-2"
+                                placeholder=""
+                            ></textarea>
+                        </div>
+                    </div>
                 </div>
             </div>
-
         </div>
     </div>
 </template>
 <script>
-    import {setup} from '../../js/sandbox_scripts/template';
+    import { setup } from '../../js/sandbox_scripts/colorSensor';
 
     export default (props, { $f7, $on }) => {
-
         $on('pageInit', (e, page) => {
             setup();
         });
