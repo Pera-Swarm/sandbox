@@ -45,7 +45,7 @@ export function setup() {
 
             // Directed communication
             mqtt.subscribeToTopic(topicDirect, (topicDirect, msg) => {
-                $('#com-in-msg').text(`simple: ${msg}`);
+                $('#com-in-msg').text(`direct: ${msg}`);
                 console.log(topicDirect, ':', msg);
             });
 
