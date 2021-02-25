@@ -81,6 +81,10 @@ export default class MqttClient {
             let payload = new MQTT.Message(message);
 
             payload.destinationName = pubTopic;
+          
+            // TODO: temp, apply to all messages
+            paylod.qos = 1;
+          
             this.client.send(payload);
             console.log('MQTT: published', pubTopic, message);
 
