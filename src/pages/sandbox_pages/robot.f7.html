@@ -91,9 +91,9 @@
                                             <div class='p-2 d-flex flex-row align-content-center'>
                                                 <label for='robot-create-x-range' style='width: 100px;'>X</label>
                                                 <input type='range' class='py-3 px-3 custom-range'
-                                                id='robot-create-x-range' min='-150' max='150'
+                                                id='robot-create-x-range' min='-90' max='90'
                                                 value='0' step='1'/>
-                                                <input id='robot-create-x-val' type='number' min='-150' max='150'
+                                                <input id='robot-create-x-val' type='number' min='-90' max='90'
                                                 class='form-control w-25'
                                                 value='0'/>
                                             </div>
@@ -101,9 +101,9 @@
                                             <div class=' p-2 d-flex flex-row align-content-center'>
                                                 <label for='robot-create-y-range' style='width: 100px;'>Y</label>
                                                 <input type='range' class='py-3 px-3 custom-range'
-                                                id='robot-create-y-range' min='-150' max='150'
+                                                id='robot-create-y-range' min='-90' max='90'
                                                 value='0' step='1'/>
-                                                <input id='robot-create-y-val' type='number' min='-150' max='150'
+                                                <input id='robot-create-y-val' type='number' min='-90' max='90'
                                                 class='form-control w-25'
                                                 value='0'/>
                                             </div>
@@ -193,7 +193,7 @@
 </template>
 <script>
     import {setup} from '../../js/sandbox_scripts/robot.js';
-    
+
     export default (props, { $f7, $on }) => {
 
         $on('pageInit', (e, page) => {
