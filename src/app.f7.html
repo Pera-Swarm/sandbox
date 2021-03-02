@@ -2,96 +2,12 @@
     <div id="app">
         <!-- SidePanel -->
         <div
-            class="panel panel-left panel-reveal panel-init"
+            class="panel panel-left panel-cover panel-init"
             data-visible-breakpoint="1024"
             data-collapsed-breakpoint="1"
         >
             <div class="view">
                 <div class="page">
-                    <!-- Panel List -->
-                    <!-- <div class="list panel-list">
-                        <ul>
-                            <li>
-                                <a href="/" class="item-content active-link">
-                                    <div class="item-media">
-                                        <i class="icon f7-icons">square_grid_2x2_fill</i>
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title">Home</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/robot/" class="item-content color-lightblue">
-                                    <div class="item-media">
-                                        <i class="icon f7-icons">rocket_fill</i>
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title">Robot</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/communication/" class="item-content color-teal">
-                                    <div class="item-media">
-                                        <i class="icon f7-icons">waveform_path_ecg</i>
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title">Communication</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="/sensors/distance/"
-                                    class="item-content color-red"
-                                >
-                                    <div class="item-media">
-                                        <i class="icon f7-icons"
-                                            >arrow_right_arrow_left</i
-                                        >
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title">Distance Sensor</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="/sensors/color/"
-                                    class="item-content color-orange"
-                                >
-                                    <div class="item-media">
-                                        <i class="icon f7-icons">dial_fill</i>
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title">Color Sensor</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/neoPixel/" class="item-content color-pink">
-                                    <div class="item-media">
-                                        <i class="icon f7-icons">timelapse</i>
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title">NeoPixel</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/environment/" class="item-content color-green">
-                                    <div class="item-media">
-                                        <i class="icon f7-icons">cube_fill</i>
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title">Environment</div>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </div> -->
-
                     <div class="list media-list menu-list panel-list">
                         <ul>
                             <li>
@@ -114,26 +30,6 @@
                                     </div>
                                 </a>
                             </li>
-                            <!-- <li>
-                                <a
-                                    href="#"
-                                    class="item-content item-link ${selectedMedia === 'settings' ? 'item-selected' : ''}"
-                                    @click="${()=> setItemMedia('settings')}"
-                                >
-                                    <div class="item-media">
-                                        <i class="icon material-icons if-md">settings</i>
-                                        <i class="icon f7-icons if-not-md"
-                                            >gear_alt_fill</i
-                                        >
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title-wrap">
-                                            <div class="item-title">Settings</div>
-                                        </div>
-                                        <div class="item-subtitle">Settings subtitle</div>
-                                    </div>
-                                </a>
-                            </li> -->
                             <li>
                                 <a
                                     href="/robot/"
@@ -192,7 +88,7 @@
                                     @click="${()=> setItemMedia('/sensors/color/')}"
                                 >
                                     <div class="item-media">
-                                        <i class="icon f7-icons">dial_fill</i>
+                                        <i class="icon f7-icons">color_filter</i>
                                     </div>
                                     <div class="item-inner">
                                         <div class="item-title-wrap">
@@ -209,7 +105,7 @@
                                     @click="${()=> setItemMedia('/neoPixel/')}"
                                 >
                                     <div class="item-media">
-                                        <i class="icon f7-icons">timelapse</i>
+                                        <i class="icon f7-icons">circle_grid_hex</i>
                                     </div>
                                     <div class="item-inner">
                                         <div class="item-title-wrap">
@@ -325,7 +221,7 @@
                 </div>
 
                 <!-- Page Content -->
-                <div class="page-content">
+                <!-- <div class="page-content">
                     <div class="page no-navbar no-toolbar no-swipeback">
                         <div class="page-content login-screen-content">
                             <div class="login-screen-title">SandBox v2.0</div>
@@ -375,8 +271,141 @@
                             </form>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- End Page Content -->
+
+                <!-- Config Page Content -->
+                <div class="page-content">
+                    <div class="container pt-2">
+                        <!-- <h3>Neo Pixel LED Ring</h3> -->
+                        <!-- Color Control -->
+                        <div class="block-title">Current Settings</div>
+                        <div class="card p-2">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="list inline-labels">
+                                        <ul>
+                                            <li class="item-content item-input">
+                                                <div class="item-media">
+                                                    <i class="icon f7-icons">tray_2</i>
+                                                </div>
+                                                <div class="item-inner">
+                                                    <div class="item-title item-label">
+                                                        Server
+                                                    </div>
+                                                    <div class="item-input-wrap">
+                                                        <input
+                                                            type="text"
+                                                            placeholder="MQTT Server"
+                                                            disabled="{true}"
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="item-content item-input">
+                                                <div class="item-media">
+                                                    <i class="icon f7-icons"
+                                                        >textformat_123</i
+                                                    >
+                                                </div>
+                                                <div class="item-inner">
+                                                    <div class="item-title item-label">
+                                                        Port
+                                                    </div>
+                                                    <div class="item-input-wrap">
+                                                        <input
+                                                            type="text"
+                                                            placeholder="MQTT Port"
+                                                            disabled="{true}"
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="item-content item-input">
+                                                <div class="item-media">
+                                                    <i class="icon f7-icons"
+                                                        >dot_radiowaves_left_right</i
+                                                    >
+                                                </div>
+                                                <div class="item-inner">
+                                                    <div class="item-title item-label">
+                                                        Channel
+                                                    </div>
+                                                    <div class="item-input-wrap">
+                                                        <input
+                                                            type="text"
+                                                            placeholder="MQTT Channel"
+                                                            disabled="{true}"
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="item-content item-input">
+                                                <div class="item-media">
+                                                    <i class="icon f7-icons">wifi</i>
+                                                </div>
+                                                <div class="item-inner">
+                                                    <div class="item-title item-label">
+                                                        Connected?
+                                                    </div>
+                                                    <div class="item-input-wrap">
+                                                        <input
+                                                            type="text"
+                                                            placeholder="Connection Status"
+                                                            disabled="{true}"
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="block-title">Authentication</div>
+                                    <div class="list inline-labels">
+                                        <ul>
+                                            <li class="item-content item-input">
+                                                <div class="item-media">
+                                                    <i class="icon f7-icons">person</i>
+                                                </div>
+                                                <div class="item-inner">
+                                                    <div class="item-title item-label">
+                                                        Username
+                                                    </div>
+                                                    <div class="item-input-wrap">
+                                                        <input
+                                                            type="text"
+                                                            placeholder="MQTT Username"
+                                                            disabled="{true}"
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="item-content item-input">
+                                                <div class="item-media">
+                                                    <i class="icon f7-icons">lock</i>
+                                                </div>
+                                                <div class="item-inner">
+                                                    <div class="item-title item-label">
+                                                        Password
+                                                    </div>
+                                                    <div class="item-input-wrap">
+                                                        <input
+                                                            type="text"
+                                                            placeholder="MQTT Password"
+                                                            disabled="{true}"
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Config Page Content -->
             </div>
             <!-- End Page -->
         </div>
