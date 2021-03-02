@@ -9,7 +9,7 @@
             <div class="view">
                 <div class="page">
                     <!-- Panel List -->
-                    <div class="list panel-list">
+                    <!-- <div class="list panel-list">
                         <ul>
                             <li>
                                 <a href="/" class="item-content active-link">
@@ -90,6 +90,157 @@
                                 </a>
                             </li>
                         </ul>
+                    </div> -->
+
+                    <div class="list media-list menu-list panel-list">
+                        <ul>
+                            <li>
+                                <a
+                                    href="/"
+                                    class="item-content item-link ${selectedMedia === 'home' ? 'item-selected' : ''}"
+                                    @click="${()=> setItemMedia('home')}"
+                                >
+                                    <div class="item-media">
+                                        <i class="icon material-icons if-md">settings</i>
+                                        <i class="icon f7-icons if-not-md"
+                                            >gear_alt_fill</i
+                                        >
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title-wrap">
+                                            <div class="item-title">Settings</div>
+                                        </div>
+                                        <!-- <div class="item-subtitle">Home subtitle</div> -->
+                                    </div>
+                                </a>
+                            </li>
+                            <!-- <li>
+                                <a
+                                    href="#"
+                                    class="item-content item-link ${selectedMedia === 'settings' ? 'item-selected' : ''}"
+                                    @click="${()=> setItemMedia('settings')}"
+                                >
+                                    <div class="item-media">
+                                        <i class="icon material-icons if-md">settings</i>
+                                        <i class="icon f7-icons if-not-md"
+                                            >gear_alt_fill</i
+                                        >
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title-wrap">
+                                            <div class="item-title">Settings</div>
+                                        </div>
+                                        <div class="item-subtitle">Settings subtitle</div>
+                                    </div>
+                                </a>
+                            </li> -->
+                            <li>
+                                <a
+                                    href="/robot/"
+                                    class="item-content item-link ${selectedMedia === '/robot/' ? 'item-selected' : ''}"
+                                    @click="${()=> setItemMedia('/robot/')}"
+                                >
+                                    <div class="item-media">
+                                        <i class="icon f7-icons">rocket_fill</i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title-wrap">
+                                            <div class="item-title">Robot</div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="/communication/"
+                                    class="item-content item-link ${selectedMedia === '/communication/' ? 'item-selected' : ''}"
+                                    @click="${()=> setItemMedia('/communication/')}"
+                                >
+                                    <div class="item-media">
+                                        <i class="icon f7-icons">waveform_path_ecg</i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title-wrap">
+                                            <div class="item-title">Communication</div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="/sensors/distance/"
+                                    class="item-content item-link ${selectedMedia === '/sensors/distance/' ? 'item-selected' : ''}"
+                                    @click="${()=> setItemMedia('/sensors/distance/')}"
+                                >
+                                    <div class="item-media">
+                                        <i class="icon f7-icons"
+                                            >arrow_right_arrow_left</i
+                                        >
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title-wrap">
+                                            <div class="item-title">Distance</div>
+                                        </div>
+                                        <div class="item-subtitle">Distance Sensor</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="/sensors/color/"
+                                    class="item-content item-link ${selectedMedia === '/sensors/color/' ? 'item-selected' : ''}"
+                                    @click="${()=> setItemMedia('/sensors/color/')}"
+                                >
+                                    <div class="item-media">
+                                        <i class="icon f7-icons">dial_fill</i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title-wrap">
+                                            <div class="item-title">Color</div>
+                                        </div>
+                                        <div class="item-subtitle">Color Sensor</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="/neoPixel/"
+                                    class="item-content item-link ${selectedMedia === '/neoPixel/' ? 'item-selected' : ''}"
+                                    @click="${()=> setItemMedia('/neoPixel/')}"
+                                >
+                                    <div class="item-media">
+                                        <i class="icon f7-icons">timelapse</i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title-wrap">
+                                            <div class="item-title">NeoPixel</div>
+                                        </div>
+                                        <div class="item-subtitle">
+                                            NeoPixel / RGB Color Strip
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="/environment/"
+                                    class="item-content item-link ${selectedMedia === '/environment/' ? 'item-selected' : ''}"
+                                    @click="${()=> setItemMedia('/environment/')}"
+                                >
+                                    <div class="item-media">
+                                        <i class="icon f7-icons">cube_fill</i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title-wrap">
+                                            <div class="item-title">Environment</div>
+                                        </div>
+                                        <div class="item-subtitle">
+                                            Visualizer & Obstacles
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
                     <!-- End Panel List -->
                 </div>
@@ -152,111 +303,82 @@
                 </div>
             </div>
             <!-- End Pop Over -->
+
+            <!-- Page -->
             <div class="page">
+                <div class="fab-backdrop"></div>
+                <div class="fab fab-right-bottom">
+                    <a href="#">
+                        <i class="icon f7-icons if-not-md">plus</i>
+                        <i class="icon f7-icons if-not-md">xmark</i>
+                        <i class="icon material-icons md-only">add</i>
+                        <i class="icon material-icons md-only">close</i>
+                    </a>
+                    <div class="fab-buttons fab-buttons-top">
+                        <a class="fab-label-button" href="#"
+                            ><span>2</span><span class="fab-label">Docs</span></a
+                        >
+                        <a class="fab-label-button" href="#"
+                            ><span>1</span><span class="fab-label">Visualizer</span></a
+                        >
+                    </div>
+                </div>
+
                 <!-- Page Content -->
                 <div class="page-content">
-                    <!-- <div class="dashboard-cards">
-                        <div class="row margin-horizontal">
-                            <div class="col-100 medium-100 margin-top events-col">
-                                <div class="card">
-                                    <div class="card-header">Latest Events</div>
-                                    <div class="card-content card-content-padding">
-                                        <div class="timeline no-margin no-padding">
-                                            <div class="timeline-item">
-                                                <div class="timeline-item-date">
-                                                    10:00
+                    <div class="page no-navbar no-toolbar no-swipeback">
+                        <div class="page-content login-screen-content">
+                            <div class="login-screen-title">SandBox v2.0</div>
+                            <form>
+                                <div class="list">
+                                    <ul>
+                                        <li class="item-content item-input">
+                                            <div class="item-inner">
+                                                <div class="item-title item-label">
+                                                    Username
                                                 </div>
-                                                <div class="timeline-item-divider"></div>
-                                                <div class="timeline-item-content">
-                                                    Lorem ipsum dolor sit amet,
-                                                    consectetur adipisicing elit. Dolor
-                                                    fugiat ipsam hic
-                                                </div>
-                                            </div>
-                                            <div class="timeline-item">
-                                                <div class="timeline-item-date">
-                                                    11:00
-                                                </div>
-                                                <div class="timeline-item-divider"></div>
-                                                <div class="timeline-item-content">
-                                                    Another text goes here
+                                                <div class="item-input-wrap">
+                                                    <input
+                                                        type="text"
+                                                        name="username"
+                                                        placeholder="MQTT username"
+                                                    />
                                                 </div>
                                             </div>
-                                            <div class="timeline-item">
-                                                <div class="timeline-item-date">
-                                                    14:45
+                                        </li>
+                                        <li class="item-content item-input">
+                                            <div class="item-inner">
+                                                <div class="item-title item-label">
+                                                    Password
                                                 </div>
-                                                <div class="timeline-item-divider"></div>
-                                                <div class="timeline-item-content">
-                                                    Lorem ipsum dolor sit amet,
-                                                    consectetur adipisicing elit. Dolor
-                                                    fugiat ipsam hic porro enim, accusamus
-                                                    perferendis, quas commodi alias
-                                                    quaerat eius nemo deleniti. Odio quasi
-                                                    quos quis iure, aperiam pariatur?
-                                                </div>
-                                            </div>
-                                            <div class="timeline-item">
-                                                <div class="timeline-item-date">
-                                                    16:24
-                                                </div>
-                                                <div class="timeline-item-divider"></div>
-                                                <div class="timeline-item-content">
-                                                    One more text here
+                                                <div class="item-input-wrap">
+                                                    <input
+                                                        type="password"
+                                                        name="password"
+                                                        placeholder="MQTT password"
+                                                    />
                                                 </div>
                                             </div>
-                                            <div class="timeline-item">
-                                                <div class="timeline-item-date">
-                                                    17:11
-                                                </div>
-                                                <div class="timeline-item-divider"></div>
-                                                <div class="timeline-item-content">
-                                                    Lorem ipsum dolor sit amet,
-                                                    consectetur adipisicing elit. Dolor
-                                                    fugiat ipsam hic
-                                                </div>
-                                            </div>
-                                            <div class="timeline-item">
-                                                <div class="timeline-item-date">
-                                                    17:28
-                                                </div>
-                                                <div class="timeline-item-divider"></div>
-                                                <div class="timeline-item-content">
-                                                    Another text goes here
-                                                </div>
-                                            </div>
-                                            <div class="timeline-item">
-                                                <div class="timeline-item-date">
-                                                    18:00
-                                                </div>
-                                                <div class="timeline-item-divider"></div>
-                                                <div class="timeline-item-content">
-                                                    Lorem ipsum dolor sit amet,
-                                                    consectetur adipisicing elit. Dolor
-                                                    fugiat ipsam hic porro enim, accusamus
-                                                    perferendis, quas commodi alias
-                                                    quaerat eius nemo deleniti. Odio quasi
-                                                    quos quis iure, aperiam pariatur?
-                                                </div>
-                                            </div>
-                                            <div class="timeline-item">
-                                                <div class="timeline-item-date">
-                                                    19:19
-                                                </div>
-                                                <div class="timeline-item-divider"></div>
-                                                <div class="timeline-item-content">
-                                                    One more text here
-                                                </div>
-                                            </div>
-                                        </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="list">
+                                    <ul>
+                                        <li>
+                                            <a href="#" class="list-button">Sign In</a>
+                                        </li>
+                                    </ul>
+                                    <div class="block-footer">
+                                        <p>Welcome to Pera-Swarm SandBox v2.0</p>
                                     </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
-                    </div> -->
+                    </div>
                 </div>
                 <!-- End Page Content -->
             </div>
+            <!-- End Page -->
         </div>
         <!-- End Main View -->
     </div>
@@ -265,9 +387,33 @@
 <script>
     import { setup } from './js/app';
 
-    export default (props, { $f7, $on }) => {
+    export default (props, { $f7, $on, $f7router, $update }) => {
+        let selected = 'home';
+        let selectedMedia = 'home';
+
+        const setItem = (newItem) => {
+            selected = newItem;
+            $update();
+        };
+        const setItemMedia = (newItem) => {
+            selectedMedia = newItem;
+            $update();
+        };
+        const isAuthenticated = false;
+        console.log($f7, $on, $f7router);
         $on('pageInit', (e, page) => {
             setup();
+            const showToastWithButton = () => {
+                // Create toast
+                if (!toastWithButton) {
+                    toastWithButton = $f7.toast.create({
+                        text: 'Toast with additional close button',
+                        closeButton: true
+                    });
+                }
+                // Open it
+                toastWithButton.open();
+            };
         });
         return $render;
     };
