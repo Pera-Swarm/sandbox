@@ -15,8 +15,8 @@
   --f7-login-screen-title-letter-spacing: 0;
   --f7-login-screen-title-font-weight: 600;
   --f7-login-screen-title-font-size: 28px;
-  --f7-login-screen-content-bg-color: #fff;
-  --f7-login-screen-bg-color: #fff;
+  --f7-login-screen-content-bg-color: #f2f3f8;
+  --f7-login-screen-bg-color: #f2f3f8;
 }
 :root .theme-dark,
 :root.theme-dark {
