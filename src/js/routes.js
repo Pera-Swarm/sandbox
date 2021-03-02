@@ -45,7 +45,7 @@ var routes = [
             // if (to.query.user) {
             if (checkAuth({ to, resolve, reject })) {
                 // redirect to such url
-                resolve('/home');
+                resolve('/settings');
             } else {
                 // otherwise do nothing
                 resolve('/login');
@@ -53,8 +53,8 @@ var routes = [
         }
     },
     {
-        path: '/home',
-        name: 'home',
+        path: '/settings',
+        name: 'settings',
         component: HomePage
     },
     {
