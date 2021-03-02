@@ -11,20 +11,24 @@ import NeoPixelPage from '../pages/sandbox_pages/neoPixel.f7.html';
 
 import NotFoundPage from '../pages/404.f7.html';
 
-function checkAuth({ to, from, resolve, reject }) {
-    console.log('checkAuth');
+function checkAuth({ to, resolve, reject }) {
     /* some condition to check user is logged in */
-    if (JSON.parse(localStorage.getItem('isAuthenticated')) !== null) {
-        resolve();
+    const isAuthenticated = JSON.parse(localStorage.getItem('isAuthenticated'));
+    console.log('checkAuth', to, isAuthenticated);
+    if (isAuthenticated !== null && isAuthenticated) {
+        // resolve(to.url);
+        return true;
     } else {
-        reject();
+        // reject();
+        return false;
     }
 }
 
 function checkPermission({ to, from, resolve, reject }) {
-    console.log('checkPermission');
     /* some condition to check user edit permission */
-    if (JSON.parse(localStorage.getItem('isAuthenticated')) !== null) {
+    const isAuthenticated = JSON.parse(localStorage.getItem('isAuthenticated'));
+    console.log('checkPermission');
+    if (isAuthenticated !== null && isAuthenticated) {
         resolve();
     } else {
         reject();
@@ -33,29 +37,34 @@ function checkPermission({ to, from, resolve, reject }) {
 
 var routes = [
     {
-        name: 'home',
         path: '/',
-        component: HomePage
-        // beforeEnter: checkAuth,
-        // redirect: function ({ to, resolve, reject }) {
-        //     // if we have "user" query parameter
-        //     console.log('redirect');
-        //     if (to.query.user) {
-        //         // redirect to such url
-        //         resolve('/login' + to.query.user);
-        //     }
-        //     // otherwise do nothing
-        //     else reject();
-        // }
+        name: 'app',
+        redirect: function ({ to, resolve, reject }) {
+            // if we have "user" query parameter
+            console.log('REDIRECT', to);
+            // if (to.query.user) {
+            if (checkAuth({ to, resolve, reject })) {
+                // redirect to such url
+                resolve('/home');
+            } else {
+                // otherwise do nothing
+                resolve('/login');
+            }
+        }
     },
-    // {
-    //     name: 'login',
-    //     path: '/login',
-    //     component: LoginPage
-    // },
     {
-        name: 'robot',
+        path: '/home',
+        name: 'home',
+        component: HomePage
+    },
+    {
+        path: '/login',
+        name: 'login',
+        component: LoginPage
+    },
+    {
         path: '/robot/',
+        name: 'robot',
         component: RobotPage
     },
     {
