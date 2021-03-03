@@ -298,6 +298,7 @@
                                                             type="text"
                                                             placeholder="MQTT Server"
                                                             disabled="{true}"
+                                                            value="${client.host}"
                                                         />
                                                     </div>
                                                 </div>
@@ -317,6 +318,7 @@
                                                             type="text"
                                                             placeholder="MQTT Port"
                                                             disabled="{true}"
+                                                            value="${client.port}"
                                                         />
                                                     </div>
                                                 </div>
@@ -336,6 +338,7 @@
                                                             type="text"
                                                             placeholder="MQTT Client ID"
                                                             disabled="{true}"
+                                                            value="${client.clientId}"
                                                         />
                                                     </div>
                                                 </div>
@@ -355,6 +358,7 @@
                                                             type="text"
                                                             placeholder="MQTT Channel"
                                                             disabled="{true}"
+                                                            value="${channel}"
                                                         />
                                                     </div>
                                                 </div>
@@ -372,6 +376,7 @@
                                                             type="text"
                                                             placeholder="Connection Status"
                                                             disabled="{true}"
+                                                            value="${client.isConnected()}"
                                                         />
                                                     </div>
                                                 </div>
@@ -456,6 +461,7 @@
                                                             <input
                                                                 type="text"
                                                                 placeholder="MQTT Server"
+                                                                value="${client.host}"
                                                             />
                                                         </div>
                                                     </div>
@@ -476,6 +482,7 @@
                                                             <input
                                                                 type="text"
                                                                 placeholder="MQTT Port"
+                                                                value="${client.port}"
                                                             />
                                                         </div>
                                                     </div>
@@ -496,6 +503,7 @@
                                                             <input
                                                                 type="text"
                                                                 placeholder="MQTT Client ID"
+                                                                value="${client.clientId}"
                                                             />
                                                         </div>
                                                     </div>
@@ -516,24 +524,7 @@
                                                             <input
                                                                 type="text"
                                                                 placeholder="MQTT Channel"
-                                                            />
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="item-content item-input">
-                                                    <div class="item-media">
-                                                        <i class="icon f7-icons">wifi</i>
-                                                    </div>
-                                                    <div class="item-inner">
-                                                        <div
-                                                            class="item-title item-label"
-                                                        >
-                                                            Connected?
-                                                        </div>
-                                                        <div class="item-input-wrap">
-                                                            <input
-                                                                type="text"
-                                                                placeholder="Connection Status"
+                                                                value="${channel}"
                                                             />
                                                         </div>
                                                     </div>
@@ -592,7 +583,8 @@
             $update();
         };
         const isAuthenticated = false;
-        console.log($f7, $on, $f7router);
+        let { channel, client } = window.mqtt;
+        console.log($f7, $on, $f7router, window.mqtt);
         $on('pageInit', (e, page) => {
             setup();
             const showToastWithButton = () => {
