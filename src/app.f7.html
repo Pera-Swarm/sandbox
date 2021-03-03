@@ -324,6 +324,25 @@
                                             <li class="item-content item-input">
                                                 <div class="item-media">
                                                     <i class="icon f7-icons"
+                                                        >number_square</i
+                                                    >
+                                                </div>
+                                                <div class="item-inner">
+                                                    <div class="item-title item-label">
+                                                        ClientID
+                                                    </div>
+                                                    <div class="item-input-wrap">
+                                                        <input
+                                                            type="text"
+                                                            placeholder="MQTT Client ID"
+                                                            disabled="{true}"
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="item-content item-input">
+                                                <div class="item-media">
+                                                    <i class="icon f7-icons"
                                                         >dot_radiowaves_left_right</i
                                                     >
                                                 </div>
@@ -358,6 +377,12 @@
                                                 </div>
                                             </li>
                                         </ul>
+                                        <button
+                                            class="button button-raised button-fill color-green popup-open"
+                                            data-popup=".popup-services"
+                                        >
+                                            Change
+                                        </button>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -399,10 +424,148 @@
                                                 </div>
                                             </li>
                                         </ul>
+                                        <button
+                                            class="button button-raised button-fill color-red"
+                                        >
+                                            Disconnect
+                                        </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <!-- Settings Form Pop Up -->
+                        <div class="popup popup-services">
+                            <div class="page-content container p-2">
+                                <div class="block">
+                                    <div class="card col">
+                                        <div class="list inline-labels mt-5">
+                                            <ul>
+                                                <li class="item-content item-input">
+                                                    <div class="item-media">
+                                                        <i class="icon f7-icons"
+                                                            >tray_2</i
+                                                        >
+                                                    </div>
+                                                    <div class="item-inner">
+                                                        <div
+                                                            class="item-title item-label"
+                                                        >
+                                                            Server
+                                                        </div>
+                                                        <div class="item-input-wrap">
+                                                            <input
+                                                                type="text"
+                                                                placeholder="MQTT Server"
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="item-content item-input">
+                                                    <div class="item-media">
+                                                        <i class="icon f7-icons"
+                                                            >textformat_123</i
+                                                        >
+                                                    </div>
+                                                    <div class="item-inner">
+                                                        <div
+                                                            class="item-title item-label"
+                                                        >
+                                                            Port
+                                                        </div>
+                                                        <div class="item-input-wrap">
+                                                            <input
+                                                                type="text"
+                                                                placeholder="MQTT Port"
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="item-content item-input">
+                                                    <div class="item-media">
+                                                        <i class="icon f7-icons"
+                                                            >number_square</i
+                                                        >
+                                                    </div>
+                                                    <div class="item-inner">
+                                                        <div
+                                                            class="item-title item-label"
+                                                        >
+                                                            ClientID
+                                                        </div>
+                                                        <div class="item-input-wrap">
+                                                            <input
+                                                                type="text"
+                                                                placeholder="MQTT Client ID"
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="item-content item-input">
+                                                    <div class="item-media">
+                                                        <i class="icon f7-icons"
+                                                            >dot_radiowaves_left_right</i
+                                                        >
+                                                    </div>
+                                                    <div class="item-inner">
+                                                        <div
+                                                            class="item-title item-label"
+                                                        >
+                                                            Channel
+                                                        </div>
+                                                        <div class="item-input-wrap">
+                                                            <input
+                                                                type="text"
+                                                                placeholder="MQTT Channel"
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="item-content item-input">
+                                                    <div class="item-media">
+                                                        <i class="icon f7-icons">wifi</i>
+                                                    </div>
+                                                    <div class="item-inner">
+                                                        <div
+                                                            class="item-title item-label"
+                                                        >
+                                                            Connected?
+                                                        </div>
+                                                        <div class="item-input-wrap">
+                                                            <input
+                                                                type="text"
+                                                                placeholder="Connection Status"
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                            <div class="row m-3 pt-5">
+                                                <div class="col py-xs-2 py-md-0">
+                                                    <button
+                                                        class="button button-raised button-fill color-primary"
+                                                        data-popup=".popup-services"
+                                                    >
+                                                        Save
+                                                    </button>
+                                                </div>
+                                                <div class="col-md"></div>
+                                                <div class="col-md"></div>
+                                                <div class="col-md"></div>
+                                                <div class="col py-xs-2 py-md-0">
+                                                    <button
+                                                        class="button button-raised button-fill color-red popup-close"
+                                                        data-popup=".popup-services"
+                                                    >
+                                                        Close
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Settings Form Pop Up -->
                     </div>
                 </div>
                 <!-- End Config Page Content -->
