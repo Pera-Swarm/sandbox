@@ -26,6 +26,7 @@
   --f7-login-screen-content-bg-color: #121212;
   --f7-menu-list-selected-text-color: var(--f7-theme-color-tint);
   --f7-menu-list-selected-bg-color: rgba(var(--f7-theme-color-rgb), 0.15);
+  --f7-panel-bg-color: #1c1c1a;
 }
 .aurora {
   --f7-list-item-text-font-size: 13px;
