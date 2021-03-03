@@ -6,141 +6,132 @@
             data-visible-breakpoint="1024"
             data-collapsed-breakpoint="1"
         >
-            <div class="view">
-                <div class="page">
-                    <div class="list media-list menu-list panel-list">
-                        <ul>
-                            <li>
-                                <a
-                                    href="/"
-                                    class="item-content item-link ${selectedMedia === 'home' ? 'item-selected' : ''}"
-                                    @click="${()=> setItemMedia('home')}"
-                                >
-                                    <div class="item-media">
-                                        <i class="icon material-icons if-md">settings</i>
-                                        <i class="icon f7-icons if-not-md"
-                                            >gear_alt_fill</i
-                                        >
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title-wrap">
-                                            <div class="item-title">Settings</div>
-                                        </div>
-                                        <!-- <div class="item-subtitle">Home subtitle</div> -->
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="/robot/"
-                                    class="item-content item-link ${selectedMedia === '/robot/' ? 'item-selected' : ''}"
-                                    @click="${()=> setItemMedia('/robot/')}"
-                                >
-                                    <div class="item-media">
-                                        <i class="icon f7-icons">rocket_fill</i>
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title-wrap">
-                                            <div class="item-title">Robot</div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="/communication/"
-                                    class="item-content item-link ${selectedMedia === '/communication/' ? 'item-selected' : ''}"
-                                    @click="${()=> setItemMedia('/communication/')}"
-                                >
-                                    <div class="item-media">
-                                        <i class="icon f7-icons">waveform_path_ecg</i>
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title-wrap">
-                                            <div class="item-title">Communication</div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="/sensors/distance/"
-                                    class="item-content item-link ${selectedMedia === '/sensors/distance/' ? 'item-selected' : ''}"
-                                    @click="${()=> setItemMedia('/sensors/distance/')}"
-                                >
-                                    <div class="item-media">
-                                        <i class="icon f7-icons"
-                                            >arrow_right_arrow_left</i
-                                        >
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title-wrap">
-                                            <div class="item-title">Distance</div>
-                                        </div>
-                                        <div class="item-subtitle">Distance Sensor</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="/sensors/color/"
-                                    class="item-content item-link ${selectedMedia === '/sensors/color/' ? 'item-selected' : ''}"
-                                    @click="${()=> setItemMedia('/sensors/color/')}"
-                                >
-                                    <div class="item-media">
-                                        <i class="icon f7-icons">color_filter</i>
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title-wrap">
-                                            <div class="item-title">Color</div>
-                                        </div>
-                                        <div class="item-subtitle">Color Sensor</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="/neoPixel/"
-                                    class="item-content item-link ${selectedMedia === '/neoPixel/' ? 'item-selected' : ''}"
-                                    @click="${()=> setItemMedia('/neoPixel/')}"
-                                >
-                                    <div class="item-media">
-                                        <i class="icon f7-icons">circle_grid_hex</i>
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title-wrap">
-                                            <div class="item-title">NeoPixel</div>
-                                        </div>
-                                        <div class="item-subtitle">
-                                            NeoPixel / RGB Color Strip
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="/environment/"
-                                    class="item-content item-link ${selectedMedia === '/environment/' ? 'item-selected' : ''}"
-                                    @click="${()=> setItemMedia('/environment/')}"
-                                >
-                                    <div class="item-media">
-                                        <i class="icon f7-icons">cube_fill</i>
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title-wrap">
-                                            <div class="item-title">Environment</div>
-                                        </div>
-                                        <div class="item-subtitle">
-                                            Visualizer & Obstacles
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- End Panel List -->
-                </div>
+            <!-- Panel -->
+            <div class="list media-list menu-list panel-list">
+                <ul>
+                    <li>
+                        <a
+                            href="/"
+                            class="item-content item-link ${selectedMedia === 'home' ? 'item-selected' : ''}"
+                            @click="${()=> setItemMedia('home')}"
+                        >
+                            <div class="item-media">
+                                <i class="icon material-icons if-md">settings</i>
+                                <i class="icon f7-icons if-not-md">gear_alt_fill</i>
+                            </div>
+                            <div class="item-inner">
+                                <div class="item-title-wrap">
+                                    <div class="item-title">Settings</div>
+                                </div>
+                                <!-- <div class="item-subtitle">Home subtitle</div> -->
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="/robot/"
+                            class="item-content item-link ${selectedMedia === '/robot/' ? 'item-selected' : ''}"
+                            @click="${()=> setItemMedia('/robot/')}"
+                        >
+                            <div class="item-media">
+                                <i class="icon f7-icons">rocket_fill</i>
+                            </div>
+                            <div class="item-inner">
+                                <div class="item-title-wrap">
+                                    <div class="item-title">Robot</div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="/communication/"
+                            class="item-content item-link ${selectedMedia === '/communication/' ? 'item-selected' : ''}"
+                            @click="${()=> setItemMedia('/communication/')}"
+                        >
+                            <div class="item-media">
+                                <i class="icon f7-icons">waveform_path_ecg</i>
+                            </div>
+                            <div class="item-inner">
+                                <div class="item-title-wrap">
+                                    <div class="item-title">Communication</div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="/sensors/distance/"
+                            class="item-content item-link ${selectedMedia === '/sensors/distance/' ? 'item-selected' : ''}"
+                            @click="${()=> setItemMedia('/sensors/distance/')}"
+                        >
+                            <div class="item-media">
+                                <i class="icon f7-icons">arrow_right_arrow_left</i>
+                            </div>
+                            <div class="item-inner">
+                                <div class="item-title-wrap">
+                                    <div class="item-title">Distance</div>
+                                </div>
+                                <div class="item-subtitle">Distance Sensor</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="/sensors/color/"
+                            class="item-content item-link ${selectedMedia === '/sensors/color/' ? 'item-selected' : ''}"
+                            @click="${()=> setItemMedia('/sensors/color/')}"
+                        >
+                            <div class="item-media">
+                                <i class="icon f7-icons">color_filter</i>
+                            </div>
+                            <div class="item-inner">
+                                <div class="item-title-wrap">
+                                    <div class="item-title">Color</div>
+                                </div>
+                                <div class="item-subtitle">Color Sensor</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="/neoPixel/"
+                            class="item-content item-link ${selectedMedia === '/neoPixel/' ? 'item-selected' : ''}"
+                            @click="${()=> setItemMedia('/neoPixel/')}"
+                        >
+                            <div class="item-media">
+                                <i class="icon f7-icons">circle_grid_hex</i>
+                            </div>
+                            <div class="item-inner">
+                                <div class="item-title-wrap">
+                                    <div class="item-title">NeoPixel</div>
+                                </div>
+                                <div class="item-subtitle">
+                                    NeoPixel / RGB Color Strip
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="/environment/"
+                            class="item-content item-link ${selectedMedia === '/environment/' ? 'item-selected' : ''}"
+                            @click="${()=> setItemMedia('/environment/')}"
+                        >
+                            <div class="item-media">
+                                <i class="icon f7-icons">cube_fill</i>
+                            </div>
+                            <div class="item-inner">
+                                <div class="item-title-wrap">
+                                    <div class="item-title">Environment</div>
+                                </div>
+                                <div class="item-subtitle">Visualizer & Obstacles</div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
             </div>
+            <!-- End Panel -->
         </div>
         <!-- End SidePanel -->
 
@@ -219,60 +210,6 @@
                         >
                     </div>
                 </div>
-
-                <!-- Page Content -->
-                <!-- <div class="page-content">
-                    <div class="page no-navbar no-toolbar no-swipeback">
-                        <div class="page-content login-screen-content">
-                            <div class="login-screen-title">SandBox v2.0</div>
-                            <form>
-                                <div class="list">
-                                    <ul>
-                                        <li class="item-content item-input">
-                                            <div class="item-inner">
-                                                <div class="item-title item-label">
-                                                    Username
-                                                </div>
-                                                <div class="item-input-wrap">
-                                                    <input
-                                                        type="text"
-                                                        name="username"
-                                                        placeholder="MQTT username"
-                                                    />
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="item-content item-input">
-                                            <div class="item-inner">
-                                                <div class="item-title item-label">
-                                                    Password
-                                                </div>
-                                                <div class="item-input-wrap">
-                                                    <input
-                                                        type="password"
-                                                        name="password"
-                                                        placeholder="MQTT password"
-                                                    />
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="list">
-                                    <ul>
-                                        <li>
-                                            <a href="#" class="list-button">Sign In</a>
-                                        </li>
-                                    </ul>
-                                    <div class="block-footer">
-                                        <p>Welcome to Pera-Swarm SandBox v2.0</p>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div> -->
-                <!-- End Page Content -->
 
                 <!-- Config Page Content -->
                 <div class="page-content">
@@ -383,7 +320,7 @@
                                             </li>
                                         </ul>
                                         <button
-                                            class="button button-raised button-fill color-green popup-open"
+                                            class="button button-raised button-fill color-green popup-open my-2"
                                             data-popup=".popup-services"
                                         >
                                             Change
@@ -430,7 +367,7 @@
                                             </li>
                                         </ul>
                                         <button
-                                            class="button button-raised button-fill color-red"
+                                            class="button button-raised button-fill color-red my-2"
                                         >
                                             Disconnect
                                         </button>
