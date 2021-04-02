@@ -3,9 +3,9 @@ import $ from "jquery";
 
 export default class MqttClient {
   constructor(callback) {
-    const mqtt_server = "swarm-gui.tk"; // process.env.MQTT_HOST;
+    const mqtt_server = "webservices.ceykod.com"; // process.env.MQTT_HOST;
     const mqtt_port = 8883;
-    const mqtt_path = "/socket.io"; //process.env.MQTT_PATH;
+    const mqtt_path = "/mqtt"; //process.env.MQTT_PATH;
     const client_id = "client_" + Math.random().toString(36).substring(2, 15);
     this.client = new MQTT.Client(mqtt_server, mqtt_port, mqtt_path, client_id);
     this.channel = "v1";
