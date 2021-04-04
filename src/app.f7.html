@@ -523,35 +523,48 @@
 
 <script>
     import { setup } from './js/app';
+    import resolvedConfig from './js/config';
 
     export default (props, { $f7, $on, $f7router, $update }) => {
         let selected = 'home';
         let selectedMedia = 'home';
+        let toastBottom;
 
         const setItem = (newItem) => {
             selected = newItem;
             $update();
         };
+
         const setItemMedia = (newItem) => {
             selectedMedia = newItem;
             $update();
         };
-        const isAuthenticated = false;
+
+        console.log(
+            window.isAuthenticated,
+            JSON.parse(localStorage.getItem(document.location.origin))
+        );
         let { channel, client } = window.mqtt;
-        console.log($f7, $on, $f7router, window.mqtt);
+        console.log($f7, $on, $f7router, window.mqtt, resolvedConfig);
+
+        const showToastBottom = (message) => {
+            // Create toast
+            if (!toastBottom) {
+                toastBottom = $f7.toast.create({
+                    text: message,
+                    closeTimeout: 4000
+                });
+            }
+            // Open it
+            toastBottom.open();
+        };
+
         $on('pageInit', (e, page) => {
-            setup();
-            const showToastWithButton = () => {
-                // Create toast
-                if (!toastWithButton) {
-                    toastWithButton = $f7.toast.create({
-                        text: 'Toast with additional close button',
-                        closeButton: true
-                    });
-                }
-                // Open it
-                toastWithButton.open();
-            };
+            setup(showToastBottom);
+        });
+
+        $on('pageBeforeRemove', () => {
+            if (toastBottom) toastBottom.destroy();
         });
         return $render;
     };
