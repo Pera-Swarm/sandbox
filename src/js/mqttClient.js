@@ -2,42 +2,48 @@ import MQTT from 'paho-mqtt';
 import $ from 'jquery';
 
 export default class MqttClient {
-    constructor(callback) {
-        const mqtt_server = 'swarm-gui.tk'; // process.env.MQTT_HOST;
-        const mqtt_port = 8883;
-        const mqtt_path = '/socket.io'; //process.env.MQTT_PATH;
+    constructor(config, callback) {
+        const { server, port, path, channel, token } = config;
         const client_id = 'client_' + Math.random().toString(36).substring(2, 15);
-        this.client = new MQTT.Client(mqtt_server, mqtt_port, mqtt_path, client_id);
-        this.channel = 'v1';
+        this.client = new MQTT.Client(server, port, path, client_id);
+        this.channel = channel;
 
         window.mqtt = this.client;
         window.subList = {};
 
-        this.client.connect({
-            userName: 'swarm_user' /*process.env.MQTT_USER,*/,
-            password: 'swarm_usere15' /*process.env.MQTT_PASS,*/,
-            reconnect: false,
-            useSSL: true,
-            keepAliveInterval: 360,
-            cleanSession: false,
+        if (
+            JSON.parse(
+                localStorage.getItem(document.location.origin + '.isAuthenticated')
+            ) ||
+            false
+        ) {
+            console.log('WWWW');
+            this.client.connect({
+                userName: 'swarm_user' /*process.env.MQTT_USER,*/,
+                password: 'swarm_usere15' /*process.env.MQTT_PASS,*/,
+                reconnect: false,
+                useSSL: true,
+                keepAliveInterval: 360,
+                cleanSession: false,
 
-            onSuccess: () => {
-                console.log('MQTT: connected');
+                onSuccess: () => {
+                    console.log('MQTT: connected');
 
-                this.client.onMessageArrived = this.onMessageArrived;
-                this.client.onConnectionLost = this.onConnectionLost;
+                    this.client.onMessageArrived = this.onMessageArrived;
+                    this.client.onConnectionLost = this.onConnectionLost;
 
-                $('#status').text('Connected');
-                $('.btn').prop('disabled', false);
+                    $('#status').text('Connected');
+                    $('.btn').prop('disabled', false);
 
-                if (callback !== undefined) {
-                    callback();
+                    if (callback !== undefined) {
+                        callback();
+                    }
+                },
+                onFailure: () => {
+                    console.log('MQTT: connection failed');
                 }
-            },
-            onFailure: () => {
-                console.log('MQTT: connection failed');
-            }
-        });
+            });
+        }
     }
 
     onConnectionLost(responseObject) {
