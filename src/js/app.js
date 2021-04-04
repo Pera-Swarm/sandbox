@@ -40,6 +40,10 @@ window.mqtt = new MQTTClient(() => {
             path: '/service-worker.js'
         }
     });
+window.isAuthenticated =
+    JSON.parse(localStorage.getItem(document.location.origin + '.isAuthenticated')) ||
+    false;
+
 });
 
 export function setup() {

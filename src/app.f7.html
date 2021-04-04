@@ -232,6 +232,7 @@
                                                     </div>
                                                     <div class="item-input-wrap">
                                                         <input
+                                                            id="mqtt_server"
                                                             type="text"
                                                             placeholder="MQTT Server"
                                                             disabled="{true}"
@@ -252,6 +253,7 @@
                                                     </div>
                                                     <div class="item-input-wrap">
                                                         <input
+                                                            id="mqtt_port"
                                                             type="text"
                                                             placeholder="MQTT Port"
                                                             disabled="{true}"
@@ -272,6 +274,7 @@
                                                     </div>
                                                     <div class="item-input-wrap">
                                                         <input
+                                                            id="mqtt_client_id"
                                                             type="text"
                                                             placeholder="MQTT Client ID"
                                                             disabled="{true}"
@@ -292,6 +295,7 @@
                                                     </div>
                                                     <div class="item-input-wrap">
                                                         <input
+                                                            id="mqtt_channel"
                                                             type="text"
                                                             placeholder="MQTT Channel"
                                                             disabled="{true}"
@@ -310,6 +314,7 @@
                                                     </div>
                                                     <div class="item-input-wrap">
                                                         <input
+                                                            id="status"
                                                             type="text"
                                                             placeholder="Connection Status"
                                                             disabled="{true}"
@@ -341,9 +346,10 @@
                                                     </div>
                                                     <div class="item-input-wrap">
                                                         <input
+                                                            id="mqtt-username"
                                                             type="text"
                                                             placeholder="MQTT Username"
-                                                            disabled="{true}"
+                                                            disabled="${window.isAuthenticated}"
                                                         />
                                                     </div>
                                                 </div>
@@ -358,19 +364,30 @@
                                                     </div>
                                                     <div class="item-input-wrap">
                                                         <input
-                                                            type="text"
+                                                            id="mqtt-password"
+                                                            type="password"
                                                             placeholder="MQTT Password"
-                                                            disabled="{true}"
+                                                            disabled="${isAuthenticated}"
                                                         />
                                                     </div>
                                                 </div>
                                             </li>
                                         </ul>
+                                        ${window.isAuthenticated === true ?
                                         <button
                                             class="button button-raised button-fill color-red my-2"
+                                            id="disconnect-button"
                                         >
                                             Disconnect
                                         </button>
+                                        :
+                                        <button
+                                            class="button button-raised button-fill color-blue my-2"
+                                            id="connect-button"
+                                        >
+                                            Connect
+                                        </button>
+                                        }
                                     </div>
                                 </div>
                             </div>
