@@ -3,6 +3,10 @@ on:
     push:
         branches:
             - main
+    
+  # Enables a button on Actions tab
+  workflow_dispatch:
+    
 jobs:
     build:
         runs-on: ubuntu-latest
