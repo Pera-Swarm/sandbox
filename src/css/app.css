@@ -31,11 +31,11 @@
 .aurora {
   --f7-list-item-text-font-size: 13px;
   --f7-list-item-text-line-height: 18px;
-  /* --f7-panel-collapsed-width: 44px; */
+  --f7-panel-collapsed-width: 0;
   --f7-login-screen-blocks-margin-vertical: 16px;
 }
 .ios {
-  /* --f7-panel-collapsed-width: 58px; */
+  --f7-panel-collapsed-width: 0;
   --f7-login-screen-blocks-margin-vertical: 25px;
 }
 .ios .theme-dark,
@@ -44,7 +44,7 @@
   --f7-login-screen-content-bg-color: #000;
 }
 .md {
-  /* --f7-panel-collapsed-width: 60px; */
+  --f7-panel-collapsed-width: 0;
   --f7-login-screen-blocks-margin-vertical: 100px;
 }
 
@@ -63,7 +63,7 @@
 }
 
 .panel-list {
-  margin-top: 100px;
+  margin-top: 60px;
 }
 .panel-list:after {
   background-color: #ff0000;
