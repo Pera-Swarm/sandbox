@@ -42,13 +42,9 @@ const store = createStore({
                 .then(
                     (response) => {
                         console.log(response);
-                        // TODO:
-                        // const token = response.data.token;
-                        // saveConfig(token);
-                        // localStorage.setItem(
-                        //     document.location.origin + `.cache`,
-                        //     JSON.stringify([])
-                        // );
+                        // TODO: @NuwanJ
+                        const token = response.data.token;
+                        saveConfig(token);
                         state.loading = false;
                     },
                     (error) => {
