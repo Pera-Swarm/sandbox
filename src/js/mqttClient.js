@@ -1,6 +1,7 @@
 import MQTT from 'paho-mqtt';
 import $ from 'jquery';
 import { saveCache } from './config';
+import store from './store/cache';
 
 export default class MqttClient {
     constructor(config, callback) {
@@ -18,7 +19,6 @@ export default class MqttClient {
             ) ||
             false
         ) {
-            console.log('WWWW');
             this.client.connect({
                 userName: 'swarm_user' /*process.env.MQTT_USER,*/,
                 password: 'swarm_usere15' /*process.env.MQTT_PASS,*/,
@@ -29,7 +29,7 @@ export default class MqttClient {
 
                 onSuccess: () => {
                     console.log('MQTT: connected');
-
+                    store.dispatch('createToken');
                     this.client.onMessageArrived = this.onMessageArrived;
                     this.client.onConnectionLost = this.onConnectionLost;
 
@@ -94,12 +94,6 @@ export default class MqttClient {
 
         if (action !== undefined) {
             action(topic, msg);
-            console.log('cache', window.subList, JSON.stringify(window.subList), {
-                topic,
-                msg,
-                type: 'in',
-                timestamp: new Date()
-            });
             saveCache('cache', {
                 topic,
                 message: msg,
@@ -110,8 +104,6 @@ export default class MqttClient {
     }
 
     publish(topic, message, callback) {
-        //console.log(topic, message);
-
         if (topic !== '' && message !== '') {
             const pubTopic = this.channel + '/' + topic;
             var payload = new MQTT.Message(message);
