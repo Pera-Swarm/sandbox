@@ -7,5 +7,4 @@ export function setup() {
         localStorage.getItem(document.location.origin + `.cache`)
     );
     console.log(cache_List);
-
 }
