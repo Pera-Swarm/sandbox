@@ -8,6 +8,7 @@ import DistanceSensorPage from '../pages/sandbox_pages/distanceSensor.f7.html';
 import ColorSensorPage from '../pages/sandbox_pages/colorSensor.f7.html';
 import EnvironmentPage from '../pages/sandbox_pages/environment.f7.html';
 import NeoPixelPage from '../pages/sandbox_pages/neoPixel.f7.html';
+import CachePage from '../pages/sandbox_pages/cache.f7.html';
 
 import NotFoundPage from '../pages/404.f7.html';
 
@@ -148,6 +149,10 @@ var routes = [
                 reject();
             }
         }
+    },
+    {
+        path: '/cache/',
+        component: CachePage
     },
     {
         path: '(.*)',

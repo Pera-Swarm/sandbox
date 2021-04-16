@@ -81,6 +81,7 @@ export default class MqttClient {
 
         if (action !== undefined) {
             action(topic, msg);
+            console.log('cache', window.subList);
         }
     }
 

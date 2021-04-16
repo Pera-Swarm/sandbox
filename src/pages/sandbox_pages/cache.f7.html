@@ -1,0 +1,25 @@
+<template>
+    <div class="page" data-name="template">
+        <div class="navbar">
+            <div class="navbar-bg"></div>
+            <div class="navbar-inner sliding">
+                <div class="title">Cache</div>
+            </div>
+        </div>
+        <div class="page-content">
+            <div class="container pt-2">
+                <div class="row p-2">Message Logs</div>
+            </div>
+        </div>
+    </div>
+</template>
+<script>
+    import { setup } from '../../js/sandbox_scripts/cache';
+
+    export default (props, { $f7, $on }) => {
+        $on('pageInit', (e, page) => {
+            setup();
+        });
+        return $render;
+    };
+</script>
