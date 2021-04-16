@@ -212,10 +212,18 @@
                         <i class="icon material-icons md-only">close</i>
                     </a>
                     <div class="fab-buttons fab-buttons-top">
-                        <a class="fab-label-button" href="#"
+                        <a
+                            class="fab-label-button link external"
+                            href="https://pera-swarm.ce.pdn.ac.lk/docs"
+                            target="_blank"
+                            rel="noreferrer"
                             ><span>2</span><span class="fab-label">Docs</span></a
                         >
-                        <a class="fab-label-button" href="#"
+                        <a
+                            class="fab-label-button link external"
+                            href="https://pera-swarm.ce.pdn.ac.lk/visualizer/?token=${token}"
+                            target="_blank"
+                            rel="noreferrer"
                             ><span>1</span><span class="fab-label">Visualizer</span></a
                         >
                     </div>
@@ -541,7 +549,7 @@
         let selected = 'home';
         let selectedMedia = 'home';
         let toastBottom;
-
+        const token = $store.getters.token;
         const setItem = (newItem) => {
             selected = newItem;
             $update();
