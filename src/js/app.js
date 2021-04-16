@@ -17,6 +17,9 @@ import '../css/icons.css';
 import '../css/app.css';
 import { init } from '../css/index.css';
 
+// logs store
+import logsStore from './store/cache';
+
 // import Routes
 window.mqtt = new MQTTClient(config, () => {
     // $("#status").text("Trying to connect...");
@@ -42,6 +45,8 @@ var app = new Framework7({
     },
     // App routes
     routes: routes,
+    // App stores,
+    store: logsStore,
     // Register service worker
     serviceWorker: {
         path: '/service-worker.js'
