@@ -106,7 +106,8 @@ function testConnection(username, password, callback) {
             persistConfig(true);
         },
         onFailure: () => {
-            console.log('MQTT: connection failed');
+            if (callback !== undefined) callback('MQTT Connection Failed!');
+            console.log('MQTT: connection failed', callback);
         }
     });
 }
