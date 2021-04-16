@@ -18,7 +18,7 @@ import '../css/app.css';
 import { init } from '../css/index.css';
 
 // logs store
-import logsStore from './store/cache';
+import store from './store/cache';
 
 // import Routes
 window.mqtt = new MQTTClient(config, () => {
@@ -46,7 +46,7 @@ var app = new Framework7({
     // App routes
     routes: routes,
     // App stores,
-    store: logsStore,
+    store,
     // Register service worker
     serviceWorker: {
         path: '/service-worker.js'
@@ -108,11 +108,13 @@ function testConnection(username, password, callback) {
             if (callback !== undefined) callback('MQTT Connection Successful!');
             window.mqtt.client.onMessageArrived = window.mqtt.onMessageArrived;
             window.mqtt.client.onConnectionLost = window.mqtt.onConnectionLost;
+            store.dispatch('createToken');
             persistConfig(true);
         },
         onFailure: () => {
             if (callback !== undefined) callback('MQTT Connection Failed!');
             console.log('MQTT: connection failed', callback);
+            persistConfig(false);
         }
     });
 }
