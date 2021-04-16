@@ -41,6 +41,11 @@ export default class MqttClient {
                 },
                 onFailure: () => {
                     console.log('MQTT: connection failed');
+                    $('#status').text('Disonnected');
+                    $('.btn').prop('disabled', true);
+                    if (callback !== undefined) {
+                        callback();
+                    }
                 }
             });
         }
