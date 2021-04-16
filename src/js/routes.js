@@ -1,6 +1,5 @@
 import App from '../app.f7.html';
 import HomePage from '../pages/home.f7.html';
-import LoginPage from '../pages/login.f7.html';
 
 import RobotPage from '../pages/sandbox_pages/robot.f7.html';
 import CommunicationPage from '../pages/sandbox_pages/communication.f7.html';
@@ -76,11 +75,6 @@ var routes = [
         path: '/settings',
         name: 'settings',
         component: HomePage
-    },
-    {
-        path: '/login',
-        name: 'login',
-        component: LoginPage
     },
     {
         path: '/robot/',
