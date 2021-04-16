@@ -1,5 +1,6 @@
 import MQTT from 'paho-mqtt';
 import $ from 'jquery';
+import { saveCache } from './config';
 
 export default class MqttClient {
     constructor(config, callback) {
@@ -65,6 +66,7 @@ export default class MqttClient {
             window.subList[t] = callback;
             console.log('subscribed to ', t);
             this.client.subscribe(t);
+            saveCache('cache', {t, type: 'sub', timestamp: new Date()});
         }
     }
 
@@ -72,6 +74,7 @@ export default class MqttClient {
         this.client.unsubscribe(topic);
         const t = this.channel + '/' + topic;
         console.log('unsubscribed from', t);
+        saveCache('cache', {t, type: 'unsub', timestamp: new Date()});
     }
 
     onMessageArrived(packet) {
@@ -81,7 +84,8 @@ export default class MqttClient {
 
         if (action !== undefined) {
             action(topic, msg);
-            console.log('cache', window.subList);
+            console.log('cache', window.subList, JSON.stringify(window.subList), {topic, msg, type: 'in', timestamp: new Date()});
+            saveCache('cache', {topic, msg, type: 'in', timestamp: new Date()});
         }
     }
 
@@ -95,7 +99,7 @@ export default class MqttClient {
             payload.destinationName = pubTopic;
             this.client.send(payload);
             console.log('MQTT: published', pubTopic, message);
-
+            saveCache('cache', {pubTopic, message, type: 'out', timestamp: new Date()});
             if (callback != null) callback();
         }
     }

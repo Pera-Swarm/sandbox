@@ -32,5 +32,21 @@ export function getCredentials() {
     }
 }
 
+export function saveCache(name, data) {
+    const prevData = JSON.parse(
+        localStorage.getItem(document.location.origin + `.${name}`)
+    );
+    if (prevData !== null && prevData !== undefined) {
+        localStorage.setItem(
+            document.location.origin + `.${name}`,
+            JSON.stringify([...prevData, data])
+        );
+    } else {
+        localStorage.setItem(
+            document.location.origin + `.${name}`,
+            JSON.stringify([data])
+        );
+    }
+}
 
 export default resolvedConfig;
