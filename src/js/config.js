@@ -9,6 +9,13 @@ const config = {
 
 // check localstorage for updated config, if not use above config
 const storedConfig = localStorage.getItem(document.location.origin + '.config');
+
+window.isAuthenticated = localStorage.getItem(
+    document.location.origim + 'isAuthenticated'
+);
+window.username = 'swarm_user';
+window.password = 'swarm_usere15';
+
 let resolvedConfig =
     storedConfig !== null && storedConfig !== undefined
         ? JSON.parse(storedConfig)
