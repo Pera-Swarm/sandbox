@@ -66,7 +66,12 @@ export default class MqttClient {
             window.subList[t] = callback;
             console.log('subscribed to ', t);
             this.client.subscribe(t);
-            saveCache('cache', { topic: t, message: '-', type: 'sub', timestamp: new Date() });
+            saveCache('cache', {
+                topic: t,
+                message: '-',
+                type: 'sub',
+                timestamp: new Date()
+            });
         }
     }
 
@@ -74,7 +79,12 @@ export default class MqttClient {
         this.client.unsubscribe(topic);
         const t = this.channel + '/' + topic;
         console.log('unsubscribed from', t);
-        saveCache('cache', { topic: t, message: '-', type: 'unsub', timestamp: new Date() });
+        saveCache('cache', {
+            topic: t,
+            message: '-',
+            type: 'unsub',
+            timestamp: new Date()
+        });
     }
 
     onMessageArrived(packet) {
@@ -90,7 +100,12 @@ export default class MqttClient {
                 type: 'in',
                 timestamp: new Date()
             });
-            saveCache('cache', { topic, message: msg, type: 'in', timestamp: new Date() });
+            saveCache('cache', {
+                topic,
+                message: msg,
+                type: 'in',
+                timestamp: new Date()
+            });
         }
     }
 
@@ -104,7 +119,12 @@ export default class MqttClient {
             payload.destinationName = pubTopic;
             this.client.send(payload);
             console.log('MQTT: published', pubTopic, message);
-            saveCache('cache', { topic: pubTopic, message, type: 'out', timestamp: new Date() });
+            saveCache('cache', {
+                topic: pubTopic,
+                message,
+                type: 'out',
+                timestamp: new Date()
+            });
             if (callback != null) callback();
         }
     }

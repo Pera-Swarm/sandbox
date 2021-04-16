@@ -176,7 +176,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="item-content">
+                                <a href="#" class="item-content" @click="${clearCache}">
                                     <div class="item-media">
                                         <i class="icon f7-icons">xmark_circle_fill</i>
                                     </div>
@@ -537,7 +537,7 @@
     import { setup } from './js/app';
     import resolvedConfig from './js/config';
 
-    export default (props, { $f7, $on, $f7router, $update }) => {
+    export default (props, { $f7, $on, $f7router, $update, $store }) => {
         let selected = 'home';
         let selectedMedia = 'home';
         let toastBottom;
@@ -550,6 +550,10 @@
         const setItemMedia = (newItem) => {
             selectedMedia = newItem;
             $update();
+        };
+
+        const clearCache = () => {
+            $store.dispatch('clearLogs');
         };
 
         console.log(
