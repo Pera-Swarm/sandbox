@@ -91,6 +91,8 @@ function authenticate(onConnectionCallback) {
     const username = $('#mqtt-username').value();
     const password = $('#mqtt-password').value();
     console.log(username, password);
+    window.username = username;
+    window.password = password;
     testConnection(username, password, onConnectionCallback);
 }
 
