@@ -31,7 +31,7 @@ console.log(resolvedConfig);
 
 // method to presist config data with localStorage
 export const saveConfig = (data) => {
-    console.log('saveConfig', data);
+    // console.log('saveConfig', data);
 
     localStorage.setItem(
         document.location.origin + '.config',
