@@ -33,7 +33,6 @@ export function setup() {
             const topicDirect = `comm/in/direct/${robotId}`;
 
             if (comm_in_id !== robotId && comm_in_id !== null) {
-
                 // unsubscribe from previous topic
                 mqtt.unsubscribe(`comm/in/simple/${comm_in_id}`);
             }

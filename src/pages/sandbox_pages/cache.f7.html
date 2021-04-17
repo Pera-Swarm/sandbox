@@ -26,7 +26,27 @@
                                                 Date(log.timestamp).toLocaleString()}
                                             </div>
                                         </div>
-                                        <div class="item-subtitle">${log.type}</div>
+                                        <div class="item-subtitle margin-bottom">
+                                            ${log.type && log.type === 'in' ?
+                                            <div class="chip color-blue">
+                                                <div class="chip-label">Incoming</div>
+                                            </div>
+                                            : null} ${log.type && log.type === 'out' ?
+                                            <div class="chip color-green">
+                                                <div class="chip-label">Outgoing</div>
+                                            </div>
+                                            : null} ${log.type && log.type === 'sub' ?
+                                            <div class="chip chip-outline color-blue">
+                                                <div class="chip-label">Subscription</div>
+                                            </div>
+                                            : null} ${log.type && log.type === 'unsub' ?
+                                            <div class="chip chip-outline color-red">
+                                                <div class="chip-label">
+                                                    Unsubscription
+                                                </div>
+                                            </div>
+                                            : null}
+                                        </div>
                                         <div class="item-text">${log.message}</div>
                                     </div>
                                 </a>

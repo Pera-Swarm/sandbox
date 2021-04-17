@@ -14,11 +14,13 @@ window.isAuthenticated = localStorage.getItem(
     document.location.origim + 'isAuthenticated'
 );
 
-const { user, pass } = getCredentials();
-window.username = user;
-window.password = pass;
-// window.username = 'swarm_user';
-// window.password = 'swarm_usere15';
+const cred = getCredentials();
+if (cred !== -1) {
+    const { user, pass } = cred;
+    window.username = user;
+    window.password = pass;
+}
+// swarm_user, swarm_usere15
 
 let resolvedConfig =
     storedConfig !== null && storedConfig !== undefined
@@ -33,8 +35,8 @@ export const saveConfig = (data) => {
 
     localStorage.setItem(
         document.location.origin + '.config',
-        // JSON.stringify({ ...config, token: data })
-        JSON.stringify({ token: data })
+        JSON.stringify({ ...config, token: data })
+        // JSON.stringify({ token: data })
     );
 };
 
@@ -45,8 +47,8 @@ export function getCredentials() {
             : config;
 
     const { token } = resolvedConfig;
-    console.log('getCredentials', resolvedConfig.token);
-    if (token !== undefined) {
+    console.log('getCredentials', resolvedConfig.token, token);
+    if (token !== undefined && token !== null) {
         // decode the token
         return parseJwt(token);
     } else {
