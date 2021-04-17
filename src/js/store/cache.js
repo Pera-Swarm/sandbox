@@ -33,13 +33,21 @@ const store = createStore({
             state.loading = true;
             if (!(window.username === undefined || window.password === undefined)) {
                 axios
-                    .post('https://webservices.ceykod.com/pera-swarm/login/', {
-                        user: window.username,
-                        pass: window.password,
-                        host: config.server,
-                        port: config.port,
-                        path: config.path
-                    })
+                    .post(
+                        'https://webservices.ceykod.com/pera-swarm/login/',
+                        {
+                            user: window.username,
+                            pass: window.password,
+                            host: config.server,
+                            port: config.port,
+                            path: config.path
+                        },
+                        {
+                            headers: {
+                                'Access-Control-Allow-Origin': true
+                            }
+                        }
+                    )
                     .then(
                         (response) => {
                             console.log(response);
