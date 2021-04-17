@@ -2,98 +2,136 @@
     <div id="app">
         <!-- SidePanel -->
         <div
-            class="panel panel-left panel-reveal panel-init"
+            class="panel panel-left panel-cover panel-init"
             data-visible-breakpoint="1024"
             data-collapsed-breakpoint="1"
         >
-            <div class="view">
-                <div class="page">
-                    <!-- Panel List -->
-                    <div class="list panel-list">
-                        <ul>
-                            <li>
-                                <a href="/" class="item-content active-link">
-                                    <div class="item-media">
-                                        <i class="icon f7-icons">square_grid_2x2_fill</i>
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title">Home</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/robot/" class="item-content color-lightblue">
-                                    <div class="item-media">
-                                        <i class="icon f7-icons">rocket_fill</i>
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title">Robot</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/communication/" class="item-content color-teal">
-                                    <div class="item-media">
-                                        <i class="icon f7-icons">waveform_path_ecg</i>
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title">Communication</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="/sensors/distance/"
-                                    class="item-content color-red"
-                                >
-                                    <div class="item-media">
-                                        <i class="icon f7-icons"
-                                            >arrow_right_arrow_left</i
-                                        >
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title">Distance Sensor</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="/sensors/color/"
-                                    class="item-content color-orange"
-                                >
-                                    <div class="item-media">
-                                        <i class="icon f7-icons">dial_fill</i>
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title">Color Sensor</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/neoPixel/" class="item-content color-pink">
-                                    <div class="item-media">
-                                        <i class="icon f7-icons">timelapse</i>
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title">NeoPixel</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/environment/" class="item-content color-green">
-                                    <div class="item-media">
-                                        <i class="icon f7-icons">cube_fill</i>
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title">Environment</div>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- End Panel List -->
-                </div>
+            <!-- Panel -->
+            <div class="list media-list menu-list panel-list">
+                <ul>
+                    <li>
+                        <a
+                            href="/"
+                            class="item-content item-link ${selectedMedia === 'home' ? 'item-selected' : ''}"
+                            @click="${()=> setItemMedia('home')}"
+                        >
+                            <div class="item-media">
+                                <i class="icon material-icons if-md">settings</i>
+                                <i class="icon f7-icons if-not-md">gear_alt_fill</i>
+                            </div>
+                            <div class="item-inner">
+                                <div class="item-title-wrap">
+                                    <div class="item-title">Settings</div>
+                                </div>
+                                <!-- <div class="item-subtitle">Home subtitle</div> -->
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="/robot/"
+                            class="item-content item-link ${selectedMedia === '/robot/' ? 'item-selected' : ''}"
+                            @click="${()=> setItemMedia('/robot/')}"
+                        >
+                            <div class="item-media">
+                                <i class="icon f7-icons">rocket_fill</i>
+                            </div>
+                            <div class="item-inner">
+                                <div class="item-title-wrap">
+                                    <div class="item-title">Robot</div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="/communication/"
+                            class="item-content item-link ${selectedMedia === '/communication/' ? 'item-selected' : ''}"
+                            @click="${()=> setItemMedia('/communication/')}"
+                        >
+                            <div class="item-media">
+                                <i class="icon f7-icons">waveform_path_ecg</i>
+                            </div>
+                            <div class="item-inner">
+                                <div class="item-title-wrap">
+                                    <div class="item-title">Communication</div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="/sensors/distance/"
+                            class="item-content item-link ${selectedMedia === '/sensors/distance/' ? 'item-selected' : ''}"
+                            @click="${()=> setItemMedia('/sensors/distance/')}"
+                        >
+                            <div class="item-media">
+                                <i class="icon f7-icons">arrow_right_arrow_left</i>
+                            </div>
+                            <div class="item-inner">
+                                <div class="item-title-wrap">
+                                    <div class="item-title">Distance</div>
+                                </div>
+                                <div class="item-subtitle">Distance Sensor</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="/sensors/color/"
+                            class="item-content item-link ${selectedMedia === '/sensors/color/' ? 'item-selected' : ''}"
+                            @click="${()=> setItemMedia('/sensors/color/')}"
+                        >
+                            <div class="item-media">
+                                <i class="icon f7-icons">color_filter</i>
+                            </div>
+                            <div class="item-inner">
+                                <div class="item-title-wrap">
+                                    <div class="item-title">Color</div>
+                                </div>
+                                <div class="item-subtitle">Color Sensor</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="/neoPixel/"
+                            class="item-content item-link ${selectedMedia === '/neoPixel/' ? 'item-selected' : ''}"
+                            @click="${()=> setItemMedia('/neoPixel/')}"
+                        >
+                            <div class="item-media">
+                                <i class="icon f7-icons">circle_grid_hex</i>
+                            </div>
+                            <div class="item-inner">
+                                <div class="item-title-wrap">
+                                    <div class="item-title">NeoPixel</div>
+                                </div>
+                                <div class="item-subtitle">
+                                    NeoPixel / RGB Color Strip
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="/environment/"
+                            class="item-content item-link ${selectedMedia === '/environment/' ? 'item-selected' : ''}"
+                            @click="${()=> setItemMedia('/environment/')}"
+                        >
+                            <div class="item-media">
+                                <i class="icon f7-icons">cube_fill</i>
+                            </div>
+                            <div class="item-inner">
+                                <div class="item-title-wrap">
+                                    <div class="item-title">Environment</div>
+                                </div>
+                                <div class="item-subtitle">Visualizer & Obstacles</div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
             </div>
+            <!-- End Panel -->
         </div>
         <!-- End SidePanel -->
 
@@ -128,7 +166,17 @@
                     >
                         <ul>
                             <li>
-                                <a href="#" class="item-content">
+                                <a href="/cache/" class="item-content">
+                                    <div class="item-media">
+                                        <i class="icon f7-icons">archivebox</i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title">Logs</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="item-content" @click="${clearCache}">
                                     <div class="item-media">
                                         <i class="icon f7-icons">xmark_circle_fill</i>
                                     </div>
@@ -152,100 +200,329 @@
                 </div>
             </div>
             <!-- End Pop Over -->
+
+            <!-- Page -->
             <div class="page">
-                <!-- Page Content -->
+                <div class="fab-backdrop"></div>
+                <div class="fab fab-right-bottom">
+                    <a href="#">
+                        <i class="icon f7-icons if-not-md">plus</i>
+                        <i class="icon f7-icons if-not-md">xmark</i>
+                        <i class="icon material-icons md-only">add</i>
+                        <i class="icon material-icons md-only">close</i>
+                    </a>
+                    <div class="fab-buttons fab-buttons-top">
+                        <a
+                            class="fab-label-button link external"
+                            href="https://pera-swarm.ce.pdn.ac.lk/docs"
+                            target="_blank"
+                            rel="noreferrer"
+                            ><span>2</span><span class="fab-label">Docs</span></a
+                        >
+                        <a
+                            class="fab-label-button link external"
+                            href="https://pera-swarm.ce.pdn.ac.lk/visualizer/?token=${token}"
+                            target="_blank"
+                            rel="noreferrer"
+                            ><span>1</span><span class="fab-label">Visualizer</span></a
+                        >
+                    </div>
+                </div>
+
+                <!-- Config Page Content -->
                 <div class="page-content">
-                    <!-- <div class="dashboard-cards">
-                        <div class="row margin-horizontal">
-                            <div class="col-100 medium-100 margin-top events-col">
-                                <div class="card">
-                                    <div class="card-header">Latest Events</div>
-                                    <div class="card-content card-content-padding">
-                                        <div class="timeline no-margin no-padding">
-                                            <div class="timeline-item">
-                                                <div class="timeline-item-date">
-                                                    10:00
+                    <div class="container pt-2">
+                        <!-- <h3>Neo Pixel LED Ring</h3> -->
+                        <!-- Color Control -->
+                        <div class="block-title">Current Settings</div>
+                        <div class="card p-2">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="list inline-labels">
+                                        <ul>
+                                            <li class="item-content item-input">
+                                                <div class="item-media">
+                                                    <i class="icon f7-icons">tray_2</i>
                                                 </div>
-                                                <div class="timeline-item-divider"></div>
-                                                <div class="timeline-item-content">
-                                                    Lorem ipsum dolor sit amet,
-                                                    consectetur adipisicing elit. Dolor
-                                                    fugiat ipsam hic
+                                                <div class="item-inner">
+                                                    <div class="item-title item-label">
+                                                        Server
+                                                    </div>
+                                                    <div class="item-input-wrap">
+                                                        <input
+                                                            id="mqtt_server"
+                                                            type="text"
+                                                            placeholder="MQTT Server"
+                                                            disabled="{true}"
+                                                            value="${client.host}"
+                                                        />
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="timeline-item">
-                                                <div class="timeline-item-date">
-                                                    11:00
+                                            </li>
+                                            <li class="item-content item-input">
+                                                <div class="item-media">
+                                                    <i class="icon f7-icons"
+                                                        >textformat_123</i
+                                                    >
                                                 </div>
-                                                <div class="timeline-item-divider"></div>
-                                                <div class="timeline-item-content">
-                                                    Another text goes here
+                                                <div class="item-inner">
+                                                    <div class="item-title item-label">
+                                                        Port
+                                                    </div>
+                                                    <div class="item-input-wrap">
+                                                        <input
+                                                            id="mqtt_port"
+                                                            type="text"
+                                                            placeholder="MQTT Port"
+                                                            disabled="{true}"
+                                                            value="${client.port}"
+                                                        />
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="timeline-item">
-                                                <div class="timeline-item-date">
-                                                    14:45
+                                            </li>
+                                            <li class="item-content item-input">
+                                                <div class="item-media">
+                                                    <i class="icon f7-icons"
+                                                        >number_square</i
+                                                    >
                                                 </div>
-                                                <div class="timeline-item-divider"></div>
-                                                <div class="timeline-item-content">
-                                                    Lorem ipsum dolor sit amet,
-                                                    consectetur adipisicing elit. Dolor
-                                                    fugiat ipsam hic porro enim, accusamus
-                                                    perferendis, quas commodi alias
-                                                    quaerat eius nemo deleniti. Odio quasi
-                                                    quos quis iure, aperiam pariatur?
+                                                <div class="item-inner">
+                                                    <div class="item-title item-label">
+                                                        ClientID
+                                                    </div>
+                                                    <div class="item-input-wrap">
+                                                        <input
+                                                            id="mqtt_client_id"
+                                                            type="text"
+                                                            placeholder="MQTT Client ID"
+                                                            disabled="{true}"
+                                                            value="${client.clientId}"
+                                                        />
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="timeline-item">
-                                                <div class="timeline-item-date">
-                                                    16:24
+                                            </li>
+                                            <li class="item-content item-input">
+                                                <div class="item-media">
+                                                    <i class="icon f7-icons"
+                                                        >dot_radiowaves_left_right</i
+                                                    >
                                                 </div>
-                                                <div class="timeline-item-divider"></div>
-                                                <div class="timeline-item-content">
-                                                    One more text here
+                                                <div class="item-inner">
+                                                    <div class="item-title item-label">
+                                                        Channel
+                                                    </div>
+                                                    <div class="item-input-wrap">
+                                                        <input
+                                                            id="mqtt_channel"
+                                                            type="text"
+                                                            placeholder="MQTT Channel"
+                                                            disabled="{true}"
+                                                            value="${channel}"
+                                                        />
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="timeline-item">
-                                                <div class="timeline-item-date">
-                                                    17:11
+                                            </li>
+                                            <li class="item-content item-input">
+                                                <div class="item-media">
+                                                    <i class="icon f7-icons">wifi</i>
                                                 </div>
-                                                <div class="timeline-item-divider"></div>
-                                                <div class="timeline-item-content">
-                                                    Lorem ipsum dolor sit amet,
-                                                    consectetur adipisicing elit. Dolor
-                                                    fugiat ipsam hic
+                                                <div class="item-inner">
+                                                    <div class="item-title item-label">
+                                                        Connected?
+                                                    </div>
+                                                    <div class="item-input-wrap">
+                                                        <input
+                                                            id="status"
+                                                            type="text"
+                                                            placeholder="Connection Status"
+                                                            disabled="{true}"
+                                                            value="${client.isConnected()}"
+                                                        />
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="timeline-item">
-                                                <div class="timeline-item-date">
-                                                    17:28
+                                            </li>
+                                        </ul>
+                                        <button
+                                            class="button button-raised button-fill color-green popup-open my-2"
+                                            data-popup=".popup-services"
+                                        >
+                                            Change
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="block-title">Authentication</div>
+                                    <div class="list inline-labels">
+                                        <ul>
+                                            <li class="item-content item-input">
+                                                <div class="item-media">
+                                                    <i class="icon f7-icons">person</i>
                                                 </div>
-                                                <div class="timeline-item-divider"></div>
-                                                <div class="timeline-item-content">
-                                                    Another text goes here
+                                                <div class="item-inner">
+                                                    <div class="item-title item-label">
+                                                        Username
+                                                    </div>
+                                                    <div class="item-input-wrap">
+                                                        <input
+                                                            id="mqtt-username"
+                                                            type="text"
+                                                            placeholder="MQTT Username"
+                                                            value="${window.username}"
+                                                            disabled="${window.isAuthenticated}"
+                                                        />
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="timeline-item">
-                                                <div class="timeline-item-date">
-                                                    18:00
+                                            </li>
+                                            <li class="item-content item-input">
+                                                <div class="item-media">
+                                                    <i class="icon f7-icons">lock</i>
                                                 </div>
-                                                <div class="timeline-item-divider"></div>
-                                                <div class="timeline-item-content">
-                                                    Lorem ipsum dolor sit amet,
-                                                    consectetur adipisicing elit. Dolor
-                                                    fugiat ipsam hic porro enim, accusamus
-                                                    perferendis, quas commodi alias
-                                                    quaerat eius nemo deleniti. Odio quasi
-                                                    quos quis iure, aperiam pariatur?
+                                                <div class="item-inner">
+                                                    <div class="item-title item-label">
+                                                        Password
+                                                    </div>
+                                                    <div class="item-input-wrap">
+                                                        <input
+                                                            id="mqtt-password"
+                                                            type="password"
+                                                            placeholder="MQTT Password"
+                                                            value="${window.password}"
+                                                            disabled="${isAuthenticated}"
+                                                        />
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="timeline-item">
-                                                <div class="timeline-item-date">
-                                                    19:19
+                                            </li>
+                                        </ul>
+                                        ${window.isAuthenticated === true ?
+                                        <button
+                                            class="button button-raised button-fill color-red my-2"
+                                            id="disconnect-button"
+                                        >
+                                            Disconnect
+                                        </button>
+                                        :
+                                        <button
+                                            class="button button-raised button-fill color-blue my-2"
+                                            id="connect-button"
+                                        >
+                                            Connect
+                                        </button>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Settings Form Pop Up -->
+                        <div class="popup popup-services">
+                            <div class="page-content container p-2">
+                                <div class="block">
+                                    <div class="card col">
+                                        <div class="list inline-labels mt-5">
+                                            <ul>
+                                                <li class="item-content item-input">
+                                                    <div class="item-media">
+                                                        <i class="icon f7-icons"
+                                                            >tray_2</i
+                                                        >
+                                                    </div>
+                                                    <div class="item-inner">
+                                                        <div
+                                                            class="item-title item-label"
+                                                        >
+                                                            Server
+                                                        </div>
+                                                        <div class="item-input-wrap">
+                                                            <input
+                                                                type="text"
+                                                                placeholder="MQTT Server"
+                                                                value="${client.host}"
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="item-content item-input">
+                                                    <div class="item-media">
+                                                        <i class="icon f7-icons"
+                                                            >textformat_123</i
+                                                        >
+                                                    </div>
+                                                    <div class="item-inner">
+                                                        <div
+                                                            class="item-title item-label"
+                                                        >
+                                                            Port
+                                                        </div>
+                                                        <div class="item-input-wrap">
+                                                            <input
+                                                                type="text"
+                                                                placeholder="MQTT Port"
+                                                                value="${client.port}"
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="item-content item-input">
+                                                    <div class="item-media">
+                                                        <i class="icon f7-icons"
+                                                            >number_square</i
+                                                        >
+                                                    </div>
+                                                    <div class="item-inner">
+                                                        <div
+                                                            class="item-title item-label"
+                                                        >
+                                                            ClientID
+                                                        </div>
+                                                        <div class="item-input-wrap">
+                                                            <input
+                                                                type="text"
+                                                                placeholder="MQTT Client ID"
+                                                                value="${client.clientId}"
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="item-content item-input">
+                                                    <div class="item-media">
+                                                        <i class="icon f7-icons"
+                                                            >dot_radiowaves_left_right</i
+                                                        >
+                                                    </div>
+                                                    <div class="item-inner">
+                                                        <div
+                                                            class="item-title item-label"
+                                                        >
+                                                            Channel
+                                                        </div>
+                                                        <div class="item-input-wrap">
+                                                            <input
+                                                                type="text"
+                                                                placeholder="MQTT Channel"
+                                                                value="${channel}"
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                            <div class="row m-3 pt-5">
+                                                <div class="col py-xs-2 py-md-0">
+                                                    <button
+                                                        class="button button-raised button-fill color-primary"
+                                                        data-popup=".popup-services"
+                                                    >
+                                                        Save
+                                                    </button>
                                                 </div>
-                                                <div class="timeline-item-divider"></div>
-                                                <div class="timeline-item-content">
-                                                    One more text here
+                                                <div class="col-md"></div>
+                                                <div class="col-md"></div>
+                                                <div class="col-md"></div>
+                                                <div class="col py-xs-2 py-md-0">
+                                                    <button
+                                                        class="button button-raised button-fill color-red popup-close"
+                                                        data-popup=".popup-services"
+                                                    >
+                                                        Close
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -253,10 +530,12 @@
                                 </div>
                             </div>
                         </div>
-                    </div> -->
+                        <!-- End Settings Form Pop Up -->
+                    </div>
                 </div>
-                <!-- End Page Content -->
+                <!-- End Config Page Content -->
             </div>
+            <!-- End Page -->
         </div>
         <!-- End Main View -->
     </div>
@@ -264,10 +543,52 @@
 
 <script>
     import { setup } from './js/app';
+    import resolvedConfig from './js/config';
 
-    export default (props, { $f7, $on }) => {
+    export default (props, { $f7, $on, $f7router, $update, $store }) => {
+        let selected = 'home';
+        let selectedMedia = 'home';
+        let toastBottom;
+        const token = $store.getters.token;
+        const setItem = (newItem) => {
+            selected = newItem;
+            $update();
+        };
+
+        const setItemMedia = (newItem) => {
+            selectedMedia = newItem;
+            $update();
+        };
+
+        const clearCache = () => {
+            $store.dispatch('clearLogs');
+        };
+
+        console.log(
+            window.isAuthenticated,
+            JSON.parse(localStorage.getItem(document.location.origin))
+        );
+        let { channel, client } = window.mqtt;
+        console.log($f7, $on, $f7router, window.mqtt, resolvedConfig);
+
+        const showToastBottom = (message) => {
+            // Create toast
+            if (!toastBottom) {
+                toastBottom = $f7.toast.create({
+                    text: message,
+                    closeTimeout: 4000
+                });
+            }
+            // Open it
+            toastBottom.open();
+        };
+
         $on('pageInit', (e, page) => {
-            setup();
+            setup(showToastBottom);
+        });
+
+        $on('pageBeforeRemove', () => {
+            if (toastBottom) toastBottom.destroy();
         });
         return $render;
     };

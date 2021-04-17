@@ -1,0 +1,69 @@
+<template>
+    <div class="page" data-name="template">
+        <div class="navbar">
+            <div class="navbar-bg"></div>
+            <div class="navbar-inner sliding">
+                <div class="title">Cache</div>
+            </div>
+        </div>
+        <div class="page-content">
+            <div class="container pt-4">
+                <h3>Message Logs</h3>
+                <!-- Cache List -->
+                <div class="block-title">Intercepted Messages</div>
+                <div class="card p-2">
+                    ${logs.value.length > 0 ? $h`
+                    <div class="list media-list">
+                        <ul>
+                            ${logs.value.map((log) => $h`
+                            <li class="item-content">
+                                <a href="#" class="item-link item-content">
+                                    <div class="item-inner" style="width: 2000px">
+                                        <div class="item-title-row">
+                                            <div class="item-title">${log.topic}</div>
+                                            <div class="item-after">
+                                                ${new
+                                                Date(log.timestamp).toLocaleString()}
+                                            </div>
+                                        </div>
+                                        <div class="item-subtitle">${log.type}</div>
+                                        <div class="item-text">${log.message}</div>
+                                    </div>
+                                </a>
+                            </li>
+                            `)}
+                        </ul>
+                    </div>
+                    ` : $h`
+                    <div class="block block-strong">
+                        <a
+                            href="#"
+                            class="button button-fill button-preloader ${loading.value ? 'button-loading' : ''}"
+                            @click="${loadLogs}"
+                        >
+                            <span class="preloader"></span>
+                            <span>Load Logs</span>
+                        </a>
+                    </div>
+                    `}
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+<script>
+    import { setup } from '../../js/sandbox_scripts/cache';
+
+    export default (props, { $f7, $on, $store }) => {
+        const loading = $store.getters.loading;
+        const logs = $store.getters.logs;
+        $on('pageInit', (e, page) => {
+            setup();
+            $store.dispatch('getLogs');
+        });
+        const loadLogs = () => {
+            $store.dispatch('getLogs');
+        };
+        return $render;
+    };
+</script>

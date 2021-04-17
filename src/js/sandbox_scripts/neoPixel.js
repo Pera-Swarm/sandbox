@@ -1,12 +1,5 @@
 import $ from 'jquery';
 
-function updateColorBox() {
-    const r = $('#neo-red-bar').val();
-    const g = $('#neo-green-bar').val();
-    const b = $('#neo-blue-bar').val();
-    $('#color-box-neo').css('background-color', `rgb(${r},${g},${b})`);
-}
-
 export function setup() {
     console.log('Setup: NeoPixel');
 
@@ -32,28 +25,6 @@ export function setup() {
 
             color_robot_id = robotId;
             $('.neo-robot-id').text(robotId);
-        })
-        .change();
-
-    $('#neo-red-bar')
-        .change(function () {
-            $('#neo-red-val').val(this.value);
-            $('.neo-red-val').text(this.value);
-            updateColorBox();
-        })
-        .change();
-    $('#neo-green-bar')
-        .change(function () {
-            $('#neo-green-val').val(this.value);
-            $('.neo-green-val').text(this.value);
-            updateColorBox();
-        })
-        .change();
-    $('#neo-blue-bar')
-        .change(function () {
-            $('#neo-blue-val').val(this.value);
-            $('.neo-blue-val').text(this.value);
-            updateColorBox();
         })
         .change();
 

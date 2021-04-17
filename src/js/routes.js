@@ -1,5 +1,5 @@
+import App from '../app.f7.html';
 import HomePage from '../pages/home.f7.html';
-import LoginPage from '../pages/login.f7.html';
 
 import RobotPage from '../pages/sandbox_pages/robot.f7.html';
 import CommunicationPage from '../pages/sandbox_pages/communication.f7.html';
@@ -8,23 +8,36 @@ import DistanceSensorPage from '../pages/sandbox_pages/distanceSensor.f7.html';
 import ColorSensorPage from '../pages/sandbox_pages/colorSensor.f7.html';
 import EnvironmentPage from '../pages/sandbox_pages/environment.f7.html';
 import NeoPixelPage from '../pages/sandbox_pages/neoPixel.f7.html';
+import CachePage from '../pages/sandbox_pages/cache.f7.html';
 
 import NotFoundPage from '../pages/404.f7.html';
 
-function checkAuth({ to, from, resolve, reject }) {
-    console.log('checkAuth');
+function checkAuth({ resolve, reject }) {
     /* some condition to check user is logged in */
-    if (JSON.parse(localStorage.getItem('isAuthenticated')) !== null) {
-        resolve();
+    const isAuthenticated =
+        JSON.parse(localStorage.getItem(document.location.origin + '.isAuthenticated')) ||
+        window.mqtt.client.isConnected() ||
+        false;
+    console.log(
+        'checkAuth',
+        isAuthenticated,
+        window.mqtt,
+        window.mqtt.client.isConnected()
+    );
+    if (isAuthenticated !== null && isAuthenticated) {
+        // resolve(to.url);
+        return true;
     } else {
-        reject();
+        // reject();
+        return false;
     }
 }
 
 function checkPermission({ to, from, resolve, reject }) {
-    console.log('checkPermission');
     /* some condition to check user edit permission */
-    if (JSON.parse(localStorage.getItem('isAuthenticated')) !== null) {
+    const isAuthenticated = JSON.parse(localStorage.getItem('isAuthenticated'));
+    console.log('checkPermission');
+    if (isAuthenticated !== null && isAuthenticated) {
         resolve();
     } else {
         reject();
@@ -33,50 +46,113 @@ function checkPermission({ to, from, resolve, reject }) {
 
 var routes = [
     {
-        name: 'home',
         path: '/',
-        component: HomePage
-        // beforeEnter: checkAuth,
-        // redirect: function ({ to, resolve, reject }) {
-        //     // if we have "user" query parameter
-        //     console.log('redirect');
-        //     if (to.query.user) {
-        //         // redirect to such url
-        //         resolve('/login' + to.query.user);
-        //     }
-        //     // otherwise do nothing
-        //     else reject();
-        // }
+        name: 'home',
+        redirect: function ({ app, resolve, reject, from }) {
+            let notificationToast;
+            // check authentication
+            if (checkAuth({ resolve, reject })) {
+                // redirect to settings route
+                notificationToast = app.toast.create({
+                    text:
+                        'You are currently connected to a session and you cannot change settings while in a session!',
+                    closeTimeout: 2000
+                });
+                notificationToast.open();
+                resolve('/settings');
+            } else {
+                // otherwise display not connected alert!
+                notificationToast = app.toast.create({
+                    text:
+                        'You are not connected to a session! Please refresh the page and enter the credentials to start the session.',
+                    closeTimeout: 2000
+                });
+                notificationToast.open();
+                resolve('/settings');
+            }
+        }
     },
-    // {
-    //     name: 'login',
-    //     path: '/login',
-    //     component: LoginPage
-    // },
     {
-        name: 'robot',
+        path: '/settings',
+        name: 'settings',
+        component: HomePage
+    },
+    {
         path: '/robot/',
-        component: RobotPage
+        name: 'robot',
+        component: RobotPage,
+        beforeEnter: function ({ resolve, reject }) {
+            if (checkAuth({ resolve, reject })) {
+                resolve();
+            } else {
+                // don't allow to visit this page for unauthenticated users
+                reject();
+            }
+        }
     },
     {
         path: '/communication/',
-        component: CommunicationPage
+        component: CommunicationPage,
+        beforeEnter: function ({ resolve, reject }) {
+            if (checkAuth({ resolve, reject })) {
+                resolve();
+            } else {
+                // don't allow to visit this page for unauthenticated users
+                reject();
+            }
+        }
     },
     {
         path: '/neoPixel/',
-        component: NeoPixelPage
+        component: NeoPixelPage,
+        beforeEnter: function ({ resolve, reject }) {
+            if (checkAuth({ resolve, reject })) {
+                resolve();
+            } else {
+                // don't allow to visit this page for unauthenticated users
+                reject();
+            }
+        }
     },
     {
         path: '/environment/',
-        component: EnvironmentPage
+        component: EnvironmentPage,
+        beforeEnter: function ({ resolve, reject }) {
+            if (checkAuth({ resolve, reject })) {
+                resolve();
+            } else {
+                // don't allow to visit this page for unauthenticated users
+                reject();
+            }
+        }
     },
     {
         path: '/sensors/distance/',
-        component: DistanceSensorPage
+        component: DistanceSensorPage,
+        beforeEnter: function ({ resolve, reject }) {
+            if (checkAuth({ resolve, reject })) {
+                resolve();
+            } else {
+                // don't allow to visit this page for unauthenticated users
+                reject();
+            }
+        }
     },
     {
         path: '/sensors/color/',
-        component: ColorSensorPage
+        component: ColorSensorPage,
+        beforeEnter: function ({ resolve, reject }) {
+            if (checkAuth({ resolve, reject })) {
+                resolve();
+            } else {
+                // don't allow to visit this page for unauthenticated users
+                reject();
+            }
+        }
+    },
+    {
+        path: '/cache/',
+        component: CachePage
     },
     {
         path: '(.*)',
