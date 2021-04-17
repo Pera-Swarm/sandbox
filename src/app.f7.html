@@ -166,9 +166,14 @@
                     >
                         <ul>
                             <li>
-                                <a href="${resolveVisualizerURL()}" class="item-content">
+                                <a
+                                    href="${resolveVisualizerURL()}"
+                                    class="item-content link external"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                >
                                     <div class="item-media">
-                                        <i class="icon f7-icons">archivebox</i>
+                                        <i class="icon f7-icons">cube_box</i>
                                     </div>
                                     <div class="item-inner">
                                         <div class="item-title">Visualizer</div>
@@ -575,8 +580,7 @@
             const storedConfig = localStorage.getItem(
                 document.location.origin + '.config'
             );
-            const { token } = JSON.parse(storedConfig);
-            if (token !== undefined) {
+            if (token !== undefined && token !== null) {
                 return url + token;
             } else {
                 return '#';
