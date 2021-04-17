@@ -14,9 +14,12 @@ window.isAuthenticated = localStorage.getItem(
     document.location.origim + 'isAuthenticated'
 );
 
-const { user, pass } = getCredentials();
-window.username = user;
-window.password = pass;
+const cred = getCredentials();
+if (cred !== -1) {
+    const { user, pass } = cred;
+    window.username = user;
+    window.password = pass;
+}
 // swarm_user, swarm_usere15
 
 let resolvedConfig =
