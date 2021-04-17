@@ -580,8 +580,8 @@
             const storedConfig = localStorage.getItem(
                 document.location.origin + '.config'
             );
-            if (token !== undefined && token !== null) {
-                return url + token;
+            if (token !== undefined && token !== null && token.value) {
+                return url + token.value;
             } else {
                 return '#';
             }
