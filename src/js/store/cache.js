@@ -31,26 +31,39 @@ const store = createStore({
         },
         createToken({ state }) {
             state.loading = true;
-            axios
-                .post('http://webservices.ceykod.com/pera-swarm/login/', {
-                    user: window.username,
-                    pass: window.password,
-                    host: config.server,
-                    port: config.port,
-                    path: config.path
-                })
-                .then(
-                    (response) => {
-                        console.log(response);
-                        const token = response.data.token.toString();
-                        saveConfig(token);
-                        state.loading = false;
-                    },
-                    (error) => {
-                        console.log(error);
-                        state.loading = false;
-                    }
+            if (!(window.username === undefined || window.password === undefined)) {
+                axios
+                    .post('https://webservices.ceykod.com/pera-swarm/login/', {
+                        user: window.username,
+                        pass: window.password,
+                        host: config.server,
+                        port: config.port,
+                        path: config.path
+                    })
+                    .then(
+                        (response) => {
+                            console.log(response);
+                            const token = response.data.token.toString();
+                            saveConfig(token);
+                            state.loading = false;
+                        },
+                        (error) => {
+                            console.log(error);
+                            state.loading = false;
+                            localStorage.setItem(
+                                document.location.origin + '.isAuthenticated',
+                                JSON.stringify(false)
+                            );
+                            window.isAuthenticated = false;
+                        }
+                    );
+            } else {
+                localStorage.setItem(
+                    document.location.origin + '.isAuthenticated',
+                    JSON.stringify(false)
                 );
+                window.isAuthenticated = false;
+            }
         }
     },
     getters: {

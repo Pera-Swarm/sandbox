@@ -17,14 +17,11 @@ export default class MqttClient {
             JSON.parse(
                 localStorage.getItem(document.location.origin + '.isAuthenticated')
             ) ||
-            false
+            (false && user !== undefined && pass !== undefined)
         ) {
             this.client.connect({
-                // TODO: @NuwanJ
-                // userName: user,
-                // password: pass,
-                userName: 'swarm_user' /*process.env.MQTT_USER,*/,
-                password: 'swarm_usere15' /*process.env.MQTT_PASS,*/,
+                userName: user,
+                password: pass,
                 reconnect: false,
                 useSSL: true,
                 keepAliveInterval: 360,
