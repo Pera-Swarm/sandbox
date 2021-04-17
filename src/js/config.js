@@ -14,12 +14,11 @@ window.isAuthenticated = localStorage.getItem(
     document.location.origim + 'isAuthenticated'
 );
 
-// TODO: @NuwanJ
-// const { user, pass } = getCredentials();
-// window.username = user;
-// window.password = pass;
-window.username = 'swarm_user';
-window.password = 'swarm_usere15';
+const { user, pass } = getCredentials();
+window.username = user;
+window.password = pass;
+// window.username = 'swarm_user';
+// window.password = 'swarm_usere15';
 
 let resolvedConfig =
     storedConfig !== null && storedConfig !== undefined
@@ -30,17 +29,26 @@ console.log(resolvedConfig);
 
 // method to presist config data with localStorage
 export const saveConfig = (data) => {
+    console.log('saveConfig', data);
+
     localStorage.setItem(
         document.location.origin + '.config',
-        JSON.stringify({ ...config, ...data })
+        // JSON.stringify({ ...config, token: data })
+        JSON.stringify({ token: data })
     );
 };
 
 export function getCredentials() {
+    let resolvedConfig =
+        storedConfig !== null && storedConfig !== undefined
+            ? JSON.parse(storedConfig)
+            : config;
+
     const { token } = resolvedConfig;
+    console.log('getCredentials', resolvedConfig.token);
     if (token !== undefined) {
         // decode the token
-        return parseJwt(key);
+        return parseJwt(token);
     } else {
         return -1;
     }
@@ -60,11 +68,16 @@ export function getCredentials() {
 function parseJwt(token) {
     var base64Url = token.split('.')[1];
     var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
-        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-    }).join(''));
+    var jsonPayload = decodeURIComponent(
+        atob(base64)
+            .split('')
+            .map(function (c) {
+                return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+            })
+            .join('')
+    );
     return JSON.parse(jsonPayload);
-};
+}
 
 export function saveCache(name, data) {
     const prevData = JSON.parse(

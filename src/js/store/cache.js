@@ -42,8 +42,7 @@ const store = createStore({
                 .then(
                     (response) => {
                         console.log(response);
-                        // TODO: @NuwanJ
-                        const token = response.data.token;
+                        const token = response.data.token.toString();
                         saveConfig(token);
                         state.loading = false;
                     },
