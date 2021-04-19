@@ -1,4 +1,5 @@
-# Pera-Swarm Sandbox v2.0 ![Framework7 Build](https://github.com/Pera-Swarm/sandbox/actions/workflows/publish.yml/badge.svg)](https://github.com/Pera-Swarm/sandbox/actions/workflows/publish.yml)
+# Pera-Swarm Sandbox v2.0 ![DeployCI](https://github.com/Pera-Swarm/sandbox/actions/workflows/publish.yml/badge.svg)
+
 A TestBench used in [Pera-Swarm](https://pera-swarm.ce.pdn.ac.lk) Mixed Reality Simulator Experiment testing.
 
 ## Installation
