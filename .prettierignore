@@ -1,8 +1,9 @@
-build
-**/public/assets
 **/node_modules/**
-/dist
-/references
+**/static/**
+**/fonts/**
+/assets-src
+/.idea
+/.github
 
 docker
 Dockerfile*
