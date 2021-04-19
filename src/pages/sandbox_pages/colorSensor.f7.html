@@ -1,28 +1,252 @@
 <template>
-    <div class='page' data-name='colorSensor'>
-        <div class='navbar'>
-            <div class='navbar-bg'></div>
-            <div class='navbar-inner sliding'>
-                <div class='title'>Color Sensor</div>
+    <div class="page" data-name="colorSensor">
+        <div class="navbar">
+            <div class="navbar-bg"></div>
+            <div class="navbar-inner sliding">
+                <div class="title">Color Sensor</div>
             </div>
         </div>
-        <div class='page-content'>
-            <div class='container pt-2'>
-                <div class='row p-2'>
+        <div class="page-content">
+            <div class="container pt-2">
+                <h3>Color Sensor</h3>
+                <!-- Color Control -->
+                <div class="block-title">Control</div>
+                <div class="card p-2">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="list inline-labels no-hairlines-md">
+                                <ul>
+                                    <li>
+                                        <div class="row">
+                                            <div class="col-50 item-content item-input">
+                                                <div class="item-inner">
+                                                    <div class="item-title item-label">
+                                                        Robot ID
+                                                    </div>
+                                                    <div class="item-input-wrap">
+                                                        <input
+                                                            type="number"
+                                                            id="color-sensor-robot-id"
+                                                            min="0"
+                                                            value="0"
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-50 item-content item-input">
+                                                <div class="item-inner">
+                                                    <div class="item-title item-label">
+                                                        Reality
+                                                    </div>
+                                                    <div
+                                                        class="item-input-wrap input-dropdown-wrap"
+                                                    >
+                                                        <select
+                                                            id="color-sensor-robot-reality"
+                                                        >
+                                                            <option value="V">
+                                                                Virtual
+                                                            </option>
+                                                            <option value="R">
+                                                                Real
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="item-content item-input">
+                                            <div class="item-media">
+                                                <i
+                                                    class="icon demo-list-icon"
+                                                    id="color-sensor-color-picker-rgba-value"
+                                                ></i>
+                                            </div>
+                                            <div class="item-inner">
+                                                <div class="item-input-wrap">
+                                                    <input
+                                                        type="text"
+                                                        placeholder="Color"
+                                                        readonly="readonly"
+                                                        id="color-sensor-color-picker-rgba"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div id="color-sensor-red-bar" />
+                            <div id="color-sensor-green-bar" />
+                            <div id="color-sensor-blue-bar" />
+                            <div id="amb-bar" />
+                        </div>
+                        <div class="col-md-4">
+                            <div class="p-2">
+                                <b
+                                    ><span class="channel">{channel}</span
+                                    >/sensor/color/<span class="color-sensor-robot-id"
+                                        >{robotId}</span
+                                    >/?</b
+                                >
+                                <span class="float-right"
+                                    ><a
+                                        target="_blank"
+                                        href="https://pera-swarm.ce.pdn.ac.lk/docs/communication/mqtt/sensor#sensorcolorrobotid"
+                                        >[?]</a
+                                    ></span
+                                >
+                                <button
+                                    class="col button button-raised button-fill color-grey"
+                                    id="color-btn-req"
+                                >
+                                    Req from Robot
+                                </button>
+                            </div>
 
+                            <div class="p-2">
+                                <b
+                                    ><span class="channel">{channel}</span
+                                    >/sensor/color/<span class="color-sensor-robot-id"
+                                        >{robotId}</span
+                                    ></b
+                                >
+                                <span class="float-right"
+                                    ><a
+                                        target="_blank"
+                                        href="https://pera-swarm.ce.pdn.ac.lk/docs/communication/mqtt/sensor#sensorcolorrobotid-1"
+                                        >[?]</a
+                                    ></span
+                                >
+                                <div>
+                                    <span class="color-sensor-red-val">0</span>,
+                                    <span class="color-sensor-green-val">0</span>,
+                                    <span class="color-sensor-blue-val">0</span>,
+                                    <span class="amb-val">0</span>
+                                </div>
+                                <button
+                                    class="col button button-raised button-fill color-blue"
+                                    id="color-btn-send-robot"
+                                >
+                                    Send to Robot
+                                </button>
+                            </div>
 
+                            <div class="p-2">
+                                <b
+                                    ><span class="channel">{channel}</span
+                                    >/sensor/color/</b
+                                >
+                                <span class="float-right"
+                                    ><a
+                                        target="_blank"
+                                        href="https://pera-swarm.ce.pdn.ac.lk/docs/communication/mqtt/sensor#sensorcolor"
+                                        >[?]</a
+                                    ></span
+                                >
+                                <div>
+                                    { "id":"<span class="color-sensor-robot-id"
+                                        >{robotId}</span
+                                    >", "R":"<span class="color-sensor-red-val">0</span>",
+                                    "G":"<span class="color-sensor-green-val">0</span>",
+                                    "B":"<span class="color-sensor-blue-val">0</span>",
+                                    "ambient":"<span class="amb-val">0</span>" }
+                                </div>
+                                <button
+                                    class="col button button-raised button-fill color-green"
+                                    id="color-btn-send-server"
+                                >
+                                    Send to Server
+                                </button>
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="block-title">Responses</div>
+                <div class="card p-3 list no-hairlines-md">
+                    <ul>
+                        <li class="item-content item-input">
+                            <div class="item-inner">
+                                <div class="item-title item-label">
+                                    Responses received from physical robots to the server
+                                    (<b
+                                        ><span class="channel">{channel}</span
+                                        >/sensor/color</b
+                                    >)<br />
+                                </div>
+                                <div class="item-input-wrap">
+                                    <textarea
+                                        id="color-sub-text"
+                                        class="resizable"
+                                    ></textarea>
+                                    <span class="input-clear-button"></span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content item-input">
+                            <div class="item-inner">
+                                <div class="item-title item-label">
+                                    Responses received to (<b
+                                        ><span class="channel">{channel}</span
+                                        >/sensor/color/<span class="color-sensor-robot-id"
+                                            >{robotId}</span
+                                        ></b
+                                    >)<br />
+                                </div>
+                                <div class="item-input-wrap">
+                                    <textarea
+                                        id="color-robot-text"
+                                        class="resizable"
+                                    ></textarea>
+                                    <span class="input-clear-button"></span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
-
         </div>
     </div>
 </template>
 <script>
-    import {setup} from '../../js/sandbox_scripts/template';
+    import { setup } from '../../js/sandbox_scripts/colorSensor';
 
-    export default (props, { $f7, $on }) => {
-
+    export default (props, { $f7, $on, app }) => {
+        let colorPickerRgba;
+        let R, G, B, A;
         $on('pageInit', (e, page) => {
+            colorPickerRgba = $f7.colorPicker.create({
+                inputEl: '#color-sensor-color-picker-rgba',
+                targetEl: '#color-sensor-color-picker-rgba-value',
+                targetElSetBackgroundColor: true,
+                modules: ['rgb-sliders', 'alpha-slider'],
+                openIn: 'popover',
+                sliderValue: true,
+                sliderLabel: true,
+                value: {
+                    hex: '#ff00ff'
+                },
+                formatValue: function (value) {
+                    const RGBA = value.rgba;
+                    R = RGBA[0];
+                    G = RGBA[1];
+                    B = RGBA[2];
+                    A = RGBA[3];
+                    $('.color-sensor-red-val').text(R);
+                    $('.color-sensor-green-val').text(G);
+                    $('.color-sensor-blue-val').text(B);
+                    $('.amb-val').text(A);
+                    $('#color-sensor-red-bar').val(R);
+                    $('#color-sensor-green-bar').val(G);
+                    $('#color-sensor-blue-bar').val(B);
+                    $('#amb-bar').val(A);
+                    return 'rgba(' + RGBA.join(', ') + ')';
+                }
+            });
             setup();
         });
         return $render;
