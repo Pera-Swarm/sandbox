@@ -27,7 +27,7 @@ let resolvedConfig =
         ? JSON.parse(storedConfig)
         : config;
 
-console.log(resolvedConfig);
+// console.log(resolvedConfig);
 
 // method to presist config data with localStorage
 export const saveConfig = (data) => {
@@ -47,7 +47,8 @@ export function getCredentials() {
             : config;
 
     const { token } = resolvedConfig;
-    console.log('getCredentials', resolvedConfig.token, token);
+    // console.log('getCredentials', resolvedConfig.token, token);
+
     if (token !== undefined && token !== null) {
         // decode the token
         return parseJwt(token);
@@ -55,17 +56,6 @@ export function getCredentials() {
         return -1;
     }
 }
-
-// function decodeKey() {
-//     try {
-//         let decoded = jwt.verify(token, 'swarm-visualizer-secret');
-//         return decoded;
-//     } catch (err) {
-//         // err
-//         console.log('Token Error');
-//         return -1;
-//     }
-// }
 
 function parseJwt(token) {
     var base64Url = token.split('.')[1];
