@@ -1,17 +1,17 @@
 {
-  "name": "PeraSwarm Sandbox",
-  "short_name": "PeraSwarm Sandbox",
-  "description": "PeraSwarm Sandbox",
-  "lang": "en-US",
-  "start_url": "/",
-  "display": "standalone",
-  "background_color": "#2babe2",
-  "theme_color": "#2babe2",
-  "icons": [
-    {
-      "src": "/static/icons/logo.png",
-      "sizes": "400x400",
-      "type": "image/png"
-    }
-  ]
+    "name": "PeraSwarm Sandbox",
+    "short_name": "PeraSwarm Sandbox",
+    "description": "PeraSwarm Sandbox",
+    "lang": "en-US",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#2babe2",
+    "theme_color": "#2babe2",
+    "icons": [
+        {
+            "src": "/static/icons/logo.png",
+            "sizes": "400x400",
+            "type": "image/png"
+        }
+    ]
 }
