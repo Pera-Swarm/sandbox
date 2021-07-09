@@ -1,4 +1,7 @@
-# Pera-Swarm Sandbox v2.0 ![DeployCI](https://github.com/Pera-Swarm/sandbox/actions/workflows/publish.yml/badge.svg)
+![DeployCI](https://github.com/Pera-Swarm/sandbox/actions/workflows/publish.yml/badge.svg)
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
+
+# Pera-Swarm Sandbox v2.0 
 
 A TestBench used in [Pera-Swarm](https://pera-swarm.ce.pdn.ac.lk) Mixed Reality Simulator Experiment testing.
 
