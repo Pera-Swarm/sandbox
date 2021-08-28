@@ -50,7 +50,7 @@ const store = createStore({
                     )
                     .then(
                         (response) => {
-                            console.log(response);
+                            // console.log(response);
                             const token = response.data.token.toString();
                             saveConfig(token);
                             state.loading = false;

@@ -167,7 +167,7 @@
                         <ul>
                             <li>
                                 <a
-                                    href="${resolveVisualizerURL()}"
+                                    href="${resolveVisualizer_URL()}"
                                     class="item-content link external"
                                     target="_blank"
                                     rel="noreferrer"
@@ -176,10 +176,27 @@
                                         <i class="icon f7-icons">cube_box</i>
                                     </div>
                                     <div class="item-inner">
-                                        <div class="item-title">Visualizer</div>
+                                        <div class="item-title">Visualizer - 3D</div>
                                     </div>
                                 </a>
                             </li>
+
+                            <li>
+                                <a
+                                    href="${resolveVisualizerAR_URL()}"
+                                    class="item-content link external"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                >
+                                    <div class="item-media">
+                                        <i class="icon f7-icons">cube_box</i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title">Visualizer - AR</div>
+                                    </div>
+                                </a>
+                            </li>
+
                             <li>
                                 <a href="/cache/" class="item-content">
                                     <div class="item-media">
@@ -236,10 +253,19 @@
                         >
                         <a
                             class="fab-label-button link external"
-                            href="${resolveVisualizerURL()}"
+                            href="${resolveVisualizer_URL()}"
                             target="_blank"
                             rel="noreferrer"
-                            ><span>1</span><span class="fab-label">Visualizer</span></a
+                            ><span>1</span
+                            ><span class="fab-label">Visualizer - 3D</span></a
+                        >
+                        <a
+                            class="fab-label-button link external"
+                            href="${resolveVisualizerAR_URL()}"
+                            target="_blank"
+                            rel="noreferrer"
+                            ><span>1</span
+                            ><span class="fab-label">Visualizer - AR</span></a
                         >
                     </div>
                 </div>
@@ -584,9 +610,20 @@
             $update();
         };
 
-        const resolveVisualizerURL = () => {
-            // const url = 'https://pera-swarm.ce.pdn.ac.lk/visualizer/?key=';
+        const resolveVisualizer_URL = () => {
             const url = 'https://pera-swarm.github.io/visualizer/?key=';
+            const storedConfig = localStorage.getItem(
+                document.location.origin + '.config'
+            );
+            if (token !== undefined && token !== null && token.value) {
+                return url + token.value;
+            } else {
+                return '#';
+            }
+        };
+
+        const resolveVisualizerAR_URL = () => {
+            const url = 'https://pera-swarm.github.io/visualizer-ar/?key=';
             const storedConfig = localStorage.getItem(
                 document.location.origin + '.config'
             );
@@ -601,12 +638,13 @@
             $store.dispatch('clearLogs');
         };
 
-        console.log(
-            window.isAuthenticated,
-            JSON.parse(localStorage.getItem(document.location.origin))
-        );
         let { channel, client } = window.mqtt;
-        console.log($f7, $on, $f7router, window.mqtt, resolvedConfig);
+
+        // console.log(
+        //     window.isAuthenticated,
+        //     JSON.parse(localStorage.getItem(document.location.origin))
+        // );
+        // console.log($f7, $on, $f7router, window.mqtt, resolvedConfig);
 
         const showToastBottom = (message) => {
             // Create toast
