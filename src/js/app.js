@@ -3,14 +3,13 @@ import * as _ from 'lodash';
 import Framework7 from 'framework7/bundle';
 
 import App from '../app.f7.html';
-import config, { getCredentials, saveConfig } from './config';
+// import config, { getCredentials, saveConfig } from './config';
 
 // Import F7 Styles
 import 'framework7/framework7-bundle.css';
 // import 'bootstrap';
 
 import routes from './routes.js';
-import index from './index.js';
 import MQTTClient from './mqttClient.js';
 
 // Import Icons and App Custom Styles
@@ -20,6 +19,8 @@ import { init } from '../css/index.css';
 
 // logs store
 import store from './store';
+
+const config = store.getters.config.value;
 
 // new mqtt client
 window.mqtt = new MQTTClient(config, () => {
@@ -179,7 +180,7 @@ function persistConfig(connectionStatus, token) {
     };
     if (!!token) changedConfig['token'] = token;
     console.log('changedConfig', changedConfig);
-    saveConfig(changedConfig);
+    store.dispatch('saveConfig', changedConfig);
     localStorage.setItem(
         document.location.origin + '.isAuthenticated',
         JSON.stringify(connectionStatus)

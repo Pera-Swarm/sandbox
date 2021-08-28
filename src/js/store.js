@@ -9,10 +9,12 @@ const defaultConfig = {
     channel: 'v1',
     token: undefined
 };
+
 const storedConfig = JSON.parse(
     localStorage.getItem(document.location.origin + '.config')
 );
 
+console.log(storedConfig);
 
 const store = createStore({
     state: {
@@ -30,7 +32,11 @@ const store = createStore({
             setTimeout(() => {
                 localStorage.setItem(
                     document.location.origin + `.config`,
-                    JSON.stringify(!!data ? { ...data, path: '/mqtt' } : defaultConfig)
+                    JSON.stringify(
+                        !!data
+                            ? { ...state.config, ...data, path: '/mqtt' }
+                            : defaultConfig
+                    )
                 );
                 state.loading = false;
             }, 1000);
@@ -64,7 +70,7 @@ const store = createStore({
                 state.loading = false;
             }, 1000);
         },
-        createToken({ state }) {
+        createToken({ state, dispatch }) {
             state.loading = true;
             if (!(window.username === undefined || window.password === undefined)) {
                 axios
@@ -87,7 +93,7 @@ const store = createStore({
                         (response) => {
                             console.log(response);
                             const token = response.data.token.toString();
-                            saveConfig({ token });
+                            dispatch('saveConfig', { token });
                             state.loading = false;
                         },
                         (error) => {
