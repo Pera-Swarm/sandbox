@@ -36,7 +36,7 @@ const store = createStore({
             setTimeout(() => {
                 localStorage.setItem(
                     document.location.origin + `.config`,
-                    JSON.stringify(data)
+                    JSON.stringify(!!data ? data : defaultConfig)
                 );
                 state.loading = false;
             }, 1000);
@@ -46,7 +46,7 @@ const store = createStore({
             setTimeout(() => {
                 localStorage.setItem(
                     document.location.origin + `.config`,
-                    JSON.stringify(config)
+                    JSON.stringify(defaultConfig)
                 );
                 state.loading = false;
             }, 1000);
