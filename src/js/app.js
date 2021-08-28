@@ -146,6 +146,7 @@ function disconnect(callback) {
     setTimeout(() => {
         if (callback !== undefined) callback('MQTT Connection Close Successful!!');
         persistConfig(false);
+        window.location.reload();
     }, 3000);
 }
 
