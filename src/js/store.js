@@ -1,15 +1,56 @@
 import { createStore } from 'framework7';
 import axios from 'axios';
-import { saveConfig } from '../config';
-import config from '../config';
+import config, { saveConfig } from './config';
+
+const defaultConfig = {
+    server: 'webservices.ceykod.com',
+    port: 8883,
+    path: '/mqtt',
+    channel: 'v1',
+    token: undefined
+};
 
 const store = createStore({
     state: {
         loading: false,
         logs: [],
-        token: config.token
+        token: config.token,
+        config: {}
     },
     actions: {
+        getConfig({ state }) {
+            state.loading = true;
+            setTimeout(() => {
+                const storedConfig = JSON.parse(
+                    localStorage.getItem(document.location.origin + '.config')
+                );
+                state.config =
+                    storedConfig !== null && storedConfig !== undefined
+                        ? JSON.parse(storedConfig)
+                        : config;
+                state.loading = false;
+            }, 1000);
+        },
+        saveConfig({ state }) {
+            state.loading = true;
+            setTimeout(() => {
+                localStorage.setItem(
+                    document.location.origin + `.config`,
+                    JSON.stringify(config)
+                );
+                state.loading = false;
+            }, 1000);
+        },
+        resetConfig({ state }) {
+            state.loading = true;
+            setTimeout(() => {
+                localStorage.setItem(
+                    document.location.origin + `.config`,
+                    JSON.stringify(config)
+                );
+                state.loading = false;
+            }, 1000);
+        },
         getLogs({ state }) {
             state.loading = true;
             setTimeout(() => {
@@ -52,7 +93,7 @@ const store = createStore({
                         (response) => {
                             console.log(response);
                             const token = response.data.token.toString();
-                            saveConfig({token});
+                            saveConfig({ token });
                             state.loading = false;
                         },
                         (error) => {
@@ -80,6 +121,9 @@ const store = createStore({
         },
         logs({ state }) {
             return state.logs;
+        },
+        config({ state }) {
+            return state.config;
         },
         token({ state }) {
             return state.token;
