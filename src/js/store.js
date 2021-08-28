@@ -9,34 +9,28 @@ const defaultConfig = {
     channel: 'v1',
     token: undefined
 };
+const storedConfig = JSON.parse(
+    localStorage.getItem(document.location.origin + '.config')
+);
+
 
 const store = createStore({
     state: {
         loading: false,
         logs: [],
         token: config.token,
-        config: {}
+        config:
+            storedConfig !== null && storedConfig !== undefined
+                ? storedConfig
+                : defaultConfig
     },
     actions: {
-        getConfig({ state }) {
-            state.loading = true;
-            setTimeout(() => {
-                const storedConfig = JSON.parse(
-                    localStorage.getItem(document.location.origin + '.config')
-                );
-                state.config =
-                    storedConfig !== null && storedConfig !== undefined
-                        ? JSON.parse(storedConfig)
-                        : config;
-                state.loading = false;
-            }, 1000);
-        },
         saveConfig({ state }, data) {
             state.loading = true;
             setTimeout(() => {
                 localStorage.setItem(
                     document.location.origin + `.config`,
-                    JSON.stringify(!!data ? data : defaultConfig)
+                    JSON.stringify(!!data ? { ...data, path: '/mqtt' } : defaultConfig)
                 );
                 state.loading = false;
             }, 1000);
