@@ -1,37 +1,90 @@
 import { createStore } from 'framework7';
+import axios from 'axios';
+import { saveConfig } from '../config';
+import config from '../config';
 
 const store = createStore({
     state: {
-        products: [
-            {
-                id: '1',
-                title: 'Apple iPhone 8',
-                description:
-                    'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi tempora similique reiciendis, error nesciunt vero, blanditiis pariatur dolor, minima sed sapiente rerum, dolorem corrupti hic modi praesentium unde saepe perspiciatis.'
-            },
-            {
-                id: '2',
-                title: 'Apple iPhone 8 Plus',
-                description:
-                    'Velit odit autem modi saepe ratione totam minus, aperiam, labore quia provident temporibus quasi est ut aliquid blanditiis beatae suscipit odio vel! Nostrum porro sunt sint eveniet maiores, dolorem itaque!'
-            },
-            {
-                id: '3',
-                title: 'Apple iPhone X',
-                description:
-                    'Expedita sequi perferendis quod illum pariatur aliquam, alias laboriosam! Vero blanditiis placeat, mollitia necessitatibus reprehenderit. Labore dolores amet quos, accusamus earum asperiores officiis assumenda optio architecto quia neque, quae eum.'
-            }
-        ]
-    },
-    getters: {
-        products({ state }) {
-            return state.products;
-        }
+        loading: false,
+        logs: [],
+        token: config.token
     },
     actions: {
-        addProduct({ state }, product) {
-            state.products = [...state.products, product];
+        getLogs({ state }) {
+            state.loading = true;
+            setTimeout(() => {
+                state.logs = JSON.parse(
+                    localStorage.getItem(document.location.origin + `.cache`)
+                );
+                state.loading = false;
+            }, 1000);
+        },
+        clearLogs({ state }) {
+            state.loading = true;
+            setTimeout(() => {
+                localStorage.setItem(
+                    document.location.origin + `.cache`,
+                    JSON.stringify([])
+                );
+                state.loading = false;
+            }, 1000);
+        },
+        createToken({ state }) {
+            state.loading = true;
+            if (!(window.username === undefined || window.password === undefined)) {
+                axios
+                    .post(
+                        'https://webservices.ceykod.com/pera-swarm/login/',
+                        {
+                            user: window.username,
+                            pass: window.password,
+                            host: config.server,
+                            port: config.port,
+                            path: config.path
+                        },
+                        {
+                            headers: {
+                                'Access-Control-Allow-Origin': true
+                            }
+                        }
+                    )
+                    .then(
+                        (response) => {
+                            console.log(response);
+                            const token = response.data.token.toString();
+                            saveConfig({token});
+                            state.loading = false;
+                        },
+                        (error) => {
+                            console.log(error);
+                            state.loading = false;
+                            localStorage.setItem(
+                                document.location.origin + '.isAuthenticated',
+                                JSON.stringify(false)
+                            );
+                            window.isAuthenticated = false;
+                        }
+                    );
+            } else {
+                localStorage.setItem(
+                    document.location.origin + '.isAuthenticated',
+                    JSON.stringify(false)
+                );
+                window.isAuthenticated = false;
+            }
+        }
+    },
+    getters: {
+        loading({ state }) {
+            return state.loading;
+        },
+        logs({ state }) {
+            return state.logs;
+        },
+        token({ state }) {
+            return state.token;
         }
     }
 });
+
 export default store;
