@@ -18,12 +18,12 @@ function checkAuth({ resolve, reject }) {
         JSON.parse(localStorage.getItem(document.location.origin + '.isAuthenticated')) ||
         window.mqtt.client.isConnected() ||
         false;
-    console.log(
-        'checkAuth',
-        isAuthenticated,
-        window.mqtt,
-        window.mqtt.client.isConnected()
-    );
+    // console.log(
+    //     'checkAuth',
+    //     isAuthenticated,
+    //     window.mqtt,
+    //     window.mqtt.client.isConnected()
+    // );
     if (isAuthenticated !== null && isAuthenticated) {
         // resolve(to.url);
         return true;
@@ -36,7 +36,7 @@ function checkAuth({ resolve, reject }) {
 function checkPermission({ to, from, resolve, reject }) {
     /* some condition to check user edit permission */
     const isAuthenticated = JSON.parse(localStorage.getItem('isAuthenticated'));
-    console.log('checkPermission');
+    // console.log('checkPermission');
     if (isAuthenticated !== null && isAuthenticated) {
         resolve();
     } else {

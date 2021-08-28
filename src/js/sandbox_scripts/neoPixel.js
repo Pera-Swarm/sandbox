@@ -1,7 +1,7 @@
 import $ from 'jquery';
 
 export function setup() {
-    console.log('Setup: NeoPixel');
+    // console.log('Setup: NeoPixel');
 
     var color_robot_id = null;
 

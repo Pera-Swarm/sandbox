@@ -92,7 +92,7 @@ function toggleColorTheme(value) {
 }
 
 function authenticate(onConnectionCallback) {
-    console.log(config);
+    // console.log(config);
     const username = $('#mqtt-username').value();
     const password = $('#mqtt-password').value();
     // console.log(username, password);
@@ -103,15 +103,15 @@ function authenticate(onConnectionCallback) {
 
 function reauthenticate(updatedConfig, onConnectionCallback) {
     const selectedConfig = localStorage.getItem(document.location.origin + '.config');
-    console.log('reauthenticate', updatedConfig);
+    // console.log('reauthenticate', updatedConfig);
     const username = $('#mqtt-username').value();
     const password = $('#mqtt-password').value();
-    console.log(username, password);
+    // console.log(username, password);
     window.username = username;
     window.password = password;
     window.mqtt = new MQTTClient(selectedConfig, () => {
         // $("#status").text("Trying to connect...");
-        console.log('SHOW TOAST 2');
+        // console.log('SHOW TOAST 2');
     });
     testConnection(username, password, onConnectionCallback);
 }
@@ -126,7 +126,7 @@ function testConnection(username, password, callback) {
         cleanSession: false,
 
         onSuccess: () => {
-            console.log('MQTT: connected');
+            // console.log('MQTT: connected');
             if (callback !== undefined) callback('MQTT Connection Successful!');
             window.mqtt.client.onMessageArrived = window.mqtt.onMessageArrived;
             window.mqtt.client.onConnectionLost = window.mqtt.onConnectionLost;
@@ -135,7 +135,7 @@ function testConnection(username, password, callback) {
         },
         onFailure: () => {
             if (callback !== undefined) callback('MQTT Connection Failed!');
-            console.log('MQTT: connection failed', callback);
+            // console.log('MQTT: connection failed', callback);
             persistConfig(false);
         }
     });
@@ -151,7 +151,7 @@ function disconnect(callback) {
 
 function changeConfig(onConnectionCallback) {
     const updatedConfig = localStorage.getItem(document.location.origin + '.config');
-    console.log('changeConfig', updatedConfig);
+    // console.log('changeConfig', updatedConfig);
     persistConfig(false);
     if (window.isAuthenticated) disconnect(onConnectionCallback);
     // reauthenticate(updatedConfig, onConnectionCallback);
@@ -179,7 +179,7 @@ function persistConfig(connectionStatus, token) {
         channel: _.isEqual(channel, popUpChannel) ? channel : popUpChannel
     };
     if (!!token) changedConfig['token'] = token;
-    console.log('changedConfig', changedConfig);
+    // console.log('changedConfig', changedConfig);
     store.dispatch('saveConfig', changedConfig);
     localStorage.setItem(
         document.location.origin + '.isAuthenticated',

@@ -14,7 +14,7 @@ const storedConfig = JSON.parse(
     localStorage.getItem(document.location.origin + '.config')
 );
 
-console.log(storedConfig);
+// console.log(storedConfig);
 
 const store = createStore({
     state: {
@@ -91,13 +91,13 @@ const store = createStore({
                     )
                     .then(
                         (response) => {
-                            console.log(response);
+                            // console.log(response);
                             const token = response.data.token.toString();
                             dispatch('saveConfig', { token });
                             state.loading = false;
                         },
                         (error) => {
-                            console.log(error);
+                            // console.log(error);
                             state.loading = false;
                             localStorage.setItem(
                                 document.location.origin + '.isAuthenticated',

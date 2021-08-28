@@ -325,7 +325,7 @@
             const storedConfig = localStorage.getItem(
                 document.location.origin + '.config'
             );
-            console.log('VISUALIZER', token.value);
+            // console.log('VISUALIZER', token.value);
             if (token !== undefined && token !== null && token.value) {
                 return url + token.value;
             } else {
@@ -337,12 +337,12 @@
             $store.dispatch('clearLogs');
         };
 
-        console.log(
-            window.isAuthenticated,
-            JSON.parse(localStorage.getItem(document.location.origin))
-        );
+        // console.log(
+        //     window.isAuthenticated,
+        //     JSON.parse(localStorage.getItem(document.location.origin))
+        // );
         let { channel, client } = window.mqtt;
-        console.log($f7, $on, $f7router, window.mqtt, resolvedConfig);
+        // console.log($f7, $on, $f7router, window.mqtt, resolvedConfig);
 
         const showToastBottom = (message) => {
             // Create toast
