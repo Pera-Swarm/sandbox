@@ -31,12 +31,12 @@ const store = createStore({
                 state.loading = false;
             }, 1000);
         },
-        saveConfig({ state }) {
+        saveConfig({ state }, data) {
             state.loading = true;
             setTimeout(() => {
                 localStorage.setItem(
                     document.location.origin + `.config`,
-                    JSON.stringify(config)
+                    JSON.stringify(data)
                 );
                 state.loading = false;
             }, 1000);

@@ -35,7 +35,7 @@ export const saveConfig = (data) => {
 
     localStorage.setItem(
         document.location.origin + '.config',
-        JSON.stringify({ ...config, token: data })
+        JSON.stringify({ ...config, ...data })
         // JSON.stringify({ token: data })
     );
 };
