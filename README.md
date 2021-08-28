@@ -23,7 +23,7 @@ Please make sure to add the corresponding labels and tags correctly.
 
 ## Documentation & Resources
 
-* [Pera-Swarm Core Documentation](https://pera-swarm.ce.pdn.ac.lk/docs/)
+* [Pera-Swarm Core Documentation](https://pera-swarm.github.io/docs/)
 * [Pera-Swarm Organization](https://github.com/Pera-Swarm/)
 
 ## Support Pera-Swarm

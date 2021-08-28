@@ -23,7 +23,7 @@ import store from './store/cache';
 // import Routes
 window.mqtt = new MQTTClient(config, () => {
     // $("#status").text("Trying to connect...");
-    console.log('SHOW TOAST');
+    // console.log('SHOW TOAST');
 });
 
 window.isAuthenticated =
@@ -90,7 +90,7 @@ function authenticate(onConnectionCallback) {
     console.log(config);
     const username = $('#mqtt-username').value();
     const password = $('#mqtt-password').value();
-    console.log(username, password);
+    // console.log(username, password);
     window.username = username;
     window.password = password;
     testConnection(username, password, onConnectionCallback);
@@ -130,16 +130,19 @@ function disconnect(callback) {
 }
 
 function getMQTTConfig() {
-    console.log(config, config || false);
+    // console.log(config, config || false);
 }
 
 function persistConfig(connectionStatus, token) {
     $('#status').value(connectionStatus);
     $('.btn').prop('disabled', false);
+
     const server = $('#mqtt_server').value();
     const port = Number($('#mqtt_port').value());
     const channel = $('#mqtt_channel').value();
-    console.log({ server, port, channel, token });
+
+    // console.log({ server, port, channel, token });
+
     saveConfig({ server, port, channel, token });
     localStorage.setItem(
         document.location.origin + '.isAuthenticated',

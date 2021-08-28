@@ -6,8 +6,10 @@ import store from './store/cache';
 export default class MqttClient {
     constructor(config, callback) {
         const { server, port, path, channel } = config;
-        const client_id = 'client_' + Math.random().toString(36).substring(2, 15);
         const { user, pass, host } = getCredentials();
+
+        const client_id = 'client_' + Math.random().toString(36).substring(2, 15);
+
         this.client = new MQTT.Client(server || host, Number(port), path, client_id);
         this.channel = channel;
         window.mqtt = this.client;
@@ -38,6 +40,7 @@ export default class MqttClient {
                     }, 1000);
                     this.client.onMessageArrived = this.onMessageArrived;
                     this.client.onConnectionLost = this.onConnectionLost;
+
                     $('#status').text('Connected');
                     $('.btn').prop('disabled', false);
 
@@ -99,6 +102,7 @@ export default class MqttClient {
 
         if (action !== undefined) {
             action(topic, msg);
+
             saveCache('cache', {
                 topic,
                 message: msg,
@@ -116,6 +120,7 @@ export default class MqttClient {
             payload.destinationName = pubTopic;
             this.client.send(payload);
             console.log('MQTT: published', pubTopic, message);
+
             saveCache('cache', {
                 topic: pubTopic,
                 message,
