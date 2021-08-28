@@ -451,6 +451,7 @@
                                                                 type="text"
                                                                 placeholder="MQTT Server"
                                                                 value="${client.host}"
+                                                                id="input-server"
                                                             />
                                                         </div>
                                                     </div>
@@ -472,7 +473,9 @@
                                                                 type="text"
                                                                 placeholder="MQTT Port"
                                                                 value="${client.port}"
+                                                                id="input-port"
                                                             />
+                                                            <div class="item-input-info">(Default: 8883)</div>
                                                         </div>
                                                     </div>
                                                 </li>
@@ -492,8 +495,11 @@
                                                             <input
                                                                 type="text"
                                                                 placeholder="MQTT Client ID"
+                                                                disabled
+                                                                id="input-client-id"
                                                                 value="${client.clientId}"
                                                             />
+                                                            <div class="item-input-info">(Automatically generated)</div>
                                                         </div>
                                                     </div>
                                                 </li>
@@ -513,8 +519,10 @@
                                                             <input
                                                                 type="text"
                                                                 placeholder="MQTT Channel"
+                                                                id="input-channel"
                                                                 value="${channel}"
                                                             />
+                                                            <div class="item-input-info">(Default: v1)</div>
                                                         </div>
                                                     </div>
                                                 </li>
@@ -524,6 +532,7 @@
                                                     <button
                                                         class="button button-raised button-fill color-primary"
                                                         data-popup=".popup-services"
+                                                        id="settings-popup-save-button"
                                                     >
                                                         Save
                                                     </button>
