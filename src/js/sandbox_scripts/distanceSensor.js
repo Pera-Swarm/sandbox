@@ -1,7 +1,7 @@
 import $ from 'jquery';
 
 export function setup() {
-    console.log('Setup: Distance');
+    // console.log('Setup: Distance');
 
     var dist_robot_id = null;
 

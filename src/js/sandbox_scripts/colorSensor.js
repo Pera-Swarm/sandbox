@@ -1,7 +1,7 @@
 import $ from 'jquery';
 
 export function setup() {
-    console.log('Setup: Color');
+    // console.log('Setup: Color');
 
     var color_robot_id = null;
 
