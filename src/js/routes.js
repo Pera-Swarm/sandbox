@@ -1,6 +1,6 @@
-import App from '../app.f7.html';
 import HomePage from '../pages/home.f7.html';
 
+import App from '../pages/sandbox_pages/app.f7.html';
 import RobotPage from '../pages/sandbox_pages/robot.f7.html';
 import CommunicationPage from '../pages/sandbox_pages/communication.f7.html';
 import DistanceSensorPage from '../pages/sandbox_pages/distanceSensor.f7.html';
@@ -18,12 +18,12 @@ function checkAuth({ resolve, reject }) {
         JSON.parse(localStorage.getItem(document.location.origin + '.isAuthenticated')) ||
         window.mqtt.client.isConnected() ||
         false;
-    console.log(
-        'checkAuth',
-        isAuthenticated,
-        window.mqtt,
-        window.mqtt.client.isConnected()
-    );
+    // console.log(
+    //     'checkAuth',
+    //     isAuthenticated,
+    //     window.mqtt,
+    //     window.mqtt.client.isConnected()
+    // );
     if (isAuthenticated !== null && isAuthenticated) {
         // resolve(to.url);
         return true;
@@ -36,7 +36,7 @@ function checkAuth({ resolve, reject }) {
 function checkPermission({ to, from, resolve, reject }) {
     /* some condition to check user edit permission */
     const isAuthenticated = JSON.parse(localStorage.getItem('isAuthenticated'));
-    console.log('checkPermission');
+    // console.log('checkPermission');
     if (isAuthenticated !== null && isAuthenticated) {
         resolve();
     } else {
@@ -55,27 +55,32 @@ var routes = [
                 // redirect to settings route
                 notificationToast = app.toast.create({
                     text:
-                        'You are currently connected to a session and you cannot change settings while in a session!',
+                        'You are currently connected to a session and be carefult if you wish to change settings while in a session!',
                     closeTimeout: 2000
                 });
                 notificationToast.open();
-                resolve('/settings');
+                resolve('/app');
             } else {
                 // otherwise display not connected alert!
                 notificationToast = app.toast.create({
                     text:
-                        'You are not connected to a session! Please refresh the page and enter the credentials to start the session.',
+                        'You are not connected to a session! Please make sure to enter the credentials to start a session.',
                     closeTimeout: 2000
                 });
                 notificationToast.open();
-                resolve('/settings');
+                resolve('/app');
             }
         }
     },
     {
-        path: '/settings',
+        path: '/',
         name: 'settings',
         component: HomePage
+    },
+    {
+        path: '/app',
+        name: 'app',
+        component: App
     },
     {
         path: '/robot/',
