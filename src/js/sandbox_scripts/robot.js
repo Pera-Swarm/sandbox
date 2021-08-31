@@ -1,7 +1,7 @@
 import $ from 'jquery';
 
 export function setup() {
-    console.log('Setup: Robot');
+    // console.log('Setup: Robot');
 
     $('.btn').prop('disabled', false);
     $('.channel').text(window.mqtt.channel);

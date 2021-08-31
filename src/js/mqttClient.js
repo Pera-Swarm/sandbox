@@ -1,10 +1,11 @@
 import MQTT from 'paho-mqtt';
 import $ from 'jquery';
 import { saveCache, getCredentials } from './config';
-import store from './store/cache';
+import store from './store';
 
 export default class MqttClient {
-    constructor(config, callback) {
+    constructor(param, callback) {
+        const config = store.getters.config.value;
         const { server, port, path, channel } = config;
         const { user, pass, host } = getCredentials();
 

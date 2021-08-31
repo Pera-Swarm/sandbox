@@ -52,7 +52,7 @@ const store = createStore({
                         (response) => {
                             // console.log(response);
                             const token = response.data.token.toString();
-                            saveConfig(token);
+                            saveConfig({ token });
                             state.loading = false;
                         },
                         (error) => {

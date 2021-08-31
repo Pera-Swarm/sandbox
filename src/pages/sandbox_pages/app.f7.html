@@ -1,0 +1,378 @@
+<template>
+    <div class="page" data-name="colorSensor">
+        <div class="navbar">
+            <div class="navbar-bg"></div>
+            <div class="navbar-inner sliding">
+                <div class="title">Sandbox</div>
+            </div>
+        </div>
+        <!-- Config Page Content -->
+        <div class="page-content">
+            <div class="container pt-2">
+                <!-- <h3>Neo Pixel LED Ring</h3> -->
+                <!-- Color Control -->
+                <div class="block-title">Current Settings</div>
+                <div class="card p-2">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="list inline-labels">
+                                <ul>
+                                    <li class="item-content item-input">
+                                        <div class="item-media">
+                                            <i class="icon f7-icons">tray_2</i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <div class="item-title item-label">
+                                                Server
+                                            </div>
+                                            <div class="item-input-wrap">
+                                                <input
+                                                    id="mqtt_server"
+                                                    type="text"
+                                                    placeholder="MQTT Server"
+                                                    disabled="{true}"
+                                                    value="${client.host}"
+                                                />
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="item-content item-input">
+                                        <div class="item-media">
+                                            <i class="icon f7-icons">textformat_123</i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <div class="item-title item-label">Port</div>
+                                            <div class="item-input-wrap">
+                                                <input
+                                                    id="mqtt_port"
+                                                    type="text"
+                                                    placeholder="MQTT Port"
+                                                    disabled="{true}"
+                                                    value="${client.port}"
+                                                />
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="item-content item-input">
+                                        <div class="item-media">
+                                            <i class="icon f7-icons">number_square</i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <div class="item-title item-label">
+                                                ClientID
+                                            </div>
+                                            <div class="item-input-wrap">
+                                                <input
+                                                    id="mqtt_client_id"
+                                                    type="text"
+                                                    placeholder="MQTT Client ID"
+                                                    disabled="{true}"
+                                                    value="${client.clientId}"
+                                                />
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="item-content item-input">
+                                        <div class="item-media">
+                                            <i class="icon f7-icons"
+                                                >dot_radiowaves_left_right</i
+                                            >
+                                        </div>
+                                        <div class="item-inner">
+                                            <div class="item-title item-label">
+                                                Channel
+                                            </div>
+                                            <div class="item-input-wrap">
+                                                <input
+                                                    id="mqtt_channel"
+                                                    type="text"
+                                                    placeholder="MQTT Channel"
+                                                    disabled="{true}"
+                                                    value="${channel}"
+                                                />
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="item-content item-input">
+                                        <div class="item-media">
+                                            <i class="icon f7-icons">wifi</i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <div class="item-title item-label">
+                                                Connected?
+                                            </div>
+                                            <div class="item-input-wrap">
+                                                <input
+                                                    id="status"
+                                                    type="text"
+                                                    placeholder="Connection Status"
+                                                    disabled="{true}"
+                                                    value="${client.isConnected()}"
+                                                />
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <button
+                                    class="button button-raised button-fill color-green popup-open my-2"
+                                    data-popup=".popup-services"
+                                >
+                                    Change
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="block-title">Authentication</div>
+                            <div class="list inline-labels">
+                                <ul>
+                                    <li class="item-content item-input">
+                                        <div class="item-media">
+                                            <i class="icon f7-icons">person</i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <div class="item-title item-label">
+                                                Username
+                                            </div>
+                                            <div class="item-input-wrap">
+                                                <input
+                                                    id="mqtt-username"
+                                                    type="text"
+                                                    placeholder="MQTT Username"
+                                                    value="${window.username}"
+                                                    disabled="${window.isAuthenticated}"
+                                                />
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="item-content item-input">
+                                        <div class="item-media">
+                                            <i class="icon f7-icons">lock</i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <div class="item-title item-label">
+                                                Password
+                                            </div>
+                                            <div class="item-input-wrap">
+                                                <input
+                                                    id="mqtt-password"
+                                                    type="password"
+                                                    placeholder="MQTT Password"
+                                                    value="${window.password}"
+                                                    disabled="${isAuthenticated}"
+                                                />
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                ${window.isAuthenticated === true ?
+                                <button
+                                    class="button button-raised button-fill color-red my-2"
+                                    id="disconnect-button"
+                                >
+                                    Disconnect
+                                </button>
+                                :
+                                <button
+                                    class="button button-raised button-fill color-blue my-2"
+                                    id="connect-button"
+                                >
+                                    Connect
+                                </button>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Settings Form Pop Up -->
+                <div class="popup popup-services">
+                    <div class="page-content container p-2">
+                        <div class="block">
+                            <div class="card col">
+                                <div class="list inline-labels mt-5">
+                                    <ul>
+                                        <li class="item-content item-input">
+                                            <div class="item-media">
+                                                <i class="icon f7-icons">tray_2</i>
+                                            </div>
+                                            <div class="item-inner">
+                                                <div class="item-title item-label">
+                                                    Server
+                                                </div>
+                                                <div class="item-input-wrap">
+                                                    <input
+                                                        type="text"
+                                                        placeholder="MQTT Server"
+                                                        value="${client.host}"
+                                                        id="input-server"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="item-content item-input">
+                                            <div class="item-media">
+                                                <i class="icon f7-icons"
+                                                    >textformat_123</i
+                                                >
+                                            </div>
+                                            <div class="item-inner">
+                                                <div class="item-title item-label">
+                                                    Port
+                                                </div>
+                                                <div class="item-input-wrap">
+                                                    <input
+                                                        type="text"
+                                                        placeholder="MQTT Port"
+                                                        value="${client.port}"
+                                                        id="input-port"
+                                                    />
+                                                    <div class="item-input-info">
+                                                        (Default: 8883)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="item-content item-input">
+                                            <div class="item-media">
+                                                <i class="icon f7-icons">number_square</i>
+                                            </div>
+                                            <div class="item-inner">
+                                                <div class="item-title item-label">
+                                                    ClientID
+                                                </div>
+                                                <div class="item-input-wrap">
+                                                    <input
+                                                        type="text"
+                                                        placeholder="MQTT Client ID"
+                                                        disabled
+                                                        id="input-client-id"
+                                                        value="${client.clientId}"
+                                                    />
+                                                    <div class="item-input-info">
+                                                        (Automatically generated)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="item-content item-input">
+                                            <div class="item-media">
+                                                <i class="icon f7-icons"
+                                                    >dot_radiowaves_left_right</i
+                                                >
+                                            </div>
+                                            <div class="item-inner">
+                                                <div class="item-title item-label">
+                                                    Channel
+                                                </div>
+                                                <div class="item-input-wrap">
+                                                    <input
+                                                        type="text"
+                                                        placeholder="MQTT Channel"
+                                                        id="input-channel"
+                                                        value="${channel}"
+                                                    />
+                                                    <div class="item-input-info">
+                                                        (Default: v1)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <div class="row m-3 pt-5">
+                                        <div class="col py-xs-2 py-md-0">
+                                            <button
+                                                class="button button-raised button-fill color-primary"
+                                                data-popup=".popup-services"
+                                                id="settings-popup-save-button"
+                                            >
+                                                Save
+                                            </button>
+                                        </div>
+                                        <div class="col-md"></div>
+                                        <div class="col-md"></div>
+                                        <div class="col-md"></div>
+                                        <div class="col py-xs-2 py-md-0">
+                                            <button
+                                                class="button button-raised button-fill color-red popup-close"
+                                                data-popup=".popup-services"
+                                            >
+                                                Close
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Settings Form Pop Up -->
+            </div>
+        </div>
+        <!-- End Config Page Content -->
+    </div>
+</template>
+<script>
+    import { setup } from '../../js/app';
+    import resolvedConfig from '../../js/config';
+
+    export default (props, { $f7, $on, $f7router, $update, $store }) => {
+        let selected = 'home';
+        let selectedMedia = 'home';
+        let toastBottom;
+        const token = $store.getters.token;
+        const setItem = (newItem) => {
+            selected = newItem;
+            $update();
+        };
+
+        const setItemMedia = (newItem) => {
+            selectedMedia = newItem;
+            $update();
+        };
+
+        const resolveVisualizerURL = () => {
+            // const url = 'https://pera-swarm.ce.pdn.ac.lk/visualizer/?key=';
+            const url = 'https://pera-swarm.github.io/visualizer/?key=';
+            const storedConfig = localStorage.getItem(
+                document.location.origin + '.config'
+            );
+            // console.log('VISUALIZER', token.value);
+            if (token !== undefined && token !== null && token.value) {
+                return url + token.value;
+            } else {
+                return '#';
+            }
+        };
+
+        const clearCache = () => {
+            $store.dispatch('clearLogs');
+        };
+
+        // console.log(
+        //     window.isAuthenticated,
+        //     JSON.parse(localStorage.getItem(document.location.origin))
+        // );
+        let { channel, client } = window.mqtt;
+        // console.log($f7, $on, $f7router, window.mqtt, resolvedConfig);
+
+        const showToastBottom = (message) => {
+            // Create toast
+            if (!toastBottom) {
+                toastBottom = $f7.toast.create({
+                    text: message,
+                    closeTimeout: 4000
+                });
+            }
+            // Open it
+            toastBottom.open();
+        };
+
+        $on('pageInit', (e, page) => {
+            setup(showToastBottom);
+        });
+
+        $on('pageBeforeRemove', () => {
+            if (toastBottom) toastBottom.destroy();
+        });
+        return $render;
+    };
+</script>

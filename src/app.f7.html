@@ -78,6 +78,23 @@
                     </li>
                     <li>
                         <a
+                            href="/sensors/proximity/"
+                            class="item-content item-link ${selectedMedia === '/sensors/proximity/' ? 'item-selected' : ''}"
+                            @click="${()=> setItemMedia('/sensors/proximity/')}"
+                        >
+                            <div class="item-media">
+                                <i class="icon f7-icons">arrow_right_arrow_left</i>
+                            </div>
+                            <div class="item-inner">
+                                <div class="item-title-wrap">
+                                    <div class="item-title">Proximity</div>
+                                </div>
+                                <div class="item-subtitle">Proximity Sensor</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a
                             href="/sensors/color/"
                             class="item-content item-link ${selectedMedia === '/sensors/color/' ? 'item-selected' : ''}"
                             @click="${()=> setItemMedia('/sensors/color/')}"
@@ -477,6 +494,7 @@
                                                                 type="text"
                                                                 placeholder="MQTT Server"
                                                                 value="${client.host}"
+                                                                id="input-server"
                                                             />
                                                         </div>
                                                     </div>
@@ -498,7 +516,11 @@
                                                                 type="text"
                                                                 placeholder="MQTT Port"
                                                                 value="${client.port}"
+                                                                id="input-port"
                                                             />
+                                                            <div class="item-input-info">
+                                                                (Default: 8883)
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </li>
@@ -518,8 +540,13 @@
                                                             <input
                                                                 type="text"
                                                                 placeholder="MQTT Client ID"
+                                                                disabled
+                                                                id="input-client-id"
                                                                 value="${client.clientId}"
                                                             />
+                                                            <div class="item-input-info">
+                                                                (Automatically generated)
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </li>
@@ -539,8 +566,12 @@
                                                             <input
                                                                 type="text"
                                                                 placeholder="MQTT Channel"
+                                                                id="input-channel"
                                                                 value="${channel}"
                                                             />
+                                                            <div class="item-input-info">
+                                                                (Default: v1)
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </li>
@@ -550,6 +581,7 @@
                                                     <button
                                                         class="button button-raised button-fill color-primary"
                                                         data-popup=".popup-services"
+                                                        id="settings-popup-save-button"
                                                     >
                                                         Save
                                                     </button>
