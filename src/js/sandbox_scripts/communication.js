@@ -1,7 +1,7 @@
 import $ from 'jquery';
 
 export function setup() {
-    console.log('Setup: Communication');
+    // console.log('Setup: Communication');
 
     //mqtt = new MQTTClient(() => {
     var comm_in_id = null;
