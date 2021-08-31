@@ -4,12 +4,8 @@ import { saveCache, getCredentials } from './config';
 import store from './store';
 
 export default class MqttClient {
-<<<<<<< HEAD
-    constructor(config, callback) {
-=======
     constructor(param, callback) {
         const config = store.getters.config.value;
->>>>>>> 21594b921bceb406c03a5e8b9b6b4e9a10e08243
         const { server, port, path, channel } = config;
         const { user, pass, host } = getCredentials();
 

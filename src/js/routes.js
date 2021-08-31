@@ -4,6 +4,7 @@ import App from '../pages/sandbox_pages/app.f7.html';
 import RobotPage from '../pages/sandbox_pages/robot.f7.html';
 import CommunicationPage from '../pages/sandbox_pages/communication.f7.html';
 import DistanceSensorPage from '../pages/sandbox_pages/distanceSensor.f7.html';
+import ProximitySensorPage from '../pages/sandbox_pages/proximitySensor.f7.html';
 
 import ColorSensorPage from '../pages/sandbox_pages/colorSensor.f7.html';
 import EnvironmentPage from '../pages/sandbox_pages/environment.f7.html';
@@ -134,6 +135,18 @@ var routes = [
     {
         path: '/sensors/distance/',
         component: DistanceSensorPage,
+        beforeEnter: function ({ resolve, reject }) {
+            if (checkAuth({ resolve, reject })) {
+                resolve();
+            } else {
+                // don't allow to visit this page for unauthenticated users
+                reject();
+            }
+        }
+    },
+    {
+        path: '/sensors/proximity/',
+        component: ProximitySensorPage,
         beforeEnter: function ({ resolve, reject }) {
             if (checkAuth({ resolve, reject })) {
                 resolve();

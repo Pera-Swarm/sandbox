@@ -29,8 +29,8 @@ window.mqtt = new MQTTClient(config, () => {
 });
 
 window.isAuthenticated =
-    JSON.parse(localStorage.getItem(document.location.origin + '.isAuthenticated')) ||
-    false;
+JSON.parse(localStorage.getItem(document.location.origin + '.isAuthenticated')) ||
+false;
 
 // import main app component
 var app = new Framework7({
@@ -110,7 +110,7 @@ function reauthenticate(updatedConfig, onConnectionCallback) {
     window.username = username;
     window.password = password;
     window.mqtt = new MQTTClient(selectedConfig, () => {
-        // $("#status").text("Trying to connect...");
+        $("#status").text("Trying to connect...");
         // console.log('SHOW TOAST 2');
     });
     testConnection(username, password, onConnectionCallback);
@@ -132,6 +132,9 @@ function testConnection(username, password, callback) {
             window.mqtt.client.onConnectionLost = window.mqtt.onConnectionLost;
             store.dispatch('createToken');
             persistConfig(true);
+
+            // Nuwan: Simple Fix to update issue
+            window.location.reload();
         },
         onFailure: () => {
             if (callback !== undefined) callback('MQTT Connection Failed!');
@@ -155,7 +158,7 @@ function changeConfig(onConnectionCallback) {
     // console.log('changeConfig', updatedConfig);
     persistConfig(false);
     if (window.isAuthenticated) disconnect(onConnectionCallback);
-    // reauthenticate(updatedConfig, onConnectionCallback);
+    reauthenticate(updatedConfig, onConnectionCallback);
 }
 
 function getMQTTConfig() {
@@ -186,4 +189,6 @@ function persistConfig(connectionStatus, token) {
         document.location.origin + '.isAuthenticated',
         JSON.stringify(connectionStatus)
     );
+
+    window.isAuthenticated = connectionStatus;
 }

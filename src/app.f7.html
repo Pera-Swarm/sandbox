@@ -78,6 +78,23 @@
                     </li>
                     <li>
                         <a
+                            href="/sensors/proximity/"
+                            class="item-content item-link ${selectedMedia === '/sensors/proximity/' ? 'item-selected' : ''}"
+                            @click="${()=> setItemMedia('/sensors/proximity/')}"
+                        >
+                            <div class="item-media">
+                                <i class="icon f7-icons">arrow_right_arrow_left</i>
+                            </div>
+                            <div class="item-inner">
+                                <div class="item-title-wrap">
+                                    <div class="item-title">Proximity</div>
+                                </div>
+                                <div class="item-subtitle">Proximity Sensor</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a
                             href="/sensors/color/"
                             class="item-content item-link ${selectedMedia === '/sensors/color/' ? 'item-selected' : ''}"
                             @click="${()=> setItemMedia('/sensors/color/')}"

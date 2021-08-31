@@ -1,12 +1,6 @@
-<<<<<<< HEAD
 # Pera-Swarm Sandbox v2.0 ![Framework7 Version](https://github.com/NuwanJ/pera-swarm-sandbox/workflows/DeployCI/badge.svg?branch=framework7)
 A TestBench used in [Pera-Swarm](https://pera-swarm.ce.pdn.ac.lk) Mixed Reality Simulator Experiment testing.
 
-=======
-# Pera-Swarm Sandbox v2.0 ![DeployCI](https://github.com/Pera-Swarm/sandbox/actions/workflows/publish.yml/badge.svg)
-
-A TestBench used in [Pera-Swarm](https://pera-swarm.ce.pdn.ac.lk) Mixed Reality Simulator Experiment testing.
->>>>>>> d3487630f7ef7ad647e5f5248e75efad6ca454ff
 
 ## Installation
 
