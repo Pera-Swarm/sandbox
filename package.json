@@ -21,11 +21,13 @@
     "Samsung >= 5"
   ],
   "dependencies": {
+    "-": "^0.0.1",
     "axios": "^0.21.1",
     "bootstrap": "^4.5.3",
     "dom7": "^3.0.0",
     "framework7": "^6.0.3",
     "framework7-icons": "^3.0.1",
+    "g": "^2.0.1",
     "jquery": "^3.5.1",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.21",
