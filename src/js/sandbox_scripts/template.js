@@ -1,9 +1,9 @@
 // import MQTTClient from '../mqttClient';
-import $ from "jquery";
+import $ from 'jquery';
 
 export function setup() {
-  console.log("Setup: Template");
+    // console.log('Setup: Template');
 
-  $(".btn").prop("disabled", false);
-  $(".channel").text(window.mqtt.channel);
+    $('.btn').prop('disabled', false);
+    $('.channel').text(window.mqtt.channel);
 }

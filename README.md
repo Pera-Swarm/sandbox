@@ -1,82 +1,37 @@
+![DeployCI](https://github.com/Pera-Swarm/sandbox/actions/workflows/publish.yml/badge.svg)
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
 
-![Framework7 Version](https://github.com/NuwanJ/pera-swarm-sandbox/workflows/DeployCI/badge.svg?branch=framework7)
+# Pera-Swarm Sandbox v2.0 
 
-# PeraSwarm Sandbox
+A TestBench used in [Pera-Swarm](https://pera-swarm.ce.pdn.ac.lk) Mixed Reality Simulator Experiment testing.
 
-## Framework7 CLI Options
+## Installation
 
-Framework7 app created with following options:
+Use the package manager npm from [Nodejs](https://nodejs.org/) to install Pera-Swarm SandBox.
 
-```
-{
-  "cwd": "",
-  "type": [
-    "pwa"
-  ],
-  "name": "PeraSwarm Sandbox",
-  "framework": "core",
-  "template": "tabs",
-  "bundler": "webpack",
-  "cssPreProcessor": false,
-  "theming": {
-    "customColor": false,
-    "color": "#007aff",
-    "darkTheme": true,
-    "iconFonts": true,
-    "fillBars": true
-  },
-  "customBuild": false,
-  "webpack": {
-    "developmentSourceMap": true,
-    "productionSourceMap": true,
-    "hashAssets": false,
-    "preserveAssetsPaths": false,
-    "inlineAssets": true
-  }
-}
+```bash
+npm install
 ```
 
-## NPM Scripts
+## Usage
 
 * 🔥 `start` - run development server
 * 🔧 `dev` - run development server
-* 🔧 `build` - build web app for production
+* 🔧 `build` - build the app for production
 
-## WebPack
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-There is a webpack bundler setup. It compiles and bundles all "front-end" resources. You should work only with files located in `/src` folder. Webpack config located in `build/webpack.config.js`.
-
-Webpack has specific way of handling static assets (CSS files, images, audios). You can learn more about correct way of doing things on [official webpack documentation](https://webpack.js.org/guides/asset-management/).
-
-## PWA
-
-This is a PWA. Don't forget to check what is inside of your `service-worker.js`. It is also recommended that you disable service worker (or enable "Update on reload") in browser dev tools during development.
-## Assets
-
-Assets (icons, splash screens) source images located in `assets-src` folder. To generate your own icons and splash screen images, you will need to replace all assets in this directory with your own images (pay attention to image size and format), and run the following command in the project directory:
-
-```
-framework7 assets
-```
-
-Or launch UI where you will be able to change icons and splash screens:
-
-```
-framework7 assets --ui
-```
-
-
+Please make sure to add the corresponding labels and tags correctly.
 
 ## Documentation & Resources
 
-* [Framework7 Core Documentation](https://framework7.io/docs/)
+* [Pera-Swarm Core Documentation](https://pera-swarm.github.io/docs/)
+* [Pera-Swarm Organization](https://github.com/Pera-Swarm/)
 
+## Support Pera-Swarm
 
+Love Pera-Swarm? Support our project by contributing and engaging in experiments using Pera-Swarm simulators and libraries.
 
-* [Framework7 Icons Reference](https://framework7.io/icons/)
-* [Community Forum](https://forum.framework7.io)
-
-## Support Framework7
-
-Love Framework7? Support project by donating or pledging on patreon:
-https://patreon.com/vladimirkharlampidi
+## License
+[GPL-3.0](https://github.com/Pera-Swarm/sandbox/blob/main/LICENSE)

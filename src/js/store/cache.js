@@ -1,56 +1,15 @@
 import { createStore } from 'framework7';
 import axios from 'axios';
-import config, { saveConfig } from './config';
-
-const defaultConfig = {
-    server: 'webservices.ceykod.com',
-    port: 8883,
-    path: '/mqtt',
-    channel: 'v1',
-    token: undefined
-};
-
-const storedConfig = JSON.parse(
-    localStorage.getItem(document.location.origin + '.config')
-);
-
-// console.log(storedConfig);
+import { saveConfig } from '../config';
+import config from '../config';
 
 const store = createStore({
     state: {
         loading: false,
         logs: [],
-        token: config.token,
-        config:
-            storedConfig !== null && storedConfig !== undefined
-                ? storedConfig
-                : defaultConfig
+        token: config.token
     },
     actions: {
-        saveConfig({ state }, data) {
-            state.loading = true;
-            setTimeout(() => {
-                localStorage.setItem(
-                    document.location.origin + `.config`,
-                    JSON.stringify(
-                        !!data
-                            ? { ...state.config, ...data, path: '/mqtt' }
-                            : defaultConfig
-                    )
-                );
-                state.loading = false;
-            }, 1000);
-        },
-        resetConfig({ state }) {
-            state.loading = true;
-            setTimeout(() => {
-                localStorage.setItem(
-                    document.location.origin + `.config`,
-                    JSON.stringify(defaultConfig)
-                );
-                state.loading = false;
-            }, 1000);
-        },
         getLogs({ state }) {
             state.loading = true;
             setTimeout(() => {
@@ -70,7 +29,7 @@ const store = createStore({
                 state.loading = false;
             }, 1000);
         },
-        createToken({ state, dispatch }) {
+        createToken({ state }) {
             state.loading = true;
             if (!(window.username === undefined || window.password === undefined)) {
                 axios
@@ -93,11 +52,11 @@ const store = createStore({
                         (response) => {
                             // console.log(response);
                             const token = response.data.token.toString();
-                            dispatch('saveConfig', { token });
+                            saveConfig({ token });
                             state.loading = false;
                         },
                         (error) => {
-                            // console.log(error);
+                            console.log(error);
                             state.loading = false;
                             localStorage.setItem(
                                 document.location.origin + '.isAuthenticated',
@@ -121,9 +80,6 @@ const store = createStore({
         },
         logs({ state }) {
             return state.logs;
-        },
-        config({ state }) {
-            return state.config;
         },
         token({ state }) {
             return state.token;
