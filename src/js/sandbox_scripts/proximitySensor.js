@@ -28,10 +28,15 @@ export function setup() {
         })
         .change();
 
-    $('#proximity-sensor-dist-bar')
+    $('.proximity-sensors')
         .change(function () {
-            $('#dist-val').val(this.value);
-            $('.dist-val').text(this.value);
+            const dist1 = $('#proximity-sensor-dist1-bar').val();
+            const dist2 = $('#proximity-sensor-dist2-bar').val();
+            const dist3 = $('#proximity-sensor-dist3-bar').val();
+            const dist4 = $('#proximity-sensor-dist4-bar').val();
+            const dist5 = $('#proximity-sensor-dist5-bar').val();
+            //$('#dist-val').val(this.value);
+            $('.dist-val').text(dist1 + "" + dist2 + "" + dist3 + "" + dist4 + "" + dist5);
         })
         .change();
 
