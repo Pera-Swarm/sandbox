@@ -120,7 +120,7 @@ proximity<template>
                                                     </div>
                                                     <div class="col">
                                                         <textarea class="resizable" placeholder="0 0 0 0 0 "
-                                                            value="0 0 0 0 0" id="dist-val"></textarea>
+                                                            value="0 0 0 0 0" id="proximity-val"></textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -133,25 +133,13 @@ proximity<template>
                         <div class="col-md-4">
                             <div class="p-2">
                                 <b><span class="channel">{channel}</span>/sensor/proximity/<span
-                                        class="proximity-sensor-robot-id">{robotId}</span>/?</b>
-                                <span class="float-right">
-                                    <a target="_blank"
-                                        href="https://pera-swarm.ce.pdn.ac.lk/docs/communication/mqtt/sensor#sensorproximityrobotid">[?]</a>
-                                </span>
-                                <button class="col button button-raised button-fill color-grey" id="dist-btn-req">
-                                    Req from Robot
-                                </button>
-                            </div>
-
-                            <div class="p-2">
-                                <b><span class="channel">{channel}</span>/sensor/proximity/<span
                                         class="proximity-sensor-robot-id">{robotId}</span></b>
                                 <span class="float-right">
-                                    <a target="_blank"
+                                    <a target="_blank" class="link external"
                                         href="https://pera-swarm.ce.pdn.ac.lk/docs/communication/mqtt/sensor#sensorproximityrobotid-1">[?]</a>
                                 </span>
                                 <div>
-                                    <span class="dist-val">0</span>
+                                    <span class="proximity-val">0</span>
                                 </div>
                                 <button class="col button button-raised button-fill color-blue"
                                     id="dist-btn-send-robot">
@@ -161,11 +149,11 @@ proximity<template>
 
                             <div class="p-2">
                                 <b><span class="channel">{channel}</span>/sensor/proximity/</b>
-                                <span class="float-right"><a target="_blank"
+                                <span class="float-right"><a target="_blank" class="link external"
                                         href="https://pera-swarm.ce.pdn.ac.lk/docs/communication/mqtt/sensor#sensorproximity">[?]</a></span>
                                 <div>
                                     { "id":"<span class="proximity-sensor-robot-id">{robotId}</span>", "dist":"<span
-                                        class="dist-val">0</span>" }
+                                        class="proximity-val">0</span>" }
                                 </div>
                                 <button class="col button button-raised button-fill color-green"
                                     id="dist-btn-send-server">
