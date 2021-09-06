@@ -28,6 +28,16 @@ export function setup() {
         })
         .change();
 
+    /*$('#proximity-sensor-dist1-bar')
+        .change(function () {
+            $('#dist-val').val(this.value);
+            $('.dist-val').text(this.value);
+            const dist1 = $('#proximity-sensor-dist1-bar').val();
+            console.log('test');
+            console.log(dist1);
+        })
+        .change();*/
+
     $('.proximity-sensors')
         .change(function () {
             const dist1 = $('#proximity-sensor-dist1-bar').val();
@@ -35,8 +45,10 @@ export function setup() {
             const dist3 = $('#proximity-sensor-dist3-bar').val();
             const dist4 = $('#proximity-sensor-dist4-bar').val();
             const dist5 = $('#proximity-sensor-dist5-bar').val();
+            console.log('test');
+            console.log(dist1);
             //$('#dist-val').val(this.value);
-            $('.dist-val').text(dist1 + "" + dist2 + "" + dist3 + "" + dist4 + "" + dist5);
+            $('.proximity-val').text(dist1 + " " + dist2 + " " + dist3 + " " + dist4 + " " + dist5);
         })
         .change();
 

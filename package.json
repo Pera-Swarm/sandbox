@@ -9,7 +9,7 @@
     "start": "npm run dev",
     "dev": "cross-env NODE_ENV=development webpack serve --config ./build/webpack.config.js",
     "build": "cross-env NODE_ENV=production node ./build/build.js",
-    "postinstall": "cpy ./node_modules/framework7-icons/fonts/*.* ./src/fonts/",
+    "postinstall": "cp ./node_modules/framework7-icons/fonts/*.* ./src/fonts/",
     "format": "prettier --write \"**/*.+(js|jsx|json|html|yml|yaml|css|md)\""
   },
   "browserslist": [
@@ -62,7 +62,7 @@
     "terser-webpack-plugin": "^5.1.1",
     "url-loader": "^4.1.1",
     "webpack": "^5.14.0",
-    "webpack-cli": "^4.3.1",
+    "webpack-cli": "^4.8.0",
     "webpack-dev-server": "^3.11.2",
     "workbox-webpack-plugin": "^6.0.2"
   }
