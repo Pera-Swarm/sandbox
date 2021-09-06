@@ -49,7 +49,7 @@ proximity<template>
                                                             <span class="range-slider range-slider-init"
                                                                 data-label="true">
                                                                 <input id="proximity-sensor-dist1-bar" type="range"
-                                                                    min="0" max="3000" step="1" value="0" />
+                                                                    min="0" max="300" step="1" value="0" />
                                                             </span>
                                                         </div>
                                                     </div>
@@ -64,7 +64,7 @@ proximity<template>
                                                             <span class="range-slider range-slider-init"
                                                                 data-label="true">
                                                                 <input id="proximity-sensor-dist2-bar" type="range"
-                                                                    min="0" max="3000" step="1" value="0" />
+                                                                    min="0" max="300" step="1" value="0" />
                                                             </span>
                                                         </div>
                                                     </div>
@@ -79,7 +79,7 @@ proximity<template>
                                                             <span class="range-slider range-slider-init"
                                                                 data-label="true">
                                                                 <input id="proximity-sensor-dist3-bar" type="range"
-                                                                    min="0" max="3000" step="1" value="0" />
+                                                                    min="0" max="300" step="1" value="0" />
                                                             </span>
                                                         </div>
                                                     </div>
@@ -94,7 +94,7 @@ proximity<template>
                                                             <span class="range-slider range-slider-init"
                                                                 data-label="true">
                                                                 <input id="proximity-sensor-dist4-bar" type="range"
-                                                                    min="0" max="3000" step="1" value="0" />
+                                                                    min="0" max="300" step="1" value="0" />
                                                             </span>
                                                         </div>
                                                     </div>
@@ -109,7 +109,7 @@ proximity<template>
                                                             <span class="range-slider range-slider-init"
                                                                 data-label="true">
                                                                 <input id="proximity-sensor-dist5-bar" type="range"
-                                                                    min="0" max="3000" step="1" value="0" />
+                                                                    min="0" max="300" step="1" value="0" />
                                                             </span>
                                                         </div>
                                                     </div>
@@ -119,8 +119,7 @@ proximity<template>
                                                     <div class="col-sm-12 col-md-4">
                                                     </div>
                                                     <div class="col-sm-12 col-md-8">
-                                                        <textarea class="resizable" placeholder="0 0 0 0 0 "
-                                                            value="0 0 0 0 0" id="proximity-val"></textarea>
+                                                        <span class="proximity-val">0 0 0 0 0</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -136,7 +135,7 @@ proximity<template>
                                         class="proximity-sensor-robot-id">{robotId}</span></b>
                                 <span class="float-right">
                                     <a target="_blank" class="link external"
-                                        href="https://pera-swarm.ce.pdn.ac.lk/docs/communication/mqtt/sensor#sensorproximityrobotid-1">[?]</a>
+                                        href="https://pera-swarm.ce.pdn.ac.lk/docs/communication/mqtt/sensor#sensorproximityrobotid">[?]</a>
                                 </span>
                                 <div>
                                     <span class="proximity-val">0</span>
@@ -152,8 +151,7 @@ proximity<template>
                                 <span class="float-right"><a target="_blank" class="link external"
                                         href="https://pera-swarm.ce.pdn.ac.lk/docs/communication/mqtt/sensor#sensorproximity">[?]</a></span>
                                 <div>
-                                    { "id":"<span class="proximity-sensor-robot-id">{robotId}</span>", "dist":"<span
-                                        class="proximity-val">0</span>" }
+                                    { "id":"<span class="proximity-sensor-robot-id">{robotId}</span>", "reality":"V" }
                                 </div>
                                 <button class="col button button-raised button-fill color-green"
                                     id="dist-btn-send-server">
@@ -171,7 +169,7 @@ proximity<template>
                         <li class="item-content item-input">
                             <div class="item-inner">
                                 <div class="item-title item-label">
-                                    Responses received from physical robots to the server
+                                    Messages received from robots to the server
                                     (<b><span class="channel">{channel}</span>/sensor/proximity</b>)<br />
                                 </div>
                                 <div class="item-input-wrap">
@@ -183,7 +181,7 @@ proximity<template>
                         <li class="item-content item-input">
                             <div class="item-inner">
                                 <div class="item-title item-label">
-                                    Responses received to (<b><span
+                                    Responses received to robots (<b><span
                                             class="channel">{channel}</span>/sensor/proximity/<span
                                             class="proximity-sensor-robot-id">{robotId}</span></b>)<br />
                                 </div>
