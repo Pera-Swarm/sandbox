@@ -29,8 +29,8 @@ window.mqtt = new MQTTClient(config, () => {
 });
 
 window.isAuthenticated =
-    JSON.parse(localStorage.getItem(document.location.origin + '.isAuthenticated')) ||
-    false;
+JSON.parse(localStorage.getItem(document.location.origin + '.isAuthenticated')) ||
+false;
 
 // import main app component
 var app = new Framework7({
@@ -110,7 +110,7 @@ function reauthenticate(updatedConfig, onConnectionCallback) {
     window.username = username;
     window.password = password;
     window.mqtt = new MQTTClient(selectedConfig, () => {
-        $('#status').text('Trying to connect...');
+        $("#status").text("Trying to connect...");
         // console.log('SHOW TOAST 2');
     });
     testConnection(username, password, onConnectionCallback);
