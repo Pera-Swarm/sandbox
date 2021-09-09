@@ -25,7 +25,7 @@ export function setup() {
             mqtt.unsubscribe(`sensor/proximity/${proximity_robot_id}`);
         }
         mqtt.subscribeToTopic(topic, (topic, msg) => {
-            $('#dist-robot-text').text(msg);
+            $('#proximity-robot-text').text(msg);
             console.log(topic, ':', msg);
         });
 
@@ -46,17 +46,17 @@ export function setup() {
 
     // Subscribe: v1/sensor/proximity
     mqtt.subscribeToTopic('sensor/proximity', (topic, msg) => {
-        $('#dist-sub-text').text(msg);
+        $('#proximity-sub-text').text(msg);
     });
 
     // Publish: sensor/proximity/${robotId}
-    $('#dist-btn-send-robot').click(function () {
+    $('#proximity-btn-send-robot').click(function () {
         const robotId = $('#proximity-sensor-robot-id').val();
         mqtt.publish(`sensor/proximity/${robotId}`, proximity_val);
     });
 
     // Publish: sensor/proximity/
-    $('#dist-btn-send-server').click(function () {
+    $('#proximity-btn-send-server').click(function () {
         const robotId = $('#proximity-sensor-robot-id').val();
         const msgString = { id: robotId, reality: 'V' };
         mqtt.publish('sensor/proximity', JSON.stringify(msgString));
