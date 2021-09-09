@@ -22,7 +22,12 @@
                                                 Robot ID
                                             </div>
                                             <div class="item-input-wrap">
-                                                <input type="number" id="robot-msg-id" min="0" value="0" />
+                                                <input
+                                                    type="number"
+                                                    id="robot-msg-id"
+                                                    min="0"
+                                                    value="0"
+                                                />
                                             </div>
                                         </div>
                                     </li>
@@ -31,7 +36,9 @@
                                             <div class="item-title item-label">
                                                 Message
                                             </div>
-                                            <div class="item-input-wrap input-dropdown-wrap">
+                                            <div
+                                                class="item-input-wrap input-dropdown-wrap"
+                                            >
                                                 <select id="robot-msg-value">
                                                     <option value="ID? -1">ID?</option>
                                                     <option value="MODE 1">MODE 1</option>
@@ -52,16 +59,28 @@
 
                         <div class="col-md-4">
                             <div class="p-2">
-                                <b><span class="channel">{channel}</span>/robot/msg/<span
-                                        id="robot-msg-id-lbl">{robotId}</span></b>
-                                <button class="col button button-raised button-fill color-blue" id="robot-msg-send-btn">
+                                <b
+                                    ><span class="channel">{channel}</span
+                                    >/robot/msg/<span id="robot-msg-id-lbl"
+                                        >{robotId}</span
+                                    ></b
+                                >
+                                <button
+                                    class="col button button-raised button-fill color-blue"
+                                    id="robot-msg-send-btn"
+                                >
                                     Send
                                 </button>
                             </div>
                             <div class="p-2">
-                                <b><span class="channel">{channel}</span>/robot/msg/broadcast</b>
-                                <button class="col button button-raised button-fill color-green"
-                                    id="robot-msg-broadcast-btn">
+                                <b
+                                    ><span class="channel">{channel}</span
+                                    >/robot/msg/broadcast</b
+                                >
+                                <button
+                                    class="col button button-raised button-fill color-green"
+                                    id="robot-msg-broadcast-btn"
+                                >
                                     Broadcast
                                 </button>
                             </div>
@@ -84,8 +103,12 @@
                                                         Robot ID
                                                     </div>
                                                     <div class="item-input-wrap">
-                                                        <input type="number" id="robot-localization-id" min="0"
-                                                            value="0" />
+                                                        <input
+                                                            type="number"
+                                                            id="robot-localization-id"
+                                                            min="0"
+                                                            value="0"
+                                                        />
                                                     </div>
                                                 </div>
                                             </div>
@@ -94,7 +117,9 @@
                                                     <div class="item-title item-label">
                                                         Reality
                                                     </div>
-                                                    <div class="item-input-wrap input-dropdown-wrap">
+                                                    <div
+                                                        class="item-input-wrap input-dropdown-wrap"
+                                                    >
                                                         <select id="robot-reality">
                                                             <option value="V">
                                                                 Virtual
@@ -112,12 +137,26 @@
                                         <div class="item-inner">
                                             <div class="item-title item-label">X</div>
                                             <div class="item-input-wrap">
-                                                <div class="range-slider range-slider-init" data-label="true">
-                                                    <input id="robot-create-x-range" type="range" min="-150" max="150"
-                                                        value="0" step="1" />
+                                                <div
+                                                    class="range-slider range-slider-init"
+                                                    data-label="true"
+                                                >
+                                                    <input
+                                                        id="robot-create-x-range"
+                                                        type="range"
+                                                        min="-150"
+                                                        max="150"
+                                                        value="0"
+                                                        step="1"
+                                                    />
                                                 </div>
-                                                <input type="number" id="robot-create-x-val" min="0" max="3000"
-                                                    value="50" />
+                                                <input
+                                                    type="number"
+                                                    id="robot-create-x-val"
+                                                    min="0"
+                                                    max="3000"
+                                                    value="50"
+                                                />
                                             </div>
                                         </div>
                                     </li>
@@ -125,12 +164,26 @@
                                         <div class="item-inner">
                                             <div class="item-title item-label">Y</div>
                                             <div class="item-input-wrap">
-                                                <div class="range-slider range-slider-init" data-label="true">
-                                                    <input id="robot-create-y-range" type="range" min="-150" max="150"
-                                                        value="0" step="1" />
+                                                <div
+                                                    class="range-slider range-slider-init"
+                                                    data-label="true"
+                                                >
+                                                    <input
+                                                        id="robot-create-y-range"
+                                                        type="range"
+                                                        min="-150"
+                                                        max="150"
+                                                        value="0"
+                                                        step="1"
+                                                    />
                                                 </div>
-                                                <input type="number" id="robot-create-y-val" min="0" max="3000"
-                                                    value="50" />
+                                                <input
+                                                    type="number"
+                                                    id="robot-create-y-val"
+                                                    min="0"
+                                                    max="3000"
+                                                    value="50"
+                                                />
                                             </div>
                                         </div>
                                     </li>
@@ -140,12 +193,26 @@
                                                 Heading
                                             </div>
                                             <div class="item-input-wrap">
-                                                <div class="range-slider range-slider-init" data-label="true">
-                                                    <input id="robot-create-heading-range" type="range" min="-150"
-                                                        max="150" value="0" step="1" />
+                                                <div
+                                                    class="range-slider range-slider-init"
+                                                    data-label="true"
+                                                >
+                                                    <input
+                                                        id="robot-create-heading-range"
+                                                        type="range"
+                                                        min="-150"
+                                                        max="150"
+                                                        value="0"
+                                                        step="1"
+                                                    />
                                                 </div>
-                                                <input type="number" id="robot-create-heading-val" min="0" max="3000"
-                                                    value="50" />
+                                                <input
+                                                    type="number"
+                                                    id="robot-create-heading-val"
+                                                    min="0"
+                                                    max="3000"
+                                                    value="50"
+                                                />
                                             </div>
                                         </div>
                                     </li>
@@ -156,35 +223,56 @@
                             <div class="p-2">
                                 <b><span class="channel">{channel}</span>/robot/create</b>
                                 <span class="float-right">
-                                    <a target="_blank" class="link external"
-                                        href="https://pera-swarm.ce.pdn.ac.lk/docs/communication/mqtt/robot#robotcreate">[?]</a>
+                                    <a
+                                        target="_blank"
+                                        class="link external"
+                                        href="https://pera-swarm.ce.pdn.ac.lk/docs/communication/mqtt/robot#robotcreate"
+                                        >[?]</a
+                                    >
                                 </span>
                                 <div>
                                     { "id":"<span class="robot-loc-id">{robotId}</span>",
-                                    "x":"<span class="robot-loc-x">0</span>", "y":"<span class="robot-loc-y">0</span>",
-                                    "heading":"<span class="robot-loc-heading">90</span>", "reality":"<span
-                                        class="robot-loc-reality">V</span>" }
+                                    "x":"<span class="robot-loc-x">0</span>", "y":"<span
+                                        class="robot-loc-y"
+                                        >0</span
+                                    >", "heading":"<span class="robot-loc-heading"
+                                        >90</span
+                                    >", "reality":"<span class="robot-loc-reality">V</span
+                                    >" }
                                 </div>
-                                <button class="col button button-raised button-fill color-blue" id="robot-btn-create">
+                                <button
+                                    class="col button button-raised button-fill color-blue"
+                                    id="robot-btn-create"
+                                >
                                     Create
                                 </button>
                             </div>
 
                             <div class="p-2">
-                                <b><span class="channel">{channel}</span>/localization/update</b>
+                                <b
+                                    ><span class="channel">{channel}</span
+                                    >/localization/update</b
+                                >
                                 <span class="float-right">
-                                    <a target="_blank" class="link external"
-                                        href="https://pera-swarm.ce.pdn.ac.lk/docs/communication/mqtt/localization#localizationupdate-1">[?]</a>
+                                    <a
+                                        target="_blank"
+                                        class="link external"
+                                        href="https://pera-swarm.ce.pdn.ac.lk/docs/communication/mqtt/localization#localizationupdate-1"
+                                        >[?]</a
+                                    >
                                 </span>
                                 <div>
-                                    [ { "id": "<span class="robot-loc-id">{robotId}</span>", "x":"<span
-                                        class="robot-loc-x">0</span>",
+                                    [ { "id": "<span class="robot-loc-id">{robotId}</span
+                                    >", "x":"<span class="robot-loc-x">0</span>",
                                     "y":"<span class="robot-loc-y">0</span>",
                                     "heading":"<span class="robot-loc-heading">90</span>",
                                     "reality":"<span class="robot-loc-reality">V</span>" }
                                     ]
                                 </div>
-                                <button class="col button button-raised button-fill color-orange" id="robot-btn-update">
+                                <button
+                                    class="col button button-raised button-fill color-orange"
+                                    id="robot-btn-update"
+                                >
                                     Update
                                 </button>
                             </div>
@@ -192,13 +280,20 @@
                             <div class="p-2">
                                 <b><span class="channel">{channel}</span>/robot/delete</b>
                                 <span class="float-right">
-                                    <a target="_blank" class="link external"
-                                        href="https://pera-swarm.ce.pdn.ac.lk/docs/communication/mqtt/robot#robotdelete">[?]</a>
+                                    <a
+                                        target="_blank"
+                                        class="link external"
+                                        href="https://pera-swarm.ce.pdn.ac.lk/docs/communication/mqtt/robot#robotdelete"
+                                        >[?]</a
+                                    >
                                 </span>
                                 <div>
                                     { "id":"<span class="robot-loc-id">{robotId}</span>" }
                                 </div>
-                                <button class="col button button-raised button-fill color-red" id="robot-btn-delete">
+                                <button
+                                    class="col button button-raised button-fill color-red"
+                                    id="robot-btn-delete"
+                                >
                                     Delete
                                 </button>
                             </div>

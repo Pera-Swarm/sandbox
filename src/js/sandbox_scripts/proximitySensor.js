@@ -36,8 +36,12 @@ export function setup() {
             const dist4 = $('#proximity-sensor-dist4-bar').val();
             const dist5 = $('#proximity-sensor-dist5-bar').val();
 
-            $('.proximity-val').text(dist1 + " " + dist2 + " " + dist3 + " " + dist4 + " " + dist5);
-            $('#proximity-val').text(dist1 + " " + dist2 + " " + dist3 + " " + dist4 + " " + dist5);
+            $('.proximity-val').text(
+                dist1 + ' ' + dist2 + ' ' + dist3 + ' ' + dist4 + ' ' + dist5
+            );
+            $('#proximity-val').text(
+                dist1 + ' ' + dist2 + ' ' + dist3 + ' ' + dist4 + ' ' + dist5
+            );
         })
         .change();
 

@@ -11,7 +11,7 @@
             <div class="container pt-2">
                 <!-- <h3>Neo Pixel LED Ring</h3> -->
                 <!-- Color Control -->
-                <div class="block-title">Current Settings</div>
+                <div class="block-title">Current Settings (2)</div>
                 <div class="card p-2">
                     <div class="row">
                         <div class="col-md-6">
@@ -99,7 +99,7 @@
                                         </div>
                                         <div class="item-inner">
                                             <div class="item-title item-label">
-                                                Connected?
+                                                Is Connected?
                                             </div>
                                             <div class="item-input-wrap">
                                                 <input
@@ -107,7 +107,7 @@
                                                     type="text"
                                                     placeholder="Connection Status"
                                                     disabled="{true}"
-                                                    value="${client.isConnected()}"
+                                                    value="${window.isAuthenticated}"
                                                 />
                                             </div>
                                         </div>
@@ -166,7 +166,7 @@
                                 </ul>
                                 ${window.isAuthenticated === true ?
                                 <button
-                                    class="button button-raised button-fill color-red my-2"
+                                    class="button button-raised button-fill color-red my-2 disconnect-button-cls"
                                     id="disconnect-button"
                                 >
                                     Disconnect

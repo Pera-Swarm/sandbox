@@ -11,7 +11,7 @@ const config = {
 const storedConfig = localStorage.getItem(document.location.origin + '.config');
 
 window.isAuthenticated = localStorage.getItem(
-    document.location.origim + 'isAuthenticated'
+    document.location.origin + 'isAuthenticated'
 );
 
 const cred = getCredentials();
@@ -47,6 +47,7 @@ export function getCredentials() {
             : config;
 
     const { token } = resolvedConfig;
+
     // console.log('getCredentials', resolvedConfig.token, token);
     if (token !== undefined && token !== null && typeof token === 'string') {
         // decode the token
