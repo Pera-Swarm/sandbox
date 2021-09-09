@@ -57,7 +57,9 @@ var routes = [
                 notificationToast = app.toast.create({
                     text:
                         'You are currently connected to a session and be carefult if you wish to change settings while in a session!',
-                    closeTimeout: 2000
+                    closeTimeout: 4000,
+                    position: "bottom",
+                    horizontalPosition: "center",
                 });
                 notificationToast.open();
                 resolve('/app');

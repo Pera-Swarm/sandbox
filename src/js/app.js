@@ -19,7 +19,6 @@ import { init } from '../css/index.css';
 
 // logs store
 import store from './store';
-
 const config = store.getters.config.value;
 
 // new mqtt client
@@ -32,11 +31,25 @@ window.isAuthenticated =
 JSON.parse(localStorage.getItem(document.location.origin + '.isAuthenticated')) ||
 false;
 
+// Added patch by Nuwan, to fix a bug
+// if(window.isAuthenticated){
+const storedConfig = JSON.parse(
+    localStorage.getItem(document.location.origin + '.config')
+);
+
+try {
+    window.password = storedConfig.password;
+    window.username = storedConfig.username;
+} catch (e) {
+    console.error(e);
+}
+
+
 // import main app component
 var app = new Framework7({
     name: 'PeraSwarm Sandbox', // App name
     theme: 'md', // Automatic theme detection
-    autoDarkTheme: false, // Automatic dark theme detection
+    autoDarkTheme: true, // Automatic dark theme detection
     el: '#app', // App root element
     component: App, // App main component
     // App id
@@ -69,14 +82,25 @@ export function setup(onConnectionCallback) {
         localStorage.setItem('isDarkTheme', JSON.stringify(value));
     });
     getMQTTConfig();
+
     // console.log(getCredentials());
     $('#connect-button').on('click', () => {
-        authenticate(onConnectionCallback);
+        // Nuwan: Simple Fix to update issue
+        authenticate(function () {
+            // console.log('callback');
+            // window.location.reload();
+            // TODO: Connection button should be updated
+        });
     });
-    $('#disconnect-button').on('click', () => {
+
+    // Patch by Nuwan to fix errors
+    $('.disconnect-button-cls').on('click', () => {
         disconnect(onConnectionCallback);
     });
-    $('#settings-popup-save-button').on('click', () => {
+    // $('#disconnect-button').on('click', () => {
+    //     disconnect(onConnectionCallback);
+    // });
+    $('.settings-popup-save-button').on('click', () => {
         changeConfig(onConnectionCallback);
     });
 }
@@ -95,31 +119,30 @@ function authenticate(onConnectionCallback) {
     // console.log(config);
     const username = $('#mqtt-username').value();
     const password = $('#mqtt-password').value();
-    // console.log(username, password);
+
     window.username = username;
     window.password = password;
-    testConnection(username, password, onConnectionCallback);
+    connectMQTT(username, password, onConnectionCallback);
 }
 
 function reauthenticate(updatedConfig, onConnectionCallback) {
     const selectedConfig = localStorage.getItem(document.location.origin + '.config');
-    // console.log('reauthenticate', updatedConfig);
     const username = $('#mqtt-username').value();
     const password = $('#mqtt-password').value();
-    // console.log(username, password);
+
     window.username = username;
     window.password = password;
+
     window.mqtt = new MQTTClient(selectedConfig, () => {
-        $("#status").text("Trying to connect...");
-        // console.log('SHOW TOAST 2');
+        console.log('SHOW TOAST 2');
     });
-    testConnection(username, password, onConnectionCallback);
+    connectMQTT(username, password, onConnectionCallback);
 }
 
-function testConnection(username, password, callback) {
+function connectMQTT(username, password, callback) {
     window.mqtt.client.connect({
         userName: username,
-        password,
+        password: password,
         reconnect: false,
         useSSL: true,
         keepAliveInterval: 360,
@@ -127,30 +150,52 @@ function testConnection(username, password, callback) {
 
         onSuccess: () => {
             // console.log('MQTT: connected');
-            if (callback !== undefined) callback('MQTT Connection Successful!');
             window.mqtt.client.onMessageArrived = window.mqtt.onMessageArrived;
             window.mqtt.client.onConnectionLost = window.mqtt.onConnectionLost;
             store.dispatch('createToken');
             persistConfig(true);
 
-            // Nuwan: Simple Fix to update issue
-            window.location.reload();
+            console.log('Connected...');
+            const toastBottom = app.toast.create({
+                text: "MQTT Connection Successful!",
+                closeTimeout: 1500,
+                position: "bottom",
+                horizontalPosition: "center",
+            });
+            toastBottom.open();
+
+            // Tempory Patch by Nuwan
+            window.isAuthenticated = true;
+            localStorage.setItem(document.location.origin + 'isAuthenticated', true);
+
+
+            if (callback !== undefined) callback('MQTT Connection Successful!');
         },
         onFailure: () => {
-            if (callback !== undefined) callback('MQTT Connection Failed!');
-            // console.log('MQTT: connection failed', callback);
+            console.log('MQTT: connection failed', username, password, '-');
             persistConfig(false);
+            if (callback !== undefined) callback('MQTT Connection Failed!');
         }
     });
 }
 
 function disconnect(callback) {
-    window.mqtt.client.disconnect();
+    try {
+        window.mqtt.client.disconnect();
+    } catch (error) {
+        console.error(error);
+    }
+
+    // Added patch by Nuwan to fix errors
+    // alert('Disconnecting...');
+    window.isAuthenticated = false;
+    localStorage.setItem(document.location.origin + 'isAuthenticated', false);
+
     setTimeout(() => {
         if (callback !== undefined) callback('MQTT Connection Close Successful!!');
         persistConfig(false);
         window.location.reload();
-    }, 3000);
+    }, 1000);
 }
 
 function changeConfig(onConnectionCallback) {
@@ -158,7 +203,13 @@ function changeConfig(onConnectionCallback) {
     // console.log('changeConfig', updatedConfig);
     persistConfig(false);
     if (window.isAuthenticated) disconnect(onConnectionCallback);
-    reauthenticate(updatedConfig, onConnectionCallback);
+
+    setTimeout(() => {
+        if (onConnectionCallback !== undefined) onConnectionCallback('MQTT Connection Closed');
+        persistConfig(false);
+        window.location.reload();
+    }, 1000);
+
 }
 
 function getMQTTConfig() {
@@ -166,7 +217,7 @@ function getMQTTConfig() {
 }
 
 function persistConfig(connectionStatus, token) {
-    $('#status').value(connectionStatus);
+    // $('#status').value(connectionStatus);
     $('.btn').prop('disabled', false);
 
     const server = $('#mqtt_server').value();
@@ -175,19 +226,28 @@ function persistConfig(connectionStatus, token) {
     const popUpServer = $('#input-server').value();
     const popUpPort = Number($('#input-port').value());
     const popUpChannel = $('#input-channel').value();
-    // no need to change client id since it's automatically generated
-    // const clientId = $('#input-client-id').value();
+
+    // TODO: Update the 'Current Settings'
+
+
     const changedConfig = {
         server: _.isEqual(server, popUpServer) ? server : popUpServer,
         port: _.isEqual(port, popUpPort) ? port : popUpPort,
-        channel: _.isEqual(channel, popUpChannel) ? channel : popUpChannel
+        channel: _.isEqual(channel, popUpChannel) ? channel : popUpChannel,
+        username: window.username,
+        password: window.password,
+        path: '/mqtt'
     };
     if (!!token) changedConfig['token'] = token;
-    // console.log('changedConfig', changedConfig);
-    store.dispatch('saveConfig', changedConfig);
+
+    // store.dispatch('saveConfig', changedConfig);
     localStorage.setItem(
         document.location.origin + '.isAuthenticated',
         JSON.stringify(connectionStatus)
+    );
+    localStorage.setItem(
+        document.location.origin + '.config',
+        JSON.stringify(changedConfig)
     );
 
     window.isAuthenticated = connectionStatus;

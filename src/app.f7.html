@@ -163,9 +163,9 @@
                             <i class="icon f7-icons">bars</i>
                         </a>
                     </div>
-                    <div class="title">SandBox v2.0</div>
+                    <div class="title">SandBox v2.1</div>
                     <div class="right">
-                        <span class="link" id="theme-toggler"> </span>
+                        <!-- <span class="link" id="theme-toggler"> </span> -->
                         <a class="link popover-open" data-popover=".profile-popover">
                             <img src="static/icons/logo.png" class="avatar" />
                         </a>
@@ -177,7 +177,7 @@
             <!-- Pop Over -->
             <div class="popover profile-popover">
                 <div class="popover-inner">
-                    <h5 class="text-align-center margin-top">Pera-Swarm SandBox v2.0</h5>
+                    <h5 class="text-align-center margin-top">Pera-Swarm SandBox v2.1</h5>
                     <div
                         class="list no-hairlines no-hairlines-between padding-top padding-bottom"
                     >
@@ -234,7 +234,7 @@
                                     </div>
                                 </a>
                             </li>
-                            <li>
+                            <!-- <li>
                                 <a href="#" class="item-content">
                                     <div class="item-media">
                                         <i class="icon f7-icons">wifi_slash</i>
@@ -243,7 +243,7 @@
                                         <div class="item-title">Disconnect</div>
                                     </div>
                                 </a>
-                            </li>
+                            </li> -->
                         </ul>
                     </div>
                 </div>
@@ -292,7 +292,7 @@
                     <div class="container pt-2">
                         <!-- <h3>Neo Pixel LED Ring</h3> -->
                         <!-- Color Control -->
-                        <div class="block-title">Current Settings</div>
+                        <div class="block-title">Current Settings (1)</div>
                         <div class="card p-2">
                             <div class="row">
                                 <div class="col-md-6">
@@ -380,7 +380,7 @@
                                                     </div>
                                                 </div>
                                             </li>
-                                            <li class="item-content item-input">
+                                            <!-- <li class="item-content item-input">
                                                 <div class="item-media">
                                                     <i class="icon f7-icons">wifi</i>
                                                 </div>
@@ -398,7 +398,7 @@
                                                         />
                                                     </div>
                                                 </div>
-                                            </li>
+                                            </li> -->
                                         </ul>
                                         <button
                                             class="button button-raised button-fill color-green popup-open my-2"
@@ -453,7 +453,7 @@
                                         </ul>
                                         ${window.isAuthenticated === true ?
                                         <button
-                                            class="button button-raised button-fill color-red my-2"
+                                            class="button button-raised button-fill color-red my-2 disconnect-button-cls"
                                             id="disconnect-button"
                                         >
                                             Disconnect
@@ -577,24 +577,22 @@
                                                 </li>
                                             </ul>
                                             <div class="row m-3 pt-5">
-                                                <div class="col py-xs-2 py-md-0">
-                                                    <button
-                                                        class="button button-raised button-fill color-primary"
-                                                        data-popup=".popup-services"
-                                                        id="settings-popup-save-button"
-                                                    >
-                                                        Save
-                                                    </button>
-                                                </div>
-                                                <div class="col-md"></div>
-                                                <div class="col-md"></div>
-                                                <div class="col-md"></div>
-                                                <div class="col py-xs-2 py-md-0">
+                                                <div class="col col-md-8"></div>
+                                                <div class="col col-md-2">
                                                     <button
                                                         class="button button-raised button-fill color-red popup-close"
                                                         data-popup=".popup-services"
                                                     >
                                                         Close
+                                                    </button>
+                                                </div>
+                                                <div class="col col-md-2">
+                                                    <button
+                                                        class="button button-raised button-fill color-primary settings-popup-save-button"
+                                                        data-popup=".popup-services"
+                                                        id="settings-popup-save-button-1"
+                                                    >
+                                                        Save
                                                     </button>
                                                 </div>
                                             </div>
@@ -634,7 +632,7 @@
         };
 
         const resolveVisualizer_URL = () => {
-            const url = 'https://pera-swarm.github.io/visualizer/?key=';
+            const url = 'https://pera-swarm.ce.pdn.ac.lk/visualizer/?key=';
             const storedConfig = localStorage.getItem(
                 document.location.origin + '.config'
             );
@@ -646,7 +644,7 @@
         };
 
         const resolveVisualizerAR_URL = () => {
-            const url = 'https://pera-swarm.github.io/visualizer-ar/?key=';
+            const url = 'https://pera-swarm.ce.pdn.ac.lk/visualizer-ar/?key=';
             const storedConfig = localStorage.getItem(
                 document.location.origin + '.config'
             );
@@ -674,7 +672,9 @@
             if (!toastBottom) {
                 toastBottom = $f7.toast.create({
                     text: message,
-                    closeTimeout: 4000
+                    closeTimeout: 4000,
+                    position: "bottom",
+                    horizontalPosition: "center",
                 });
             }
             // Open it
