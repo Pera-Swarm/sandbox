@@ -89,8 +89,6 @@ export function setup(onConnectionCallback) {
         authenticate(function () {
             // console.log('callback');
             // window.location.reload();
-            alert('Connected');
-
             // TODO: Connection button should be updated
         });
     });
@@ -102,7 +100,7 @@ export function setup(onConnectionCallback) {
     // $('#disconnect-button').on('click', () => {
     //     disconnect(onConnectionCallback);
     // });
-    $('#settings-popup-save-button').on('click', () => {
+    $('.settings-popup-save-button').on('click', () => {
         changeConfig(onConnectionCallback);
     });
 }
@@ -157,7 +155,20 @@ function connectMQTT(username, password, callback) {
             store.dispatch('createToken');
             persistConfig(true);
 
-            // alert('connected');
+            console.log('Connected...');
+            const toastBottom = app.toast.create({
+                text: "MQTT Connection Successful!",
+                closeTimeout: 1500,
+                position: "bottom",
+                horizontalPosition: "center",
+            });
+            toastBottom.open();
+
+            // Tempory Patch by Nuwan
+            window.isAuthenticated = true;
+            localStorage.setItem(document.location.origin + 'isAuthenticated', true);
+
+
             if (callback !== undefined) callback('MQTT Connection Successful!');
         },
         onFailure: () => {
@@ -192,7 +203,13 @@ function changeConfig(onConnectionCallback) {
     // console.log('changeConfig', updatedConfig);
     persistConfig(false);
     if (window.isAuthenticated) disconnect(onConnectionCallback);
-    reauthenticate(updatedConfig, onConnectionCallback);
+
+    setTimeout(() => {
+        if (onConnectionCallback !== undefined) onConnectionCallback('MQTT Connection Closed');
+        persistConfig(false);
+        window.location.reload();
+    }, 1000);
+
 }
 
 function getMQTTConfig() {
@@ -210,8 +227,8 @@ function persistConfig(connectionStatus, token) {
     const popUpPort = Number($('#input-port').value());
     const popUpChannel = $('#input-channel').value();
 
-    // no need to change client id since it's automatically generated
-    // const clientId = $('#input-client-id').value();
+    // TODO: Update the 'Current Settings'
+
 
     const changedConfig = {
         server: _.isEqual(server, popUpServer) ? server : popUpServer,

@@ -380,7 +380,7 @@
                                                     </div>
                                                 </div>
                                             </li>
-                                            <li class="item-content item-input">
+                                            <!-- <li class="item-content item-input">
                                                 <div class="item-media">
                                                     <i class="icon f7-icons">wifi</i>
                                                 </div>
@@ -398,7 +398,7 @@
                                                         />
                                                     </div>
                                                 </div>
-                                            </li>
+                                            </li> -->
                                         </ul>
                                         <button
                                             class="button button-raised button-fill color-green popup-open my-2"
@@ -577,24 +577,22 @@
                                                 </li>
                                             </ul>
                                             <div class="row m-3 pt-5">
-                                                <div class="col py-xs-2 py-md-0">
-                                                    <button
-                                                        class="button button-raised button-fill color-primary"
-                                                        data-popup=".popup-services"
-                                                        id="settings-popup-save-button"
-                                                    >
-                                                        Save
-                                                    </button>
-                                                </div>
-                                                <div class="col-md"></div>
-                                                <div class="col-md"></div>
-                                                <div class="col-md"></div>
-                                                <div class="col py-xs-2 py-md-0">
+                                                <div class="col col-md-8"></div>
+                                                <div class="col col-md-2">
                                                     <button
                                                         class="button button-raised button-fill color-red popup-close"
                                                         data-popup=".popup-services"
                                                     >
                                                         Close
+                                                    </button>
+                                                </div>
+                                                <div class="col col-md-2">
+                                                    <button
+                                                        class="button button-raised button-fill color-primary settings-popup-save-button"
+                                                        data-popup=".popup-services"
+                                                        id="settings-popup-save-button-1"
+                                                    >
+                                                        Save
                                                     </button>
                                                 </div>
                                             </div>
@@ -674,7 +672,9 @@
             if (!toastBottom) {
                 toastBottom = $f7.toast.create({
                     text: message,
-                    closeTimeout: 4000
+                    closeTimeout: 4000,
+                    position: "bottom",
+                    horizontalPosition: "center",
                 });
             }
             // Open it
