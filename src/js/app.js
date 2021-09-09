@@ -28,17 +28,22 @@ window.mqtt = new MQTTClient(config, () => {
 });
 
 window.isAuthenticated =
-    JSON.parse(localStorage.getItem(document.location.origin + '.isAuthenticated')) ||
-    false;
+JSON.parse(localStorage.getItem(document.location.origin + '.isAuthenticated')) ||
+false;
 
 // Added patch by Nuwan, to fix a bug
 // if(window.isAuthenticated){
 const storedConfig = JSON.parse(
     localStorage.getItem(document.location.origin + '.config')
 );
-window.password = storedConfig.password;
-window.username = storedConfig.username;
-// }
+
+try {
+    window.password = storedConfig.password;
+    window.username = storedConfig.username;
+} catch (e) {
+    console.error(e);
+}
+
 
 // import main app component
 var app = new Framework7({
