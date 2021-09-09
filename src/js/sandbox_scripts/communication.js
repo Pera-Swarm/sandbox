@@ -20,45 +20,36 @@ export function setup() {
     });
 
     // Event listeners for select box updates
-    $('#comm-out-protocol')
-        .change(function () {
-            $('.com-out-protocol-label').text(this.value);
-        })
-        .change();
+    $('#comm-out-protocol').change(function () {
+        $('.com-out-protocol-label').text(this.value);
+    }).change();
 
-    $('#robot-id')
-        .change(function () {
-            const robotId = this.value;
-            const topicSimple = `comm/in/simple/${robotId}`;
-            const topicDirect = `comm/in/direct/${robotId}`;
+    $('#robot-id').change(function () {
+        const robotId = this.value;
+        const topic_InSimple = `comm/in/simple/${robotId}`;
+        const topic_OutDirect = `comm/in/direct/${robotId}`;
 
-            if (comm_in_id !== robotId && comm_in_id !== null) {
-                // unsubscribe from previous topic
-                mqtt.unsubscribe(`comm/in/simple/${comm_in_id}`);
-            }
+        if (comm_in_id !== robotId && comm_in_id !== null) {
+            // unsubscribe from previous topic
+            mqtt.unsubscribe(`comm/in/simple/${comm_in_id}`);
+            mqtt.unsubscribe(`comm/in/direct/${comm_in_id}`);
+        }
 
-            // Simple communication
-            mqtt.subscribeToTopic(topicSimple, (topicSimple, msg) => {
-                $('#com-in-msg').text(`simple: ${msg}`);
-                console.log(topicSimple, ':', msg);
-            });
+        // Simple communication
+        mqtt.subscribeToTopic(topic_InSimple, (topic_InSimple, msg) => {
+            $('#com-in-simple').text(`${msg}`);
+            console.log(topic_InSimple, ':', msg);
+        });
 
-            // Directed communication
-            mqtt.subscribeToTopic(topicDirect, (topicDirect, msg) => {
-                $('#com-in-msg').text(`direct: ${msg}`);
-                console.log(topicDirect, ':', msg);
-            });
+        // Directed communication
+        mqtt.subscribeToTopic(topic_OutDirect, (topic_OutDirect, msg) => {
+            $('#com-in-direct').text(`${msg}`);
+            console.log(topic_OutDirect, ':', msg);
+        });
 
-            comm_in_id = robotId;
-            $('.robot-id').text(robotId);
-        })
-        .change();
-
-    $('#comm-out-msg')
-        .change(function () {
-            $('.comm-msg').text(this.value);
-        })
-        .change();
+        comm_in_id = robotId;
+        $('.robot-id').text(robotId);
+    }).change();
 
     // Publish Button
     $('#comm-out-publish').click(function () {
@@ -68,12 +59,14 @@ export function setup() {
         mqtt.publish(`comm/in/${msgProtocol}/${robotId}`, msg);
     });
 
-    // broadcast Button
+    // Broadcast Button
     $('#comm-out-broadcast').click(function () {
         const robotId = $('#robot-id').val();
         const msg = $('#comm-out-msg').val();
         const msgProtocol = $('#comm-out-protocol').val();
-        const msgString = { id: robotId, msg: msg };
+        const dist = 30;
+
+        const msgString = { id: robotId, msg: msg, dist: dist };
         mqtt.publish(`comm/out/${msgProtocol}`, JSON.stringify(msgString));
     });
 }

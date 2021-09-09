@@ -1,284 +1,134 @@
 proximity<template>
     <div class="page" data-name="proximitySensor">
-        <div class="navbar">
-            <div class="navbar-bg"></div>
-            <div class="navbar-inner sliding">
-                <div class="title">Proximity Sensor</div>
-            </div>
-        </div>
-        <div class="page-content">
-            <div class="container pt-2">
-                <h3>Proximity Sensor</h3>
-                <div class="block-title">Control</div>
-                <div class="card p-2">
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div
-                                class="list inline-labels no-hairlines-md prox-sensor-labels"
-                            >
-                                <ul>
-                                    <li class="item-content item-input">
-                                        <div class="item-inner">
-                                            <div class="container">
-                                                <div class="row">
-                                                    <div class="col-sm-12 col-md-4">
-                                                        <div
-                                                            class="item-title item-label"
-                                                        >
-                                                            Robot ID
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-12 col-md-8">
-                                                        <div class="item-input-wrap">
-                                                            <input
-                                                                type="number"
-                                                                id="proximity-sensor-robot-id"
-                                                                min="0"
-                                                                value="0"
-                                                            />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="item-content item-input">
-                                        <div class="item-inner">
-                                            <div class="container proximity-sensors">
-                                                <div class="row">
-                                                    <div class="col-sm-12 col-md-4">
-                                                        <div
-                                                            class="item-title item-label proximity-sensors"
-                                                        >
-                                                            Proximity
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-12 col-md-8">
-                                                        <span>-150 </span>
-                                                        <div class="item-input-wrap">
-                                                            <span
-                                                                class="range-slider range-slider-init"
-                                                                data-label="true"
-                                                            >
-                                                                <input
-                                                                    id="proximity-sensor-dist1-bar"
-                                                                    type="range"
-                                                                    min="0"
-                                                                    max="300"
-                                                                    step="1"
-                                                                    value="0"
-                                                                />
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="row">
-                                                    <div class="col-sm-12 col-md-4"></div>
-                                                    <div class="col-sm-12 col-md-8">
-                                                        <span>-90 </span>
-                                                        <div class="item-input-wrap">
-                                                            <span
-                                                                class="range-slider range-slider-init"
-                                                                data-label="true"
-                                                            >
-                                                                <input
-                                                                    id="proximity-sensor-dist2-bar"
-                                                                    type="range"
-                                                                    min="0"
-                                                                    max="300"
-                                                                    step="1"
-                                                                    value="0"
-                                                                />
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="row">
-                                                    <div class="col-sm-12 col-md-4"></div>
-                                                    <div class="col-sm-12 col-md-8">
-                                                        <span>0 </span>
-                                                        <div class="item-input-wrap">
-                                                            <span
-                                                                class="range-slider range-slider-init"
-                                                                data-label="true"
-                                                            >
-                                                                <input
-                                                                    id="proximity-sensor-dist3-bar"
-                                                                    type="range"
-                                                                    min="0"
-                                                                    max="300"
-                                                                    step="1"
-                                                                    value="0"
-                                                                />
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="row">
-                                                    <div class="col-sm-12 col-md-4"></div>
-                                                    <div class="col-sm-12 col-md-8">
-                                                        <span>90 </span>
-                                                        <div class="item-input-wrap">
-                                                            <span
-                                                                class="range-slider range-slider-init"
-                                                                data-label="true"
-                                                            >
-                                                                <input
-                                                                    id="proximity-sensor-dist4-bar"
-                                                                    type="range"
-                                                                    min="0"
-                                                                    max="300"
-                                                                    step="1"
-                                                                    value="0"
-                                                                />
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="row">
-                                                    <div class="col-sm-12 col-md-4"></div>
-                                                    <div class="col-sm-12 col-md-8">
-                                                        <span>150 </span>
-                                                        <div class="item-input-wrap">
-                                                            <span
-                                                                class="range-slider range-slider-init"
-                                                                data-label="true"
-                                                            >
-                                                                <input
-                                                                    id="proximity-sensor-dist5-bar"
-                                                                    type="range"
-                                                                    min="0"
-                                                                    max="300"
-                                                                    step="1"
-                                                                    value="0"
-                                                                />
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="row">
-                                                    <div class="col-sm-12 col-md-4"></div>
-                                                    <div class="col-sm-12 col-md-8">
-                                                        <span class="proximity-val"
-                                                            >0 0 0 0 0</span
-                                                        >
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4">
-                            <div class="p-2">
-                                <b
-                                    ><span class="channel">{channel}</span
-                                    >/sensor/proximity/<span
-                                        class="proximity-sensor-robot-id"
-                                        >{robotId}</span
-                                    ></b
-                                >
-                                <span class="float-right">
-                                    <a
-                                        target="_blank"
-                                        class="link external"
-                                        href="https://pera-swarm.ce.pdn.ac.lk/docs/communication/mqtt/sensor#sensorproximityrobotid"
-                                        >[?]</a
-                                    >
-                                </span>
-                                <div>
-                                    <span class="proximity-val">0</span>
-                                </div>
-                                <button
-                                    class="col button button-raised button-fill color-blue"
-                                    id="dist-btn-send-robot"
-                                >
-                                    Send to Robot
-                                </button>
-                            </div>
-
-                            <div class="p-2">
-                                <b
-                                    ><span class="channel">{channel}</span
-                                    >/sensor/proximity/</b
-                                >
-                                <span class="float-right"
-                                    ><a
-                                        target="_blank"
-                                        class="link external"
-                                        href="https://pera-swarm.ce.pdn.ac.lk/docs/communication/mqtt/sensor#sensorproximity"
-                                        >[?]</a
-                                    ></span
-                                >
-                                <div>
-                                    { "id":"<span class="proximity-sensor-robot-id"
-                                        >{robotId}</span
-                                    >", "reality":"V" }
-                                </div>
-                                <button
-                                    class="col button button-raised button-fill color-green"
-                                    id="dist-btn-send-server"
-                                >
-                                    Send to Server
-                                </button>
-                                <br />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="block-title">Responses</div>
-                <div class="card p-3 list no-hairlines-md">
-                    <ul>
+   <div class="navbar">
+      <div class="navbar-bg"></div>
+      <div class="navbar-inner sliding">
+         <div class="title">Proximity Sensor</div>
+      </div>
+   </div>
+   <div class="page-content">
+      <div class="container pt-2">
+         <h3>Proximity Sensor</h3>
+         <div class="block-title">Control</div>
+         <div class="card p-2">
+            <div class="row">
+               <div class="col-md-8">
+                  <div class="list inline-labels no-hairlines-md prox-sensor-labels" >
+                     <ul>
                         <li class="item-content item-input">
-                            <div class="item-inner">
-                                <div class="item-title item-label">
-                                    Messages received from robots to the server (<b
-                                        ><span class="channel">{channel}</span
-                                        >/sensor/proximity</b
-                                    >)<br />
-                                </div>
-                                <div class="item-input-wrap">
-                                    <textarea
-                                        id="dist-sub-text"
-                                        class="resizable"
-                                    ></textarea>
-                                    <span class="input-clear-button"></span>
-                                </div>
-                            </div>
+                           <div class="item-inner">
+                              <div class="container">
+                                 <div class="row">
+                                    <div class="col-sm-12 col-md-4">
+                                       <div class="item-title item-label" > Robot ID </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-8">
+                                       <div class="item-input-wrap"> <input type="number" id="proximity-sensor-robot-id" min="0" value="0" /> </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
                         </li>
                         <li class="item-content item-input">
-                            <div class="item-inner">
-                                <div class="item-title item-label">
-                                    Responses received to robots (<b
-                                        ><span class="channel">{channel}</span
-                                        >/sensor/proximity/<span
-                                            class="proximity-sensor-robot-id"
-                                            >{robotId}</span
-                                        ></b
-                                    >)<br />
-                                </div>
-                                <div class="item-input-wrap">
-                                    <textarea
-                                        id="dist-robot-text"
-                                        class="resizable"
-                                    ></textarea>
-                                    <span class="input-clear-button"></span>
-                                </div>
-                            </div>
+                           <div class="item-inner">
+                              <div class="container">
+                                 <div class="row">
+                                    <div class="col-sm-12 col-md-4">
+                                      <div class="item-title item-label"> Reality </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-8">
+                                        <select id="proximity-sensor-robot-reality" class="">
+                                           <option value="V" selected> Virtual </option>
+                                        </select>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
                         </li>
-                    </ul>
-                </div>
+                        <li class="item-content item-input">
+                           <div class="item-inner">
+                              <div class="container proximity-sensors">
+                                 <div class="row">
+                                    <div class="col-sm-12 col-md-4">
+                                       <div class="item-title item-label proximity-sensors" > Proximity </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-8">
+                                       <span>Reading on angle -150 </span>
+                                       <div class="item-input-wrap"> <span class="range-slider range-slider-init" data-label="true" > <input id="proximity-sensor-dist1-bar" type="range" min="0" max="300" step="1" value="0" /> </span> </div>
+                                    </div>
+                                 </div>
+                                 <div class="row">
+                                    <div class="col-sm-12 col-md-4"></div>
+                                    <div class="col-sm-12 col-md-8">
+                                       <span>Reading on angle -90 </span>
+                                       <div class="item-input-wrap"> <span class="range-slider range-slider-init" data-label="true" > <input id="proximity-sensor-dist2-bar" type="range" min="0" max="300" step="1" value="0" /> </span> </div>
+                                    </div>
+                                 </div>
+                                 <div class="row">
+                                    <div class="col-sm-12 col-md-4"></div>
+                                    <div class="col-sm-12 col-md-8">
+                                       <span>Reading on angle 0 </span>
+                                       <div class="item-input-wrap"> <span class="range-slider range-slider-init" data-label="true" > <input id="proximity-sensor-dist3-bar" type="range" min="0" max="300" step="1" value="0" /> </span> </div>
+                                    </div>
+                                 </div>
+                                 <div class="row">
+                                    <div class="col-sm-12 col-md-4"></div>
+                                    <div class="col-sm-12 col-md-8">
+                                       <span>Reading on angle 90 </span>
+                                       <div class="item-input-wrap"> <span class="range-slider range-slider-init" data-label="true" > <input id="proximity-sensor-dist4-bar" type="range" min="0" max="300" step="1" value="0" /> </span> </div>
+                                    </div>
+                                 </div>
+                                 <div class="row">
+                                    <div class="col-sm-12 col-md-4"></div>
+                                    <div class="col-sm-12 col-md-8">
+                                       <span>Reading on angle 150 </span>
+                                       <div class="item-input-wrap"> <span class="range-slider range-slider-init" data-label="true" > <input id="proximity-sensor-dist5-bar" type="range" min="0" max="300" step="1" value="0" /> </span> </div>
+                                    </div>
+                                 </div>
+                                 <div class="row">
+                                    <div class="col-sm-12 col-md-4"></div>
+                                    <div class="col-sm-12 col-md-8"> <span class="proximity-val" >0 0 0 0 0</span > </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+               <div class="col-md-4">
+                  <div class="p-2">
+                     <b ><span class="channel">{channel}</span >/sensor/proximity/<span class="proximity-sensor-robot-id" >{robotId}</span ></b > <span class="float-right"> <a target="_blank" class="link external" href="https://pera-swarm.ce.pdn.ac.lk/docs/communication/mqtt/sensor#sensorproximityrobotid" >[?]</a > </span>
+                     <div> <span class="proximity-val">0</span> </div>
+                     <button class="col button button-raised button-fill color-blue" id="dist-btn-send-robot" > Send to Robot </button>
+                  </div>
+                  <div class="p-2">
+                     <b ><span class="channel">{channel}</span >/sensor/proximity/</b > <span class="float-right" ><a target="_blank" class="link external" href="https://pera-swarm.ce.pdn.ac.lk/docs/communication/mqtt/sensor#sensorproximity" >[?]</a ></span >
+                     <div> { "id":"<span class="proximity-sensor-robot-id" >{robotId}</span >", "reality":"V" } </div>
+                     <button class="col button button-raised button-fill color-green" id="dist-btn-send-server" > Send to Server </button> <br />
+                  </div>
+               </div>
             </div>
-        </div>
-    </div>
+         </div>
+         <div class="block-title">Responses</div>
+         <div class="card p-3 list no-hairlines-md">
+            <ul>
+               <li class="item-content item-input">
+                  <div class="item-inner">
+                     <div class="item-title item-label"> Request received by the simulator  (<b ><span class="channel">{channel}</span >/sensor/proximity</b >)<br /> </div>
+                     <div class="item-input-wrap"> <textarea id="dist-sub-text" class="resizable" ></textarea> <span class="input-clear-button"></span> </div>
+                  </div>
+               </li>
+               <li class="item-content item-input">
+                  <div class="item-inner">
+                     <div class="item-title item-label"> Proximity reading sent to the robot (<b ><span class="channel">{channel}</span >/sensor/proximity/<span class="proximity-sensor-robot-id" >{robotId}</span ></b >)<br /> </div>
+                     <div class="item-input-wrap"> <textarea id="dist-robot-text" class="resizable" ></textarea> <span class="input-clear-button"></span> </div>
+                  </div>
+               </li>
+            </ul>
+         </div>
+      </div>
+   </div>
+</div>
 </template>
 <script>
     import { setup } from '../../js/sandbox_scripts/proximitySensor.js';

@@ -6,7 +6,6 @@
                 <div class="title">Communication</div>
             </div>
         </div>
-
         <div class="page-content">
             <div class="container pt-2">
                 <h3>Communication</h3>
@@ -18,181 +17,96 @@
                                 <ul>
                                     <li class="item-content item-input">
                                         <div class="item-inner">
-                                            <div class="item-title item-label">
-                                                Robot ID
-                                            </div>
-                                            <div class="item-input-wrap">
-                                                <input
-                                                    type="number"
-                                                    id="robot-id"
-                                                    min="0"
-                                                    value="0"
-                                                />
-                                            </div>
+                                            <div class="item-title item-label"> Robot ID </div>
+                                            <div class="item-input-wrap"> <input type="number" id="robot-id" min="0" value="0" /> </div>
                                         </div>
                                     </li>
                                     <li class="item-content item-input">
                                         <div class="item-inner">
-                                            <div class="item-title item-label">
-                                                Protocol
-                                            </div>
-                                            <div
-                                                class="item-input-wrap input-dropdown-wrap"
-                                            >
+                                            <div class="item-title item-label"> Protocol </div>
+                                            <div class="item-input-wrap input-dropdown-wrap" >
                                                 <select id="comm-out-protocol">
-                                                    <option value="simple">Simple</option>
-                                                    <option value="direct">Direct</option>
+                                                    <option value="simple">Omini Directional (Simple)</option>
+                                                    <option value="direct">Heading Direction (Direct)</option>
                                                 </select>
                                             </div>
                                         </div>
                                     </li>
                                     <li class="item-content item-input">
                                         <div class="item-inner">
-                                            <div class="item-title item-label">
-                                                Message
-                                            </div>
-                                            <div class="item-input-wrap">
-                                                <textarea
-                                                    class="resizable"
-                                                    placeholder="Your Message"
-                                                    value="Test"
-                                                    id="comm-out-msg"
-                                                ></textarea>
-                                            </div>
+                                            <div class="item-title item-label"> Message </div>
+                                            <div class="item-input-wrap"> <textarea class="resizable" placeholder="Your Message" value="Test" id="comm-out-msg" ></textarea> </div>
                                         </div>
                                     </li>
                                 </ul>
                             </div>
                         </div>
-
                         <div class="col-md-4">
                             <div class="p-2">
-                                <b
-                                    ><span class="channel">{channel}</span>/comm/in/<span
-                                        class="robot-id"
-                                        >{robotId}</span
-                                    ></b
-                                >
-                                <br />(Receive a message)
-                                <span class="float-right">
-                                    <a
-                                        target="_blank"
-                                        class="link external"
-                                        href="https://pera-swarm.ce.pdn.ac.lk/docs/communication/mqtt/comm#comminrobotid"
-                                        >[?]</a
-                                    >
-                                </span>
-                                <div>
-                                    <span class="comm-msg">......</span>
-                                </div>
-                                <button
-                                    class="col button button-raised button-fill color-blue"
-                                    id="comm-out-publish"
-                                >
-                                    Publish
-                                </button>
+                                <b>
+                                    <span class="channel">{channel}</span>/comm/in/<span class="com-out-protocol-label" >simple</span>/<span class="robot-id">{robotId}</span>
+                                </b>
+                                <br />(Push a message into a robot) <span class="float-right"> <a target="_blank" class="link external" href="https://pera-swarm.ce.pdn.ac.lk/docs/communication/mqtt/comm#comminrobotid" >[?]</a></span>
+                                <div> <span class="comm-msg">......</span> </div>
+                                <button class="col button button-raised button-fill color-blue" id="comm-out-publish" > Publish </button>
                             </div>
-
                             <div class="p-2">
-                                <b
-                                    ><span class="channel">{channel}</span>/comm/out/<span
-                                        class="com-out-protocol-label"
-                                        >simple</span
-                                    ></b
-                                >
-                                <br />(Broadcast a message by robot)
-                                <span class="float-right">
-                                    <a
-                                        target="_blank"
-                                        class="link external"
-                                        href="https://pera-swarm.ce.pdn.ac.lk/docs/communication/mqtt/comm#commoutprotocol"
-                                        >[?]</a
-                                    >
-                                </span>
-                                <div>
-                                    { "id":"<span class="robot-id">{robotId}</span>",
-                                    “msg”: "<span class="comm-msg">{msg}</span>" }
+                                <b>
+                                    <span class="channel">{channel}</span>/comm/out/<span class="com-out-protocol-label" >simple</span>
+                                </b>
+                                <br/>
+                                (Send out a message as robot) <span class="float-right"> <a target="_blank" class="link external" href="https://pera-swarm.ce.pdn.ac.lk/docs/communication/mqtt/comm#commoutprotocol" >[?]</a ></span>
+
+                                    <div> { "id":"<span class="robot-id">{robotId}</span>", “msg”: "<span class="comm-msg">{msg}</span>" } </div>
+                                    <button class="col button button-raised button-fill color-green" id="comm-out-broadcast" > Broadcast </button>
                                 </div>
-                                <button
-                                    class="col button button-raised button-fill color-green"
-                                    id="comm-out-broadcast"
-                                >
-                                    Broadcast
-                                </button>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="block-title">Responses</div>
-                <div class="card p-3 list no-hairlines-md">
-                    <ul>
-                        <li class="item-content item-input">
-                            <div class="item-inner">
-                                <div class="item-title item-label">
-                                    Responses received to (<b
-                                        ><span class="channel">{channel}</span
-                                        >/comm/in/<span class="robot-id"
-                                            >{robotId}</span
-                                        ></b
-                                    >)<br />
+                    <div class="block-title">Responses</div>
+                    <div class="card p-3 list no-hairlines-md">
+                        <ul>
+                            <li class="item-content item-input">
+                                <div class="item-inner">
+                                    <div class="item-title item-label"> Messages (Simple) sent out by a robot (<b ><span class="channel">{channel}</span >/comm/out/simple </b >)<br/>
+                                    </div>
+                                    <div class="item-input-wrap"> <textarea id="com-out-simple" class="resizable" ></textarea> <span class="input-clear-button"></span> </div>
                                 </div>
-                                <div class="item-input-wrap">
-                                    <textarea
-                                        id="com-in-msg"
-                                        class="resizable"
-                                    ></textarea>
-                                    <span class="input-clear-button"></span>
+                            </li>
+                            <li class="item-content item-input">
+                                <div class="item-inner">
+                                    <div class="item-title item-label"> Messages (Direct) sent out by a robot ( <b> <span class="channel">{channel}</span>/comm/out/direct/ </b>)<br /> </div>
+                                    <div class="item-input-wrap"> <textarea id="com-out-direct" class="resizable" ></textarea> <span class="input-clear-button"></span> </div>
                                 </div>
-                            </div>
-                        </li>
-                        <li class="item-content item-input">
-                            <div class="item-inner">
-                                <div class="item-title item-label">
-                                    Responses received to (<b
-                                        ><span class="channel">{channel}</span
-                                        >/comm/out/simple</b
-                                    >)<br />
+                            </li>
+                            <li class="item-content item-input">
+                                <div class="item-inner">
+                                    <div class="item-title item-label"> Messages (Simple) received to a robot(<b ><span class="channel">{channel}</span >/comm/in/simple/<span class="robot-id">{robotId}</span></b >)
+                                        <br/>
+                                    </div>
+                                    <div class="item-input-wrap"> <textarea id="com-in-simple" class="resizable" ></textarea> <span class="input-clear-button"></span> </div>
                                 </div>
-                                <div class="item-input-wrap">
-                                    <textarea
-                                        id="com-out-simple"
-                                        class="resizable"
-                                    ></textarea>
-                                    <span class="input-clear-button"></span>
+                            </li>
+                            <li class="item-content item-input">
+                                <div class="item-inner">
+                                    <div class="item-title item-label"> Messages (Directed) received to a robot (<b ><span class="channel">{channel}</span >/comm/in/direct/<span class="robot-id">{robotId}</span></b >)<br/>
+                                    </div>
+                                    <div class="item-input-wrap"> <textarea id="com-in-direct" class="resizable" ></textarea> <span class="input-clear-button"></span> </div>
                                 </div>
-                            </div>
-                        </li>
-                        <li class="item-content item-input">
-                            <div class="item-inner">
-                                <div class="item-title item-label">
-                                    Responses received to (<b
-                                        ><span class="channel">{channel}</span
-                                        >/comm/out/direct</b
-                                    >)<br />
-                                </div>
-                                <div class="item-input-wrap">
-                                    <textarea
-                                        id="com-out-direct"
-                                        class="resizable"
-                                    ></textarea>
-                                    <span class="input-clear-button"></span>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</template>
-<script>
-    import { setup } from '../../js/sandbox_scripts/communication.js';
+    </template>
+    <script>
+        import { setup } from '../../js/sandbox_scripts/communication.js';
 
-    export default (props, { $f7, $on }) => {
-        $on('pageMounted', () => {
-            setup();
-        });
-        return $render;
-    };
-</script>
+        export default (props, { $f7, $on }) => {
+            $on('pageMounted', () => {
+                setup();
+            });
+            return $render;
+        };
+    </script>
