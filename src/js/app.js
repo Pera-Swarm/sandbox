@@ -88,7 +88,10 @@ export function setup(onConnectionCallback) {
         // Nuwan: Simple Fix to update issue
         authenticate(function () {
             // console.log('callback');
-            window.location.reload();
+            // window.location.reload();
+            alert('Connected');
+
+            // TODO: Connection button should be updated
         });
     });
 
